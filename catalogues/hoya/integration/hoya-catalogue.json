@@ -1,0 +1,648 @@
+{
+  "schemaVersion": 1,
+  "products": {
+    "miyosmart": {
+      "id": "hoya-miyosmart",
+      "key": "miyosmart",
+      "name": "MiYOSMART",
+      "technology": "D.I.M.S.",
+      "clearZoneMm": 9.4,
+      "treatmentZoneMm": 33,
+      "defocusPowerD": 3.5,
+      "index": "1.59",
+      "material": "Polycarbonate",
+      "design": "Clear central vision with defocus segments designed to help slow eye growth.",
+      "warranty": {
+        "months": 6,
+        "progressionD": 0.75,
+        "basis": "sphere",
+        "period": "6 months",
+        "title": "6-Month Prescription Change Guarantee",
+        "shortTitle": "6-MONTH RX GUARANTEE",
+        "condition": "If sphere power becomes at least 0.75 D more short-sighted within 6 months.",
+        "wording": "Complimentary replacement if sphere power becomes at least 0.75 D more short-sighted within 6 months."
+      },
+      "clinical": {
+        "months": 12,
+        "refractionDifferenceD": 0.28,
+        "axialDifferenceMm": 0.14,
+        "comparator": "Ordinary single-vision spectacles",
+        "status": "Calculated from the 12-month trial chart in the supplied HOYA brochure",
+        "source": "HOYA data on file, April 2026; ARVO 2026",
+        "studyAges": "4–12 years"
+      },
+      "prices": {
+        "clear": {
+          "stx": 1300,
+          "fullcontrol": 1400
+        },
+        "chameleon": {
+          "stx": 1500,
+          "fullcontrol": 1500
+        },
+        "sunbird": {
+          "stx": 1600
+        }
+      }
+    },
+    "iq": {
+      "id": "hoya-miyosmart-iq",
+      "key": "iq",
+      "name": "MiYOSMART iQ",
+      "technology": "D.I.M.S. with Triple Enhanced Design",
+      "clearZoneMm": 6.9,
+      "treatmentZoneMm": 41,
+      "defocusPowerD": 4.5,
+      "index": "1.59",
+      "material": "Polycarbonate",
+      "design": "Treatment closer to the centre, stronger defocus power and wider treatment coverage.",
+      "warranty": {
+        "months": 12,
+        "progressionD": 0.5,
+        "basis": "sphere",
+        "period": "1 year",
+        "title": "1-Year Prescription Change Guarantee",
+        "shortTitle": "1-YEAR RX GUARANTEE",
+        "condition": "If sphere power becomes at least 0.50 D more short-sighted within 1 year.",
+        "wording": "Complimentary replacement if sphere power becomes at least 0.50 D more short-sighted within 1 year."
+      },
+      "clinical": {
+        "months": 12,
+        "refractionDifferenceD": 0.58,
+        "axialDifferenceMm": 0.27,
+        "comparator": "Ordinary single-vision spectacles",
+        "status": "ARVO 2026 presentation and HOYA data on file, April 2026",
+        "source": "HOYA data on file, April 2026; ARVO 2026",
+        "studyAges": "4–12 years"
+      },
+      "prices": {
+        "clear": {
+          "spark": 1700,
+          "fullcontrol": 1800
+        },
+        "chameleon": {
+          "spark": 1800,
+          "fullcontrol": 1900
+        }
+      }
+    }
+  },
+  "styles": {
+    "clear": {
+      "id": "clear",
+      "name": "Clear",
+      "copy": "Clear lenses for everyday wear."
+    },
+    "chameleon": {
+      "id": "chameleon",
+      "name": "Chameleon",
+      "copy": "Light-adaptive tint for changing indoor and outdoor conditions."
+    },
+    "sunbird": {
+      "id": "sunbird",
+      "name": "Sunbird",
+      "copy": "Sunwear option."
+    }
+  },
+  "coatings": {
+    "stx": {
+      "id": "stx",
+      "name": "MiYOSMART Coating STX",
+      "shortName": "MiYOSMART STX",
+      "copy": "Everyday protective coating."
+    },
+    "spark": {
+      "id": "spark",
+      "name": "S.P.A.R.K. Coating",
+      "shortName": "S.P.A.R.K.",
+      "copy": "Improved scratch resistance and lasting easy cleaning versus the previous MiYOSMART generation."
+    },
+    "fullcontrol": {
+      "id": "fullcontrol",
+      "name": "Full Control Coating STX",
+      "shortName": "Full Control",
+      "copy": "Includes BlueControl, UV Control and Bacterial Control."
+    }
+  },
+  "comparisonRows": [
+    {
+      "key": "lensDesign",
+      "label": "Lens design"
+    },
+    {
+      "key": "technology",
+      "label": "Optical technology"
+    },
+    {
+      "key": "lensStyle",
+      "label": "Lens option"
+    },
+    {
+      "key": "coating",
+      "label": "Coating"
+    },
+    {
+      "key": "index",
+      "label": "Lens index"
+    },
+    {
+      "key": "clearZone",
+      "label": "Clear central zone"
+    },
+    {
+      "key": "treatmentZone",
+      "label": "Treatment zone"
+    },
+    {
+      "key": "defocusPower",
+      "label": "Defocus power"
+    },
+    {
+      "key": "sphereRange",
+      "label": "Prescription · sphere"
+    },
+    {
+      "key": "cylinderRange",
+      "label": "Prescription · cylinder"
+    },
+    {
+      "key": "combinedRange",
+      "label": "Combined prescription limit"
+    },
+    {
+      "key": "refractionEffect",
+      "label": "Less prescription progression"
+    },
+    {
+      "key": "axialEffect",
+      "label": "Less eye-length growth"
+    },
+    {
+      "key": "studyDuration",
+      "label": "Study duration"
+    },
+    {
+      "key": "studyComparator",
+      "label": "Study comparator"
+    },
+    {
+      "key": "evidenceStatus",
+      "label": "Evidence source"
+    },
+    {
+      "key": "warrantyDuration",
+      "label": "Replacement warranty · period"
+    },
+    {
+      "key": "warrantyThreshold",
+      "label": "Replacement warranty · sphere change"
+    },
+    {
+      "key": "price",
+      "label": "Lens price · per pair"
+    }
+  ],
+  "options": [
+    {
+      "id": "hoya-miyosmart-clear-stx",
+      "productId": "hoya-miyosmart",
+      "productKey": "miyosmart",
+      "styleId": "clear",
+      "coatingId": "stx",
+      "name": "MiYOSMART · Clear · MiYOSMART STX",
+      "fullName": "HOYA MiYOSMART Clear · MiYOSMART Coating STX",
+      "price": 1300,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 6,
+        "progressionD": 0.75,
+        "basis": "sphere"
+      },
+      "prescription": {
+        "sphereMin": -13,
+        "sphereMax": 0,
+        "cylinderMin": -4,
+        "combinedMin": -13,
+        "positiveSphereMin": null,
+        "positiveSphereMax": null,
+        "positiveMaxSE": null,
+        "sphereText": "0.00 D to −13.00 D",
+        "combinedText": "Up to −13.00 D"
+      },
+      "fields": {
+        "lensDesign": "MiYOSMART",
+        "technology": "D.I.M.S.",
+        "lensStyle": "Clear",
+        "coating": "MiYOSMART Coating STX",
+        "index": "1.59 · Polycarbonate",
+        "clearZone": "9.4 mm",
+        "treatmentZone": "33 mm",
+        "defocusPower": "+3.5 D",
+        "sphereRange": "0.00 D to −13.00 D",
+        "cylinderRange": "Up to −4.00 D",
+        "combinedRange": "Up to −13.00 D",
+        "refractionEffect": "0.28 D on average (calculated from trial chart)",
+        "axialEffect": "0.14 mm on average (calculated from trial chart)",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision spectacles",
+        "evidenceStatus": "Calculated from the 12-month trial chart in the supplied HOYA brochure",
+        "warrantyDuration": "6 months",
+        "warrantyThreshold": "Sphere power at least 0.75 D more short-sighted (additional −0.75 D or more)",
+        "price": "RM1,300"
+      }
+    },
+    {
+      "id": "hoya-miyosmart-clear-fullcontrol",
+      "productId": "hoya-miyosmart",
+      "productKey": "miyosmart",
+      "styleId": "clear",
+      "coatingId": "fullcontrol",
+      "name": "MiYOSMART · Clear · Full Control",
+      "fullName": "HOYA MiYOSMART Clear · Full Control Coating STX",
+      "price": 1400,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 6,
+        "progressionD": 0.75,
+        "basis": "sphere"
+      },
+      "prescription": {
+        "sphereMin": -13,
+        "sphereMax": 0,
+        "cylinderMin": -4,
+        "combinedMin": -13,
+        "positiveSphereMin": null,
+        "positiveSphereMax": null,
+        "positiveMaxSE": null,
+        "sphereText": "0.00 D to −13.00 D",
+        "combinedText": "Up to −13.00 D"
+      },
+      "fields": {
+        "lensDesign": "MiYOSMART",
+        "technology": "D.I.M.S.",
+        "lensStyle": "Clear",
+        "coating": "Full Control Coating STX",
+        "index": "1.59 · Polycarbonate",
+        "clearZone": "9.4 mm",
+        "treatmentZone": "33 mm",
+        "defocusPower": "+3.5 D",
+        "sphereRange": "0.00 D to −13.00 D",
+        "cylinderRange": "Up to −4.00 D",
+        "combinedRange": "Up to −13.00 D",
+        "refractionEffect": "0.28 D on average (calculated from trial chart)",
+        "axialEffect": "0.14 mm on average (calculated from trial chart)",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision spectacles",
+        "evidenceStatus": "Calculated from the 12-month trial chart in the supplied HOYA brochure",
+        "warrantyDuration": "6 months",
+        "warrantyThreshold": "Sphere power at least 0.75 D more short-sighted (additional −0.75 D or more)",
+        "price": "RM1,400"
+      }
+    },
+    {
+      "id": "hoya-miyosmart-chameleon-stx",
+      "productId": "hoya-miyosmart",
+      "productKey": "miyosmart",
+      "styleId": "chameleon",
+      "coatingId": "stx",
+      "name": "MiYOSMART · Chameleon · MiYOSMART STX",
+      "fullName": "HOYA MiYOSMART Chameleon · MiYOSMART Coating STX",
+      "price": 1500,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 6,
+        "progressionD": 0.75,
+        "basis": "sphere"
+      },
+      "prescription": {
+        "sphereMin": -10,
+        "sphereMax": 0,
+        "cylinderMin": -4,
+        "combinedMin": -10,
+        "positiveSphereMin": null,
+        "positiveSphereMax": null,
+        "positiveMaxSE": null,
+        "sphereText": "0.00 D to −10.00 D",
+        "combinedText": "Up to −10.00 D"
+      },
+      "fields": {
+        "lensDesign": "MiYOSMART",
+        "technology": "D.I.M.S.",
+        "lensStyle": "Chameleon",
+        "coating": "MiYOSMART Coating STX",
+        "index": "1.59 · Polycarbonate",
+        "clearZone": "9.4 mm",
+        "treatmentZone": "33 mm",
+        "defocusPower": "+3.5 D",
+        "sphereRange": "0.00 D to −10.00 D",
+        "cylinderRange": "Up to −4.00 D",
+        "combinedRange": "Up to −10.00 D",
+        "refractionEffect": "0.28 D on average (calculated from trial chart)",
+        "axialEffect": "0.14 mm on average (calculated from trial chart)",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision spectacles",
+        "evidenceStatus": "Calculated from the 12-month trial chart in the supplied HOYA brochure",
+        "warrantyDuration": "6 months",
+        "warrantyThreshold": "Sphere power at least 0.75 D more short-sighted (additional −0.75 D or more)",
+        "price": "RM1,500"
+      }
+    },
+    {
+      "id": "hoya-miyosmart-chameleon-fullcontrol",
+      "productId": "hoya-miyosmart",
+      "productKey": "miyosmart",
+      "styleId": "chameleon",
+      "coatingId": "fullcontrol",
+      "name": "MiYOSMART · Chameleon · Full Control",
+      "fullName": "HOYA MiYOSMART Chameleon · Full Control Coating STX",
+      "price": 1500,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 6,
+        "progressionD": 0.75,
+        "basis": "sphere"
+      },
+      "prescription": {
+        "sphereMin": -10,
+        "sphereMax": 0,
+        "cylinderMin": -4,
+        "combinedMin": -10,
+        "positiveSphereMin": null,
+        "positiveSphereMax": null,
+        "positiveMaxSE": null,
+        "sphereText": "0.00 D to −10.00 D",
+        "combinedText": "Up to −10.00 D"
+      },
+      "fields": {
+        "lensDesign": "MiYOSMART",
+        "technology": "D.I.M.S.",
+        "lensStyle": "Chameleon",
+        "coating": "Full Control Coating STX",
+        "index": "1.59 · Polycarbonate",
+        "clearZone": "9.4 mm",
+        "treatmentZone": "33 mm",
+        "defocusPower": "+3.5 D",
+        "sphereRange": "0.00 D to −10.00 D",
+        "cylinderRange": "Up to −4.00 D",
+        "combinedRange": "Up to −10.00 D",
+        "refractionEffect": "0.28 D on average (calculated from trial chart)",
+        "axialEffect": "0.14 mm on average (calculated from trial chart)",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision spectacles",
+        "evidenceStatus": "Calculated from the 12-month trial chart in the supplied HOYA brochure",
+        "warrantyDuration": "6 months",
+        "warrantyThreshold": "Sphere power at least 0.75 D more short-sighted (additional −0.75 D or more)",
+        "price": "RM1,500"
+      }
+    },
+    {
+      "id": "hoya-miyosmart-sunbird-stx",
+      "productId": "hoya-miyosmart",
+      "productKey": "miyosmart",
+      "styleId": "sunbird",
+      "coatingId": "stx",
+      "name": "MiYOSMART · Sunbird · MiYOSMART STX",
+      "fullName": "HOYA MiYOSMART Sunbird · MiYOSMART Coating STX",
+      "price": 1600,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 6,
+        "progressionD": 0.75,
+        "basis": "sphere"
+      },
+      "prescription": {
+        "sphereMin": -10,
+        "sphereMax": 0,
+        "cylinderMin": -4,
+        "combinedMin": -10,
+        "positiveSphereMin": null,
+        "positiveSphereMax": null,
+        "positiveMaxSE": null,
+        "sphereText": "0.00 D to −10.00 D",
+        "combinedText": "Up to −10.00 D"
+      },
+      "fields": {
+        "lensDesign": "MiYOSMART",
+        "technology": "D.I.M.S.",
+        "lensStyle": "Sunbird",
+        "coating": "MiYOSMART Coating STX",
+        "index": "1.59 · Polycarbonate",
+        "clearZone": "9.4 mm",
+        "treatmentZone": "33 mm",
+        "defocusPower": "+3.5 D",
+        "sphereRange": "0.00 D to −10.00 D",
+        "cylinderRange": "Up to −4.00 D",
+        "combinedRange": "Up to −10.00 D",
+        "refractionEffect": "0.28 D on average (calculated from trial chart)",
+        "axialEffect": "0.14 mm on average (calculated from trial chart)",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision spectacles",
+        "evidenceStatus": "Calculated from the 12-month trial chart in the supplied HOYA brochure",
+        "warrantyDuration": "6 months",
+        "warrantyThreshold": "Sphere power at least 0.75 D more short-sighted (additional −0.75 D or more)",
+        "price": "RM1,600"
+      }
+    },
+    {
+      "id": "hoya-miyosmart-iq-clear-spark",
+      "productId": "hoya-miyosmart-iq",
+      "productKey": "iq",
+      "styleId": "clear",
+      "coatingId": "spark",
+      "name": "MiYOSMART iQ · Clear · S.P.A.R.K.",
+      "fullName": "HOYA MiYOSMART iQ Clear · S.P.A.R.K. Coating",
+      "price": 1700,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 12,
+        "progressionD": 0.5,
+        "basis": "sphere"
+      },
+      "prescription": {
+        "sphereMin": -13,
+        "sphereMax": 4,
+        "cylinderMin": -4,
+        "combinedMin": -13,
+        "positiveSphereMin": 0.25,
+        "positiveSphereMax": 4,
+        "positiveMaxSE": 2,
+        "sphereText": "0.00 D to −13.00 D; +0.25 D to +4.00 D*",
+        "combinedText": "Minus Rx: −13.00 D maximum; plus Rx: SE ≤ +2.00 D"
+      },
+      "fields": {
+        "lensDesign": "MiYOSMART iQ",
+        "technology": "D.I.M.S. with Triple Enhanced Design",
+        "lensStyle": "Clear",
+        "coating": "S.P.A.R.K. Coating",
+        "index": "1.59 · Polycarbonate",
+        "clearZone": "6.9 mm",
+        "treatmentZone": "41 mm",
+        "defocusPower": "+4.5 D",
+        "sphereRange": "0.00 D to −13.00 D; +0.25 D to +4.00 D*",
+        "cylinderRange": "Up to −4.00 D",
+        "combinedRange": "Minus Rx: −13.00 D maximum; plus Rx: SE ≤ +2.00 D",
+        "refractionEffect": "0.58 D on average",
+        "axialEffect": "0.27 mm on average",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision spectacles",
+        "evidenceStatus": "ARVO 2026 presentation and HOYA data on file, April 2026",
+        "warrantyDuration": "1 year",
+        "warrantyThreshold": "Sphere power at least 0.50 D more short-sighted (additional −0.50 D or more)",
+        "price": "RM1,700"
+      }
+    },
+    {
+      "id": "hoya-miyosmart-iq-clear-fullcontrol",
+      "productId": "hoya-miyosmart-iq",
+      "productKey": "iq",
+      "styleId": "clear",
+      "coatingId": "fullcontrol",
+      "name": "MiYOSMART iQ · Clear · Full Control",
+      "fullName": "HOYA MiYOSMART iQ Clear · Full Control Coating STX",
+      "price": 1800,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 12,
+        "progressionD": 0.5,
+        "basis": "sphere"
+      },
+      "prescription": {
+        "sphereMin": -13,
+        "sphereMax": 4,
+        "cylinderMin": -4,
+        "combinedMin": -13,
+        "positiveSphereMin": 0.25,
+        "positiveSphereMax": 4,
+        "positiveMaxSE": 2,
+        "sphereText": "0.00 D to −13.00 D; +0.25 D to +4.00 D*",
+        "combinedText": "Minus Rx: −13.00 D maximum; plus Rx: SE ≤ +2.00 D"
+      },
+      "fields": {
+        "lensDesign": "MiYOSMART iQ",
+        "technology": "D.I.M.S. with Triple Enhanced Design",
+        "lensStyle": "Clear",
+        "coating": "Full Control Coating STX",
+        "index": "1.59 · Polycarbonate",
+        "clearZone": "6.9 mm",
+        "treatmentZone": "41 mm",
+        "defocusPower": "+4.5 D",
+        "sphereRange": "0.00 D to −13.00 D; +0.25 D to +4.00 D*",
+        "cylinderRange": "Up to −4.00 D",
+        "combinedRange": "Minus Rx: −13.00 D maximum; plus Rx: SE ≤ +2.00 D",
+        "refractionEffect": "0.58 D on average",
+        "axialEffect": "0.27 mm on average",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision spectacles",
+        "evidenceStatus": "ARVO 2026 presentation and HOYA data on file, April 2026",
+        "warrantyDuration": "1 year",
+        "warrantyThreshold": "Sphere power at least 0.50 D more short-sighted (additional −0.50 D or more)",
+        "price": "RM1,800"
+      }
+    },
+    {
+      "id": "hoya-miyosmart-iq-chameleon-spark",
+      "productId": "hoya-miyosmart-iq",
+      "productKey": "iq",
+      "styleId": "chameleon",
+      "coatingId": "spark",
+      "name": "MiYOSMART iQ · Chameleon · S.P.A.R.K.",
+      "fullName": "HOYA MiYOSMART iQ Chameleon · S.P.A.R.K. Coating",
+      "price": 1800,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 12,
+        "progressionD": 0.5,
+        "basis": "sphere"
+      },
+      "prescription": {
+        "sphereMin": -13,
+        "sphereMax": 4,
+        "cylinderMin": -4,
+        "combinedMin": -13,
+        "positiveSphereMin": 0.25,
+        "positiveSphereMax": 4,
+        "positiveMaxSE": 2,
+        "sphereText": "0.00 D to −13.00 D; +0.25 D to +4.00 D*",
+        "combinedText": "Minus Rx: −13.00 D maximum; plus Rx: SE ≤ +2.00 D"
+      },
+      "fields": {
+        "lensDesign": "MiYOSMART iQ",
+        "technology": "D.I.M.S. with Triple Enhanced Design",
+        "lensStyle": "Chameleon",
+        "coating": "S.P.A.R.K. Coating",
+        "index": "1.59 · Polycarbonate",
+        "clearZone": "6.9 mm",
+        "treatmentZone": "41 mm",
+        "defocusPower": "+4.5 D",
+        "sphereRange": "0.00 D to −13.00 D; +0.25 D to +4.00 D*",
+        "cylinderRange": "Up to −4.00 D",
+        "combinedRange": "Minus Rx: −13.00 D maximum; plus Rx: SE ≤ +2.00 D",
+        "refractionEffect": "0.58 D on average",
+        "axialEffect": "0.27 mm on average",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision spectacles",
+        "evidenceStatus": "ARVO 2026 presentation and HOYA data on file, April 2026",
+        "warrantyDuration": "1 year",
+        "warrantyThreshold": "Sphere power at least 0.50 D more short-sighted (additional −0.50 D or more)",
+        "price": "RM1,800"
+      }
+    },
+    {
+      "id": "hoya-miyosmart-iq-chameleon-fullcontrol",
+      "productId": "hoya-miyosmart-iq",
+      "productKey": "iq",
+      "styleId": "chameleon",
+      "coatingId": "fullcontrol",
+      "name": "MiYOSMART iQ · Chameleon · Full Control",
+      "fullName": "HOYA MiYOSMART iQ Chameleon · Full Control Coating STX",
+      "price": 1900,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 12,
+        "progressionD": 0.5,
+        "basis": "sphere"
+      },
+      "prescription": {
+        "sphereMin": -13,
+        "sphereMax": 4,
+        "cylinderMin": -4,
+        "combinedMin": -13,
+        "positiveSphereMin": 0.25,
+        "positiveSphereMax": 4,
+        "positiveMaxSE": 2,
+        "sphereText": "0.00 D to −13.00 D; +0.25 D to +4.00 D*",
+        "combinedText": "Minus Rx: −13.00 D maximum; plus Rx: SE ≤ +2.00 D"
+      },
+      "fields": {
+        "lensDesign": "MiYOSMART iQ",
+        "technology": "D.I.M.S. with Triple Enhanced Design",
+        "lensStyle": "Chameleon",
+        "coating": "Full Control Coating STX",
+        "index": "1.59 · Polycarbonate",
+        "clearZone": "6.9 mm",
+        "treatmentZone": "41 mm",
+        "defocusPower": "+4.5 D",
+        "sphereRange": "0.00 D to −13.00 D; +0.25 D to +4.00 D*",
+        "cylinderRange": "Up to −4.00 D",
+        "combinedRange": "Minus Rx: −13.00 D maximum; plus Rx: SE ≤ +2.00 D",
+        "refractionEffect": "0.58 D on average",
+        "axialEffect": "0.27 mm on average",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision spectacles",
+        "evidenceStatus": "ARVO 2026 presentation and HOYA data on file, April 2026",
+        "warrantyDuration": "1 year",
+        "warrantyThreshold": "Sphere power at least 0.50 D more short-sighted (additional −0.50 D or more)",
+        "price": "RM1,900"
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "release": "R1.33",
+  "financialCases": 256,
+  "printByteCases": 16,
+  "printerLifecycleCases": 6,
+  "interactionChecks": [
+    "stellest/rock: selection, identity, terms, focus and edit return",
+    "stellest/prevencia: selection, identity, terms, focus and edit return",
+    "stellest2/rock: selection, identity, terms, focus and edit return",
+    "stellest2/prevencia: selection, identity, terms, focus and edit return",
+    "Comparison show/hide preserves selection and total",
+    "Customer warning badges, generic disclaimers and decorative numbering removed; source notes and product numbers retained",
+    "Dedicated footer visibility, measured scrollbar gutter and viewport reset on navigation",
+    "Alignment fallback measures corresponding rows and clears imposed heights when cards stack",
+    "850 ms frame/follow-up holds restore original amounts; individual follow-up toggles; frame keypad/removal; info open/close"
+  ],
+  "liveBrowser": false,
+  "physicalPrinter": false,
+  "printerSourceSha256": "a60902603fa7b37278955dbdb849b9246a38feac1df9bb3725b921f6d68856c3",
+  "sharedComparisonRows": 11,
+  "clinicalSharedRows": 7,
+  "familySharedRows": 9,
+  "mechanismSharedRows": 2,
+  "originalAssetsUnchanged": 10,
+  "dedicatedFooterOutsideScrollRegion": true,
+  "customerWarningBadges": 0,
+  "decorativeMechanismNumbers": 0,
+  "designAgentReviews": 2,
+  "liveGeometryReview": false
+}

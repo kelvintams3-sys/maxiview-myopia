@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-23",
+  "reason": "Owner supplied replacement for every previous ZEISS brochure; supersedes standard-RRP-only restriction.",
+  "files": [
+    {
+      "path": "catalogues/zeiss/assets/myoactive-brochure.pdf",
+      "source_file_name": "MyoActive_RSP Nov 26 (1).pdf",
+      "source_library_file_id": "libfile_f4494221333c81919f56dd30355f87b1",
+      "sha256": "a73590da48f01afb8d6dd41cb45f585f7c9df5bb2b74af776785f8727e079ebd",
+      "bytes": 1080227,
+      "pages": 6
+    }
+  ],
+  "native_html_text_replacements": {
+    "catalogues/zeiss/index.html": {
+      "Standard ZEISS RRP brochure": "Original ZEISS MyoActive brochure",
+      "Standard RRP brochure": "Original MyoActive brochure"
+    }
+  },
+  "native_html_removals": {
+    "catalogues/zeiss/index.html": [
+      "      <nav class=\"brochure-links\" aria-label=\"Original ZEISS MyoActive brochure\">\n        <h3>Original MyoActive brochure</h3>\n        <p class=\"evidence-links\"><a href=\"assets/myoactive-brochure.pdf\" target=\"_blank\" rel=\"noopener\">Original ZEISS MyoActive brochure</a></p>\n      </nav>\n"
+    ]
+  },
+  "comparison_wording": "Use HOYA Sphere power wording for all replacement cells; retain source periods and thresholds."
+}

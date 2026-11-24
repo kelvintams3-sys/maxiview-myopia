@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "options": 15,
+  "handoffs": 15,
+  "labelByteCases": 60,
+  "sharedStateCases": 6,
+  "liveBrowser": false,
+  "physicalPrinter": false,
+  "comparePricingExcludesFollowups": "passed",
+  "nativeReadingPosition": "passed",
+  "frameOnlyEditingPreservesFollowups": "passed",
+  "lazyHandoff": "passed",
+  "printLockCases": 3,
+  "keyboardTabCases": 2
+}

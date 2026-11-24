@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "geometryFixtures": true,
+  "liveBrowser": false,
+  "cases": [
+    "No duplicate heading before the original scrolls out",
+    "Heading pins exactly when reaching the top",
+    "Brand and full option remain visible deep in the table",
+    "Sideways scrolling preserves column alignment",
+    "Narrow viewport clips the same horizontally shifted columns",
+    "Heading leaves with its table instead of covering the next section",
+    "Expanded design table uses its own inset and hides when collapsed",
+    "Expanded evidence table uses its own inset and hides when collapsed",
+    "One, two and three choices retain exact identities and no cloned actions",
+    "Changing the recommendation refreshes the pinned identity",
+    "Pinned headings disappear when leaving Compare",
+    "Empty comparison clears stale identities",
+    "Original semantic table headings and keyboard tabs remain available"
+  ]
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "brand": "stellest",
+    "filename": "STELLEST_CATALOGUE_R1_33.zip",
+    "version": "R1.33",
+    "sha256": "1fdbcf3f79e0773788ed3a999da37e0322b913eb6e8813817123c1d83da6fd60"
+  },
+  {
+    "brand": "hoya",
+    "filename": "HOYA_MIYOSMART_IQ_CATALOGUE_R1_6.zip",
+    "version": "R1.6",
+    "sha256": "cb29bbaefb4b9195ea51544720f8d8ee75104e88212981279e791a3756bd09e3"
+  },
+  {
+    "brand": "zeiss",
+    "filename": "MYOACTIVE_CATALOGUE_R1_6.zip",
+    "version": "R1.6",
+    "sha256": "4d19974b652cd50794eee67f70a5ab16b60e4bef87e2969ffc85bfbe24585154"
+  }
+]

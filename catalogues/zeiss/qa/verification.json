@@ -1,0 +1,7 @@
+{
+  "passed": 154,
+  "failed": 0,
+  "financialPermutations": 128,
+  "testedAt": "2026-11-21T10:02:18.523Z",
+  "notes": "Browser geometry and physical Bluetooth printer require separate validation. BLE tested with a simulated characteristic only."
+}

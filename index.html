@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#173a56">
+  <meta name="maxiview-myopia-release" content="2026-11-23-r1.4">
+  <title>Myopia Management · Maxiview</title>
+  <meta name="description" content="Compare Essilor Stellest, HOYA MiYOSMART and ZEISS MyoActive lens choices at Maxiview Optometrist.">
+  <link rel="stylesheet" href="hub.css">
+  <script defer src="catalogues/hoya/catalogue-data.js"></script>
+  <script defer src="catalogues/zeiss/catalogue-data.js"></script>
+  <script defer src="catalogue-data.js"></script>
+  <script defer src="consultation-copy.js"></script>
+  <script defer src="hub.js"></script>
+</head>
+<body>
+  <div class="hub-shell">
+    <header class="hub-header">
+      <h1 id="hubTitle" class="visually-hidden">Myopia management</h1>
+      <button id="hubInfo" class="hub-info" type="button" aria-label="Product information">i</button>
+      <button id="hubHome" class="hub-home" type="button" aria-label="Return to lens options" hidden>‹</button>
+      <button id="activeBrandTitle" class="hub-active-brand" type="button" aria-label="ZEISS">
+        <img id="activeBrandLogo" class="active-brand-logo" src="catalogues/zeiss/assets/zeiss-logo.png" alt="ZEISS">
+      </button>
+      <div id="compareBrandTitles" class="hub-compare-brands" role="group" aria-label="Open a brand catalogue" hidden>
+        <button id="compare-title-stellest" class="compare-brand-title" type="button" data-brand-tab="stellest" aria-label="Open Essilor catalogue"><img class="active-brand-logo" src="catalogues/stellest/assets/essilor-logo.png" alt="Essilor"></button>
+        <button id="compare-title-hoya" class="compare-brand-title" type="button" data-brand-tab="hoya" aria-label="Open HOYA catalogue"><img class="active-brand-logo" src="catalogues/hoya/assets/hoya-logo.png" alt="HOYA"></button>
+        <button id="compare-title-zeiss" class="compare-brand-title" type="button" data-brand-tab="zeiss" aria-label="Open ZEISS catalogue"><img class="active-brand-logo" src="catalogues/zeiss/assets/zeiss-logo.png" alt="ZEISS"></button>
+      </div>
+      <nav class="hub-tabs" aria-label="Lens catalogues and comparison">
+        <button id="tab-stellest" class="hub-tab brand-stellest" type="button" aria-controls="panel-stellest" data-tab="stellest" aria-label="Open Essilor catalogue"><img class="tab-brand-logo" src="catalogues/stellest/assets/essilor-logo.png" alt="Essilor"></button>
+        <button id="tab-hoya" class="hub-tab brand-hoya" type="button" aria-controls="panel-hoya" data-tab="hoya" aria-label="Open HOYA catalogue"><img class="tab-brand-logo" src="catalogues/hoya/assets/hoya-logo.png" alt="HOYA"></button>
+        <button id="tab-zeiss" class="hub-tab brand-zeiss" type="button" aria-controls="panel-zeiss" data-tab="zeiss" aria-label="Open ZEISS catalogue" hidden><img class="tab-brand-logo" src="catalogues/zeiss/assets/zeiss-logo.png" alt="ZEISS"></button>
+        <button id="tab-compare" class="hub-tab" type="button" aria-controls="panel-compare" data-tab="compare">Compare</button>
+      </nav>
+    </header>
+    <main class="hub-main">
+      <section id="panel-stellest" class="brand-panel" role="tabpanel" aria-labelledby="tab-stellest"></section>
+      <section id="panel-hoya" class="brand-panel" role="tabpanel" aria-labelledby="tab-hoya" hidden></section>
+      <section id="panel-zeiss" class="brand-panel" role="tabpanel" aria-labelledby="tab-zeiss" hidden></section>
+      <section id="panel-compare" class="comparison-panel" role="tabpanel" aria-labelledby="tab-compare" hidden>
+        <div id="comparisonSticky" class="comparison-sticky-head" aria-hidden="true" hidden></div>
+        <div id="comparisonContent" class="comparison-content" tabindex="0"><div id="comparisonBody"></div></div>
+      </section>
+    </main>
+  </div>
+  <div id="lensDialog" class="overlay" role="dialog" aria-modal="true" aria-labelledby="lensChooserTitle" aria-describedby="lensChooserHelp" hidden>
+    <div class="dialog-sheet lens-sheet">
+      <div class="dialog-head"><div><h2 id="lensChooserTitle" tabindex="-1">Choose a lens</h2><p id="lensChooserHelp"></p></div><button id="closeLensChooser" class="secondary-button" type="button" aria-label="Close lens chooser">×</button></div>
+      <div id="lensChoices" class="lens-choices"></div>
+      <div class="dialog-actions"><button id="cancelLensChooser" class="secondary-button" type="button">Cancel</button></div>
+    </div>
+  </div>
+  <div id="frameDialog" class="overlay" role="dialog" aria-modal="true" aria-labelledby="frameTitle" hidden>
+    <div class="dialog-sheet">
+      <div class="dialog-head"><div><h2 id="frameTitle">Frame</h2><p id="frameIntro"></p></div><button id="closeFrame" class="secondary-button" type="button" aria-label="Close frame settings">×</button></div>
+      <div class="frame-field"><label for="frameAmount">Frame</label><input id="frameAmount" type="number" inputmode="numeric" min="0" max="99999" step="1" placeholder="Not added"><button id="removeFrame" class="secondary-button" type="button" aria-label="Remove frame" title="Remove frame">✕</button></div>
+      <button id="frameComplimentary" class="complimentary-button" type="button" aria-pressed="false">Make frame complimentary</button>
+      <div class="dialog-total"><span>Frame</span><strong id="frameTotal">Not added</strong></div>
+      <div class="dialog-actions"><button id="cancelFrame" class="secondary-button" type="button">Cancel</button><button id="saveFrame" class="primary-button" type="button">Apply frame</button></div>
+    </div>
+  </div>
+  <div id="hubStatus" class="visually-hidden" role="status" aria-live="polite"></div>
+  <div id="hubToast" class="hub-toast" role="status" aria-live="polite"></div>
+  <noscript>This catalogue requires JavaScript to compare lenses and prepare labels.</noscript>
+</body>
+</html>

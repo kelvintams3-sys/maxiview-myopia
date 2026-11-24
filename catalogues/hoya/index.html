@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0065af">
+  <meta name="hoya-catalogue-release" content="2026-11-21-r1.6">
+  <title>HOYA MiYOSMART · Maxiview</title>
+  <meta name="description" content="HOYA MiYOSMART and MiYOSMART iQ consultation catalogue, lens coatings, biometry follow-up and quotation labels at Maxiview Optometrist.">
+  <link rel="icon" href="assets/hoya-logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="design.css">
+  <script defer src="catalogue-data.js"></script>
+  <script defer src="comparison.js"></script>
+  <script defer src="printer.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="../../bridge.js" data-brand="hoya"></script>
+</head>
+<body>
+  <header class="topbar">
+    <button id="homeButton" class="icon-button invisible" type="button" aria-label="Return to HOYA lens options" onclick="goHome()">‹</button>
+    <div class="topbar-brand"><img class="brand-logo" src="assets/hoya-logo.png" alt="HOYA"><span>MiYOSMART</span></div>
+    <button class="icon-button" type="button" aria-label="Product information" onclick="openInfo()">i</button>
+  </header>
+  <main id="app" class="app"></main>
+
+  <div id="frameOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="frameTitle" onclick="overlayClick(event,'frameOverlay')">
+    <div class="sheet">
+      <div class="sheet-head">
+        <div><h2 id="frameTitle">Frame</h2><p>Enter the frame amount.</p></div>
+        <button class="close-button" type="button" aria-label="Close" onclick="closeOverlay('frameOverlay')">×</button>
+      </div>
+      <div id="frameDisplay" class="frame-display">RM 0</div>
+      <div class="keypad" aria-label="Frame keypad">
+        <button type="button" onclick="frameKey('1')">1</button><button type="button" onclick="frameKey('2')">2</button><button type="button" onclick="frameKey('3')">3</button>
+        <button type="button" onclick="frameKey('4')">4</button><button type="button" onclick="frameKey('5')">5</button><button type="button" onclick="frameKey('6')">6</button>
+        <button type="button" onclick="frameKey('7')">7</button><button type="button" onclick="frameKey('8')">8</button><button type="button" onclick="frameKey('9')">9</button>
+        <button type="button" onclick="frameKey('clear')">Clear</button><button type="button" onclick="frameKey('0')">0</button><button type="button" onclick="frameKey('back')">⌫</button>
+      </div>
+      <div class="sheet-actions">
+        <button class="secondary-button" type="button" onclick="closeOverlay('frameOverlay')">Cancel</button>
+        <button class="primary-button" type="button" onclick="confirmFrame()">Add frame</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="infoOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="infoTitle" onclick="overlayClick(event,'infoOverlay')">
+    <div class="sheet">
+      <div class="sheet-head"><div><h2 id="infoTitle">About HOYA MiYOSMART</h2><p>Lens design, evidence and replacement terms.</p></div><button class="close-button" type="button" aria-label="Close information" onclick="closeOverlay('infoOverlay')">×</button></div>
+      <div class="brochure-section" aria-label="Brochures and references">
+        <p class="evidence-links"><a href="assets/hoya-clinical-evidence.pdf" target="_blank" rel="noopener">View HOYA clinical summary and references</a></p>
+        <p class="evidence-links"><a href="assets/hoya-original-brochure.pdf" target="_blank" rel="noopener">Original HOYA trade brochure</a></p>
+      </div>
+      <div class="info-list">
+        <div class="info-item"><strong>MiYOSMART iQ: 12-month results</strong>0.58 D less prescription progression and 0.27 mm less eye-length growth on average versus ordinary single-vision spectacles. Prescription progression was measured as cycloplegic spherical equivalent. Study ages 4–12. Results presented at ARVO 2026; HOYA data on file, April 2026. Individual results vary.</div>
+        <div class="info-item"><strong>Understanding the two outcomes</strong>Dioptres (D) describe the change in short-sighted prescription; millimetres (mm) describe how much the eye grew in length. These are different outcomes, rather than a single treatment score.</div>
+        <div class="info-item"><strong>What the 9-in-10 result means</strong>HOYA reports that 9 in 10 children aged 4–12 showed no clinically relevant myopia progression over the first 12 months of iQ wear. The brochure defines clinically relevant progression as spherical-equivalent refraction becoming at least 0.50 D more short-sighted. This threshold does not mean zero change or that every child stopped progressing. Individual results vary.</div>
+        <div class="info-item"><strong>About the evidence</strong>The supplied HOYA brochure cites conference presentations and HOYA data on file. It states that a peer-reviewed publication will follow. Long-term D.I.M.S. platform research is background evidence and is not automatically an iQ trial.</div>
+        <div class="info-item"><strong>MiYOSMART: figures from the same trial chart</strong>The reported mean spherical-equivalent changes were −0.255 D with MiYOSMART versus −0.534 D with single vision. Axial elongation was 0.206 mm versus 0.346 mm. The comparison table shows calculated differences of 0.28 D and 0.14 mm, rounded from this chart.</div>
+        <div class="info-item"><strong>Triple Enhanced Design in iQ</strong>Treatment closer to the centre is intended to deliver the myopic-defocus signal to the near-peripheral retina. Higher defocus power strengthens that optical signal, and a larger zone extends treatment coverage, including for larger frames. iQ has a 6.9 mm clear zone, 41 mm treatment zone and +4.5 D defocus power; MiYOSMART has 9.4 mm, 33 mm and +3.5 D respectively. Defocus power is a treatment-design feature, not the child’s prescription.</div>
+        <div class="info-item"><strong>FreeForm back surface: vision and profile</strong>iQ has an optimized aspherical back-surface design shaped using FreeForm technology, intended to reduce optical aberrations and provide a flatter lens profile. HOYA reports up to 10% lower edge thickness compared with a standard spectacle lens in its April 2026 technical data. The size of the benefit depends on the lens and prescription; it is not a promise for every pair. FreeForm is included for iQ in the brochure’s availability table.</div>
+        <div class="info-item"><strong>S.P.A.R.K.: coating test results</strong>HOYA reports 50% greater scratch resistance and 5× greater water resistance than the previous MiYOSMART generation, based on its technical testing. The brochure references S.P.A.R.K. technical results from May 2026 and the STX MiYOSMART Green PAR assessment from June 2025. These are coating test comparisons, not additional clinical myopia-control results.</div>
+        <div class="info-item"><strong>Lasting easy cleaning</strong>The brochure describes easy-clean performance after simulated wiping equivalent to nearly three years of daily use. This is a technical durability test, not a three-year guarantee or a promise of scratch-proof lenses.</div>
+        <div class="info-item"><strong>MiYOSMART: 6-month replacement guarantee</strong>Complimentary replacement if sphere power becomes at least 0.75 D more short-sighted within 6 months (an additional −0.75 D or more).</div>
+        <div class="info-item"><strong>MiYOSMART iQ: 1-year replacement guarantee</strong>Complimentary replacement if sphere power becomes at least 0.50 D more short-sighted within 1 year (an additional −0.50 D or more).</div>
+        <div class="info-item"><strong>Sphere is the replacement criterion</strong>These replacement terms refer to sphere power. The clinical trial outcomes use cycloplegic spherical equivalent, which is a different measurement.</div>
+        <div class="info-item"><strong>Prescription availability</strong>Both families are 1.59 polycarbonate, cylinder up to −4.00 D. MiYOSMART Clear supports sphere 0.00 D to −13.00 D (combined limit −13.00 D); original Chameleon and Sunbird support 0.00 D to −10.00 D (combined limit −10.00 D). iQ Clear and Chameleon support 0.00 D to −13.00 D (combined limit −13.00 D), plus +0.25 D to +4.00 D sphere subject to maximum spherical equivalent +2.00 D. Availability is confirmed when ordering.</div>
+        <div class="info-item"><strong>Who it is for</strong>The iQ study included children from age four; suitability is confirmed individually by your optometrist.</div>
+      </div>
+      <p class="disclaimer">Myopia-control lenses help slow progression. Individual results vary. Your optometrist will confirm suitability and monitor progress.</p>
+    </div>
+  </div>
+
+  <div id="printOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="printTitle" onclick="overlayClick(event,'printOverlay')">
+    <div class="sheet print-sheet">
+      <div class="sheet-head"><div><h2 id="printTitle">Print labels</h2><p>Preview your selected HOYA package.</p></div><button class="close-button" type="button" aria-label="Close print preview" onclick="closeOverlay('printOverlay')">×</button></div>
+      <div id="printStatus" class="print-status" data-state="idle" role="status" aria-live="polite"><span class="print-status-dot" aria-hidden="true"></span><span class="print-status-text">Ready to connect to D520BT-Z</span></div>
+      <section class="print-label-card"><h3>Quotation</h3><div id="labelPreview"></div><button id="printQuotationButton" class="primary-button print-action-button" type="button" onclick="printToD520('quotation')">Print Label</button></section>
+      <section class="print-label-card"><h3>Replacement guarantee</h3><div id="warrantyPreview"></div><button id="printWarrantyButton" class="primary-button print-action-button" type="button" onclick="printToD520('warranty')">Print Guarantee</button></section>
+      <section class="print-label-card"><h3>Follow-up booklet label</h3><div id="bookletPreview"></div><button id="printBookletButton" class="primary-button print-action-button" type="button" onclick="printToD520('booklet')">Print Booklet Label</button></section>
+      <section class="print-label-card"><h3>Biometry follow-up extension</h3><div id="biometryExtensionPreview"></div><button id="printBiometryExtensionButton" class="primary-button print-action-button" type="button" onclick="printToD520('extension')">Print Biometry Follow-up Extension</button></section>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  </body>
+</html>

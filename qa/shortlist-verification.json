@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "cases": [
+    "ZEISS opens first; all three brands start neutral with no selected price bar, summary or default comparison price",
+    "Shared-only updates and repeated scans leave every lens unselected",
+    "The left information control opens the current native information panel without selecting a lens",
+    "Brand mode shows one centred logo; Compare shows three clickable centred logos and hides the side navigation",
+    "All15 deliberate native choices auto-populate the right brand column with a single brand label and complete option identity",
+    "The shared back control returns from a native summary to its lens options",
+    "All15 brand-restricted Change choices update the native catalogue, preserve its page and pan, and survive fresh scans",
+    "Cancelling Change keeps the current selections and restores its opener",
+    "Fresh read-state snapshots detect actual selections without rendering or navigating native pages",
+    "Late scan replies cannot overwrite a newer deliberate Change",
+    "A deliberate choice before an unvisited catalogue is ready wins over its unselected initial snapshot",
+    "Comparison prices exclude follow-up charges for every visit and complimentary combination",
+    "Cancelling the lens chooser retains the reading position, all pans and its opener",
+    "Changing a lens retains each horizontal offset, expanded details and the visible row despite text-height changes",
+    "Returning from a brand and applying frame edits preserve reading position and focus",
+    "Fresh scans preserve selected-brand columns without introducing Add or Remove controls"
+  ],
+  "nativeChoiceCases": 15,
+  "changeCases": 15,
+  "geometryFixtures": true,
+  "liveBrowser": false
+}

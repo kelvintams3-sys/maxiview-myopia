@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "id": "zeiss-myoactive",
+    "name": "ZEISS MyoActive",
+    "technology": "ZEISS M.O.V.E.",
+    "index": "1.59",
+    "material": "Polycarbonate",
+    "clearZoneMm": 7,
+    "elementPower": "+1.50 D to +5.50 D",
+    "prescription": {
+      "sphereMin": -9,
+      "sphereMax": 0,
+      "cylinderMin": -6,
+      "combinedMin": -9,
+      "diameterMm": 75,
+      "prismMax": 3
+    },
+    "clinical": {
+      "months": 12,
+      "refractionDifferenceD": 0.6,
+      "axialDifferenceMm": 0.22,
+      "comparator": "Ordinary single-vision lenses",
+      "status": "ZEISS data on file, July 2026",
+      "trial": "NCT06563700",
+      "studyAges": "7–13 years",
+      "country": "China"
+    },
+    "warranty": {
+      "months": 12,
+      "progressionD": 0.5,
+      "period": "1 year",
+      "title": "1-Year Prescription Change Guarantee",
+      "condition": "If prescription power becomes at least 0.50 D more short-sighted within 1 year.",
+      "wording": "Complimentary replacement if prescription power becomes at least 0.50 D more short-sighted within 1 year."
+    }
+  },
+  "coatings": [
+    {
+      "id": "platinum",
+      "name": "DuraVision Plus Platinum UV",
+      "shortName": "Platinum UV",
+      "family": "ZEISS DuraVision Plus",
+      "title": "Platinum UV",
+      "price": 1800,
+      "copy": "Anti-reflective coating with UV protection.",
+      "coatingType": "Anti-reflective coating with UV protection"
+    },
+    {
+      "id": "blueprotect",
+      "name": "DuraVision Plus BlueProtect UV",
+      "shortName": "BlueProtect UV",
+      "family": "ZEISS DuraVision Plus",
+      "title": "BlueProtect UV",
+      "price": 1900,
+      "copy": "Blue-light filtering coating with UV protection.",
+      "coatingType": "Blue-light filtering coating with UV protection"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "key": "lensDesign",
+      "label": "Lens design"
+    },
+    {
+      "key": "technology",
+      "label": "Optical technology"
+    },
+    {
+      "key": "coating",
+      "label": "Coating"
+    },
+    {
+      "key": "index",
+      "label": "Lens index"
+    },
+    {
+      "key": "sphereRange",
+      "label": "Prescription · sphere"
+    },
+    {
+      "key": "cylinderRange",
+      "label": "Prescription · cylinder"
+    },
+    {
+      "key": "combinedRange",
+      "label": "Combined prescription limit"
+    },
+    {
+      "key": "refractionEffect",
+      "label": "Less prescription progression"
+    },
+    {
+      "key": "axialEffect",
+      "label": "Less eye-length growth"
+    },
+    {
+      "key": "studyDuration",
+      "label": "Study duration"
+    },
+    {
+      "key": "studyComparator",
+      "label": "Study comparator"
+    },
+    {
+      "key": "warrantyDuration",
+      "label": "Replacement warranty · period"
+    },
+    {
+      "key": "warrantyThreshold",
+      "label": "Replacement warranty · prescription change"
+    },
+    {
+      "key": "price",
+      "label": "Lens price · per pair"
+    }
+  ],
+  "options": [
+    {
+      "id": "zeiss-myoactive-platinum",
+      "productId": "zeiss-myoactive",
+      "coatingId": "platinum",
+      "name": "Platinum UV",
+      "fullName": "ZEISS MyoActive · DuraVision Plus Platinum UV",
+      "price": 1800,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 12,
+        "progressionD": 0.5
+      },
+      "fields": {
+        "lensDesign": "ZEISS MyoActive",
+        "technology": "ZEISS M.O.V.E.",
+        "coating": "Anti-reflective coating with UV protection",
+        "index": "1.59 · Polycarbonate",
+        "sphereRange": "0.00 D to −9.00 D",
+        "cylinderRange": "Up to −6.00 D",
+        "combinedRange": "Up to −9.00 D",
+        "refractionEffect": "0.60 D on average",
+        "axialEffect": "0.22 mm on average",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision lenses",
+        "warrantyDuration": "1 year",
+        "warrantyThreshold": "Prescription power at least 0.50 D more short-sighted (additional −0.50 D or more)",
+        "price": "RM1,800"
+      }
+    },
+    {
+      "id": "zeiss-myoactive-blueprotect",
+      "productId": "zeiss-myoactive",
+      "coatingId": "blueprotect",
+      "name": "BlueProtect UV",
+      "fullName": "ZEISS MyoActive · DuraVision Plus BlueProtect UV",
+      "price": 1900,
+      "currency": "MYR",
+      "priceBasis": "pair",
+      "warranty": {
+        "months": 12,
+        "progressionD": 0.5
+      },
+      "fields": {
+        "lensDesign": "ZEISS MyoActive",
+        "technology": "ZEISS M.O.V.E.",
+        "coating": "Blue-light filtering coating with UV protection",
+        "index": "1.59 · Polycarbonate",
+        "sphereRange": "0.00 D to −9.00 D",
+        "cylinderRange": "Up to −6.00 D",
+        "combinedRange": "Up to −9.00 D",
+        "refractionEffect": "0.60 D on average",
+        "axialEffect": "0.22 mm on average",
+        "studyDuration": "12 months",
+        "studyComparator": "Ordinary single-vision lenses",
+        "warrantyDuration": "1 year",
+        "warrantyThreshold": "Prescription power at least 0.50 D more short-sighted (additional −0.50 D or more)",
+        "price": "RM1,900"
+      }
+    }
+  ]
+}

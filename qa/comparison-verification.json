@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks": 14,
+  "validOptions": 15,
+  "comparisonRows": 27,
+  "orderedPairs": 225,
+  "orderedTriples": 3375,
+  "financialCases": 1440,
+  "sourceFidelity": "passed",
+  "browserGlobalLoading": "passed",
+  "liveBrowser": false,
+  "physicalPrinter": false
+}

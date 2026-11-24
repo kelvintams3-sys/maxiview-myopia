@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "brand": "ZEISS",
+  "labelCases": 8,
+  "logoPixelChecks": 18432,
+  "unexpectedChanges": 0,
+  "printerBytesMatchRaster": true,
+  "previewAndPrinterLogosPositive": true,
+  "positiveBlackOnWhite": true,
+  "physicalPrinterTested": false,
+  "release": "R1.5",
+  "assetFilesUnchanged": 7,
+  "rendererFromHeaderOnwardUnchanged": true
+}

@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "sourceFilesVerified": 72,
+  "assetFilesUnchanged": 21,
+  "sourceReleases": [
+    "stellest R1.33",
+    "hoya R1.6",
+    "zeiss R1.6"
+  ],
+  "nativeHtmlChange": "defer bridge per catalogue and authorized ZEISS brochure labels",
+  "authorizedPdfReplacements": 1,
+  "localLinks": "passed",
+  "pdfFiles": 5,
+  "pdfPagesRendered": 40,
+  "choiceCards": 0,
+  "comparisonColumns": 4,
+  "alignedMainTableRows": 8,
+  "identityOnlyHeadings": true,
+  "comparisonFollowupCharges": false,
+  "designAndEvidenceInitiallyCollapsed": true,
+  "cssDelimiterCheck": "passed",
+  "liveBrowser": false,
+  "physicalPrinter": false
+}

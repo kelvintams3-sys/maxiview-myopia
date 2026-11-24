@@ -1,0 +1,11 @@
+{
+  "passed": 794,
+  "failed": 0,
+  "validOptions": 9,
+  "financialPermutations": 576,
+  "comparisonPairs": 81,
+  "appTransitions": 81,
+  "labelCases": 36,
+  "testedAt": "2026-11-21T09:52:31.300Z",
+  "notes": "App interactions, gesture handlers, label text/cache, TSPL and simulated BLE validated. Browser geometry and physical Bluetooth printing require separate validation."
+}
