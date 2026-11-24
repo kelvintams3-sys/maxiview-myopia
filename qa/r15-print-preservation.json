@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "baseline_filename": "MAXIVIEW_MYOPIA_CATALOGUE_R1_15_LOCAL_BLUETOOTH_TEST.zip",
+  "baseline_sha256": "56d2bb278ea59c5c871aae39faae89befe890c72bf4e03565dbf08947f4058db",
+  "protected_files_identical": 56,
+  "original_printer_manifests_and_validators": "unchanged",
+  "native_print_overlays_and_script_attributes": "identical",
+  "print_logo_changes": 0,
+  "printer_source_changes": 0,
+  "label_byte_matches": 645,
+  "financial_handoffs": 600,
+  "physicalPrinter": false,
+  "liveBrowser": false
+}

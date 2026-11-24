@@ -1,28 +1,18 @@
-# R1.17 consistent model styling — 24 November 2026
+# R1.18 — screen styling on the supplied R1.15 printing baseline
 
-Implemented the approved palettes in one shared stylesheet: Stellest teal, Stellest 2.0 navy/blue, original MiYOSMART HOYA blue, iQ amber/dark blue, and MyoActive deep navy/cobalt. Model identity is carried through cards, native and cross-brand comparison headings, pinned headings and summaries. Chooser/footer accents remain restrained; model colour is separate from selection. Replacement panels use the same blue-grey treatment across brands, with period and threshold emphasis. Screen additions exclude print overlays.
+Built from the actual R1.15 ZIP attached by Kelvin in this request. Its entries were compared with the retained R1.15 archive and match exactly. Only the agreed screen files and corresponding screen tests were ported. The R1.16 print-logo change, authorization record and changed logo validator were not ported.
 
-Verified all 15 selected routes, 45 comparison identities, 15 chooser identities, 20 colour-contrast pairs, and unchanged initial no-selection behaviour. The full chosen style/coating stays visible in headings and summaries. Chameleon (Photochromic) is sourced from HOYA's native label function in both views. Existing tests cover deliberate selection, stale replies, shared frame/follow-up choices, focus, scroll, all eight selection subsets and 13 pinned-heading geometry fixtures. All pass.
+Every printer.js, print asset, original checksum manifest, printer-lock validator and bridge.js remains byte-identical to the supplied archive. The original qa/verify-locked-output.cjs and captured label baseline remain unchanged. Native print overlays, script-loading attributes and printer-related inline handlers are checked against the supplied archive. No print-logo colour or printer protocol changes are permitted in this release.
 
-Passed the original 600 financial handoffs and 645 label checks (559 unchanged original outputs and 86 retained R1.16 ZEISS logo-only differences), plus 60 integrated/native label comparisons and three simulated Bluetooth transmissions. All R1.16 printer files, print assets, manifests, product data and bridge.js are byte-identical. The original native CSS rules are retained as a prefix, with scoped screen rules appended. Native HOYA 794 and ZEISS 154 checks pass. Root comparisons pass 225 ordered pairs, 3,375 ordered triples and 1,440 financial cases.
+Screen scope: the five agreed model palettes carry through product cards, native/cross-brand comparisons, pinned headings and summaries. The chooser and selected footer have small model cues. Replacement terms have a fixed blue-grey treatment and bold period/threshold; model identity and explicit selection remain separate. Product data, prices, clinical references and commercial replacement conditions are unchanged.
 
-Package checks validate original print overlays and script attributes, local links, official assets, JavaScript syntax and CSS structure. No browser was launched because the project instructions prohibit retrying the previously blocked browser routes. DOM/geometry tests are simulated; colour checks are calculations. These do not establish actual iPad wrapping or touch layout. Review product cards, a three-brand comparison, pinned headings and the chosen-model summary in Bluefy.
+Verification covers 645 exact original label outputs, 600 financial handoffs, 15 selected routes, 45 comparison identities, 15 chooser identities, 20 contrast calculations, all eight selection subsets, 24 brand-return cases and 13 pinned-heading geometry fixtures. Original comparison checks cover 225 pairs, 3,375 triples and 1,440 financial cases. Native HOYA and ZEISS checks exercise pricing, state transitions and simulated Bluetooth. Actual completed counts are in the generated verification JSON files.
 
-Rollback by restoring the complete R1.16 package. No prices, commercial replacement conditions, official brochure graphics, print artwork or Bluetooth routines change in R1.17.
+No browser was launched, in accordance with the project instruction not to retry the previously blocked browser routes. Layout/interaction checks are static or simulated, colour checks are calculations, and no physical printer was available. No claim is made that the earlier silent printing failure has been reproduced or its cause established. This release preserves the user's supplied working print baseline exactly.
 
-## R1.16 black-on-white print logos — retained history
+Rollback: restore the complete supplied R1.15 archive.
 
-Kelvin explicitly requested black logos on white across all printouts. All brand/type combinations were inspected. Essilor and HOYA already use positive artwork and are unchanged. The 48 × 48 ZEISS logo constant shared by quotation, guarantee, booklet and extension labels was inverted; its footprint is unchanged.
-
-The original PRINTER_SHA256.json manifests and captured label baseline remain unmodified. ZEISS's explicit PRINTER_LOGO_AUTHORIZATION.json records the original and approved hashes and bitmap values. Its checker verifies the exact inversion and reconstructs a source file matching the original frozen hash, proving all non-logo printer bytes remain unchanged. An unrelated edit is rejected.
-
-Passed: all three printer checks with the explicit ZEISS authorization; 60 brand/option/type outputs (52 unchanged Essilor/HOYA outputs and eight ZEISS outputs differing only in the 48 × 48 logo); 600 original financial handoffs; 559 exact original label byte matches plus 86 ZEISS logo-only changes; 15 integrated lens handoffs, 60 integrated/native label comparisons and three simulated Bluetooth transmissions. Visual review covered all 12 brand/type previews and the enlarged ZEISS logo.
-
-For every changed output, decoded printer pixels outside the original logo are identical, and the logo now has black lettering on a white field. Bluetooth functions, service identifiers, chunk sizes, timing, label dimensions, text and prices are preserved. R1.15's working local Bluetooth permission change is preserved. No live browser or R1.16 physical print test was performed.
-
-Rollback: restore the complete R1.15 package. No screen palette proposals are implemented in R1.16.
-
-## R1.15 local Bluetooth test — retained history
+## R1.15 validation — retained history
 
 User reports that the working catalogues print on iMac and Bluefy, but the combined catalogue fails with a Bluetooth permissions-policy error when opening `index.html` directly. The suspected cause is the local-file origin matching of the embedded brand frames; this has not been reproduced in a live browser here.
 

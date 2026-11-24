@@ -1,24 +1,27 @@
-# Maxiview Myopia Catalogue R1.17 — consistent model styling
+# Maxiview Myopia Catalogue R1.18 — screen styling on supplied R1.15
 
-24 November 2026. The agreed model colours now carry through product cards, comparison headings (including pinned copies), summaries, the lens chooser and selected-lens footer. One shared model-themes.css defines the five palettes. White specification panels, neutral selection indicators and fixed pale blue-grey replacement terms keep the same visual meanings across screens.
+24 November 2026. Built from Kelvin's supplied MAXIVIEW_MYOPIA_CATALOGUE_R1_15_LOCAL_BLUETOOTH_TEST.zip. The agreed screen styling is applied while every printer file, print logo, label asset and the working Bluetooth path remain exactly as supplied in R1.15. No print-logo inversion is included.
 
-Stellest uses rich teal; Stellest 2.0 navy-to-blue; MiYOSMART HOYA blue; MiYOSMART iQ amber with dark blue text; MyoActive deep navy-to-cobalt. Full model, technology, style and coating identity remains visible. Chameleon (Photochromic) now uses the existing native label consistently in the comparison and summary.
+Extract the complete ZIP into a fresh folder and open the root `index.html`. For a hosted copy, replace the complete deployed folder together and retain HTTPS. Each native catalogue can also open from `catalogues/<brand>/index.html`. No build is required. Review product, comparison and summary layouts in Bluefy; physical printing cannot be tested in this environment.
 
-Extract the complete ZIP into a fresh folder and open the root `index.html`. Check the product, comparison and summary screens on the intended iPad/Bluefy. If using a hosted copy, serve the complete folder over HTTPS. Each native catalogue can also open directly from its own `catalogues/<brand>/index.html`. No build is required.
+The supplied R1.15 printer files, original checksum manifests and validators, native print overlays, script-loading attributes, artwork, bridge.js and product data are retained unchanged. All original label-output checks must pass without a logo exception. R1.15's local-file Bluetooth permission fix is retained.
 
-The R1.15 Bluetooth permission fix and R1.16 black-on-white print logos are retained. Every printer file, print asset, original checksum manifest, data file and the integration bridge matches R1.16 byte for byte. Screen styling and display markup change; prices, replacement conditions, deliberate selection, navigation and print behaviour are preserved.
+## Screen changes applied
 
-## Screen styling in R1.17
+- Stellest rich teal; Stellest 2.0 navy-to-blue; MiYOSMART HOYA blue; iQ amber with dark blue text; MyoActive deep navy-to-cobalt. The palettes are defined in one shared model-themes.css.
+- Matching coloured model headers and white details through product, comparison, pinned headings and summary, with full model/technology/style/coating identity.
+- Subtle model cues in Change lens and the selected-lens footer; separate neutral selection indicators with no initial lens selection.
+- Brochure-based brand heroes and subject-specific evidence accents. Existing official charts and illustrations are unchanged.
+- Replacement panels use the same pale blue-grey background #EEF3F7, border #CBD7E1 and dark navy text #173A56. Period and threshold receive stronger emphasis; the terms themselves are unchanged.
+- HOYA Chameleon (Photochromic) uses the existing native label in comparison and summary. Native detailed comparisons retain readable widths and horizontal scrolling.
 
-- Full model-colour header bands and white detail panels, with matching model-name hierarchy in summaries and comparisons.
-- Comparison model names, technology, full style/coating and material/index separated into readable lines; repeated and pinned headings use the same palettes.
-- Subtle model-colour rails in the existing lens chooser and selected-lens footer. Selection remains a separate tick/radio and neutral outline; all three brands still start unselected.
-- Brochure-derived brand hero colours and model-specific evidence accents. HOYA iQ evidence keeps its own subject colour even if original MiYOSMART is selected.
-- Replacement terms use background #EEF3F7, border #CBD7E1 and text #173A56 throughout, with stronger period/threshold emphasis. No commercial condition changes.
-- Native detailed comparisons carry the model header colours and neutral replacement rows. Long multi-option tables retain horizontal scrolling with enough width for the complete identities.
-- Screen additions are scoped away from all native print overlays; original print-related CSS rules remain intact.
+## R1.18 verification
 
-## Content retained from R1.14
+The unchanged original printer validators and captured output baseline are used. Tests cover all 645 exact label-byte comparisons and 600 financial handoffs, 15 model routes, 45 comparison identities, 15 chooser identities, 20 calculated contrast pairs, navigation and pinned-heading fixtures, and native HOYA/ZEISS interactions. See QA_REPORT.md and the current verification JSON files for completed results. These are static/simulated checks; actual iPad geometry and physical printing are not established by them.
+
+## Retained R1.14 content
+
+## What changed
 
 - ZEISS: official lifestyle and annotated lens images, expandable macro images, the documented 12-month results, trial group sizes and adaptation/peripheral-vision information.
 - Essilor: official IFU figures, the detailed original-Stellest results and same-brand Stellest 2.0 study chart, with expandable design/material information.
@@ -31,37 +34,20 @@ Default ZEISS navigation, deliberate lens selection, selected-brand comparison c
 
 ## Printer protection
 
-Each brand retains its own printer implementation and unchanged PRINTER_SHA256.json. ZEISS has the explicit logo-only exception recorded in PRINTER_LOGO_AUTHORIZATION.json; every other source byte matches the original hash. Native print overlays, script loading order/attributes, printer handlers, Bluetooth lifecycle, UUIDs, 20-byte chunks, 35 ms pacing and label layouts are preserved. The integration bridge is unchanged.
+Each brand keeps its own original printer.js and unchanged PRINTER_SHA256.json. All locked artwork, native print overlays, script loading order/attributes, printer handlers, Bluetooth lifecycle, UUIDs, 20-byte chunks, 35 ms pacing and label layouts are preserved. The bridge remains the working R1.4 integration bridge.
 
 The print overlay keeps its original “Print Quotation” button and “Quotation” title because the overlay belongs to the frozen printer interface. Screen-only wording elsewhere uses “Lens”. The printed lens-row wording and Chameleon label stay exactly as in the confirmed baseline.
 
 Run `node qa/verify-printer-lock.cjs` before and after every update. Never regenerate the supplied printer manifests to conceal a change. See the native PRINTER_LOCK.md files.
 
-## R1.17 checks
-
-- All 15 selected-lens routes keep the correct model palette and complete identity across comparison, pinned headings and summary; all 15 chooser options carry the correct permanent identity without an initial selection.
-- All 20 model/header text contrast pairs meet a computed ratio of at least 4.5:1. This is a colour calculation, not a live browser layout check.
-- Existing selection, focus, shared settings, scroll-retention and 13 simulated pinned-heading scenarios pass, including all eight selection subsets and 24 brand returns.
-- All 600 original financial handoffs and 645 label cases pass the retained baseline checks. All R1.16 printer bytes and artwork are unchanged.
-- Native HOYA 794 checks and ZEISS 154 checks pass; root comparison checks cover 225 ordered pairs, 3,375 ordered triples and 1,440 financial cases.
-- Package links, assets, script order, original print overlays, JavaScript syntax and CSS structure are checked. No live browser geometry or physical print was tested in this environment; an iPad visual check remains necessary.
-
-## R1.16 checks — retained print baseline
-
-- All three printer checks pass, including the separately recorded ZEISS logo-only authorization. The original manifests and captured baseline are unchanged.
-- All 60 brand/option/type cases pass: 52 Essilor/HOYA outputs are byte-identical, and eight ZEISS outputs change exactly the 48 × 48 logo pixels.
-- All 600 original financial handoffs match. Across the original 645 label cases, 559 remain byte-identical and 86 change only the ZEISS logo. Decoded pixels outside the logo are unchanged.
-- Existing integration checks pass: 15 lens handoffs, 60 hub/native label comparisons and three simulated Bluetooth transmissions.
-- The 12 brand/type previews and enlarged ZEISS logo were inspected visually. Physical printing of R1.16 remains to be confirmed.
-
-## R1.15 checks — retained history
+## R1.15 checks
 
 - JavaScript syntax and all three original printer locks pass.
 - All files inside `catalogues/` and `bridge.js` match the R1.14 archive byte for byte.
 - The actual hub initialization was exercised for file, HTTPS, HTTP and absent-location contexts. All three fixed catalogue frames receive their intended permission before insertion; the broader permission is used only for `file:` pages.
 - Existing integration checks pass: all 15 lens handoffs, 60 label-byte comparisons, three simulated Bluetooth transmissions, shared settings, navigation and scroll retention. Eight selection-subset and 24 brand-return checks also pass.
 
-Kelvin subsequently confirmed PC printing when within range. No live browser or physical Bluetooth test was performed in this environment.
+The local-file permission change still needs a real iMac and Bluefy printing check. No live browser or physical Bluetooth test was performed in this environment.
 
 ## Verification inherited from R1.14
 
@@ -78,8 +64,6 @@ Development checks use Node.js, @napi-rs/canvas and Arial-compatible fonts. The 
 
 ```sh
 node qa/verify-printer-lock.cjs
-node qa/verify-print-logos.cjs
-node qa/verify-model-themes.cjs
 node qa/verify-locked-output.cjs
 node qa/verify-comparison.cjs
 node qa/verify-integration.cjs
@@ -98,6 +82,6 @@ Unchanged: ZEISS Platinum UV remains RM1,800 despite RM1,600 in the supplied bro
 
 ## Rollback
 
-For this styling update, restore the complete R1.16 package if needed; do not mix release folders. The R1.15 Bluetooth correction remains the working connection baseline and the R1.16 black-on-white artwork is retained.
+Restore the exact supplied R1.15 ZIP to roll back this styling update; do not mix files from different releases.
 
 Keep STELLEST_R1_32_PRINT_LOCKED.zip, HOYA_R1_5_PRINT_LOCKED.zip and MYOACTIVE_R1_4_PRINT_LOCKED.zip for the original standalone catalogues. Keep MAXIVIEW_MYOPIA_CATALOGUE_R1_4_PICTURES_UPDATED.zip for the previous combined catalogue. Replace the complete deployed tree when rolling back, avoiding mixed versions.
