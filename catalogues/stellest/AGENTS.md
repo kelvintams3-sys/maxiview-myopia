@@ -9,3 +9,6 @@ This catalogue belongs to the three-catalogue Maxiview project.
 
 - Use unnumbered mechanism cards; do not add decorative 01/02/03 labels. Keep product counts, study numbers, prices, follow-up visit identities and guarantee terms.
 - Keep the persistent summary controls in a dedicated page-footer region outside the scrolling catalogue so they cannot cover content. Align corresponding card rows by their content, without fixed spacer offsets.
+
+## Mandatory printer lock
+Follow PRINTER_LOCK.md. Run `node qa/verify-printer-lock.cjs` before and after updates. Preserve protected files and native printer interfaces. Never regenerate the supplied checksum manifest to conceal changes.

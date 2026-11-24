@@ -278,3 +278,47 @@ button{touch-action:manipulation}
 .panel:has(> .frame-remove-wrap)>.row-action{flex:1;min-width:0}
 .frame-remove-wrap{margin:0;flex:none}
 .frame-clear{width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;font-size:1.1rem;font-weight:900;line-height:1;display:inline-flex;align-items:center;justify-content:center;border-radius:12px}
+
+/* R1.17 model identity. Screen-only selectors leave native print surfaces intact. */
+.screen .catalogue-hero{background:linear-gradient(125deg,#061f49,#1654a4)}
+.screen .catalogue-hero-copy .eyebrow{color:#dce9ff}
+.screen .coating-section>.model-heading{padding:23px 25px;border-radius:20px 20px 0 0;margin:18px 0 0;background:linear-gradient(125deg,var(--model-start),var(--model-end));color:var(--model-ink)}
+.screen .coating-section>.model-heading .eyebrow{color:var(--model-muted);font-weight:750;letter-spacing:.045em;margin:0 0 8px}
+.screen .coating-section>.model-heading h3{font-size:clamp(1.7rem,2.8vw,2.25rem);font-weight:850;line-height:1.15;letter-spacing:-.035em;color:var(--model-ink);margin:0}
+.screen .coating-section>.model-heading+.option-grid{margin-top:0;padding:22px;border:1px solid #d5deeb;border-top:0;border-radius:0 0 20px 20px;background:#fff}
+.screen .coating-section[data-model-theme] .option-card.selected{background:#f2f6f9;border-color:#173a56;box-shadow:0 0 0 3px rgba(23,58,86,.08)}
+.screen .coating-section[data-model-theme] .option-card.selected .check{background:#173a56;border-color:#173a56}
+.screen .summary-hero.model-identity-band{background:linear-gradient(125deg,var(--model-start),var(--model-end));color:var(--model-ink)}
+.screen .summary-hero.model-identity-band .eyebrow,.screen .summary-hero.model-identity-band .model-choice-detail{color:var(--model-muted)}
+.screen .summary-hero.model-identity-band h1{color:var(--model-ink)}
+.screen .clinical-stat[data-model-theme]{border-top:3px solid var(--model-accent);background:#fff}
+.screen .clinical-stat[data-model-theme] h3{color:var(--model-accent)}
+.screen .clinical-panel[data-model-theme]{border-top:3px solid var(--model-accent)}
+.screen .clinical-panel[data-model-theme] .section-kicker{color:var(--model-accent)}
+.screen .comparison-table thead th[data-model-theme]{background:linear-gradient(125deg,var(--model-start),var(--model-end));color:var(--model-ink)}
+.screen .comparison-table thead th[data-model-theme] :is(strong,span,small){color:inherit}
+.screen .replacement-terms,.screen .family-guarantee,.screen .guarantee-panel,.screen .summary-guarantee{background:#eef3f7;border:1px solid #cbd7e1;color:#173a56}
+.screen .replacement-terms :is(strong,span),.screen .family-guarantee :is(strong,span),.screen .guarantee-panel :is(strong,span){color:#173a56}
+.screen .replacement-terms span,.screen .family-guarantee span,.screen .guarantee-panel span,.screen .summary-guarantee{font-weight:600}
+.screen .summary-guarantee{padding:15px 17px;border-radius:14px;margin:14px 0;line-height:1.5}
+.screen .summary-guarantee strong{font-weight:800;display:inline-block;margin-bottom:4px}
+.screen .sticky-total[data-model-theme],.consultation-dock .sticky-total[data-model-theme]{background:#fff;border:1px solid #d6e1e9;border-inline-start:4px solid var(--model-accent)}
+.screen .sticky-total[data-model-theme] .total-label,.consultation-dock .sticky-total[data-model-theme] .total-label{color:var(--model-accent)}
+#infoOverlay .sheet-head{border-bottom:1px solid #d9e4eb;padding-bottom:16px}
+#infoOverlay .sheet-head h2{color:#1654a4}
+@media(max-width:600px){
+  .screen .coating-section>.model-heading{padding:22px 20px}
+  .screen .coating-section>.model-heading+.option-grid{padding:18px}
+}
+
+/* R1.17 final identity/terms details; no print-overlay selectors. */
+.screen .comparison-table thead th[data-model-theme] .eyebrow,
+.screen .comparison-table thead th[data-model-theme] .comparison-product-name,
+.screen .comparison-table thead th[data-model-theme] .model-choice-detail{display:block}
+.screen .comparison-table thead th[data-model-theme] .eyebrow{font-size:.8125rem;margin-bottom:8px;line-height:1.45}
+.screen .comparison-table thead th[data-model-theme] .comparison-product-name{font-size:1.4rem;line-height:1.2;margin-bottom:8px}
+.screen .comparison-table thead th[data-model-theme] .model-choice-detail{font-size:.875rem;font-weight:600;line-height:1.5}
+.screen .comparison-table .terms-row>td,.screen .comparison-table .terms-row>th{background:#eef3f7;color:#173a56;border-color:#cbd7e1}
+.screen .comparison-table .terms-row>td{font-weight:750}
+.screen .replacement-terms .terms-threshold,.screen .family-guarantee .terms-threshold,
+.screen .guarantee-panel .terms-threshold,.screen .summary-guarantee .terms-threshold{display:inline;font-size:inherit;line-height:inherit;margin:0;color:inherit;font-weight:850}

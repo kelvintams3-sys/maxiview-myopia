@@ -16,8 +16,8 @@ function rowsCorrect(options,rows){
  const valid=options.filter((o,n,a)=>o&&o.id&&a.findIndex(x=>x&&x.id===o.id)===n),html=C.render(options,rows);
  if(!valid.length){assert.match(html,/Select an option to compare/);assert.doesNotMatch(html,/<table/);return;}
  assert.equal((html.match(/<table\b/g)||[]).length,1);
- assert.equal((html.match(/<th scope="col" data-option-id=/g)||[]).length,valid.length);
- const rr=[...html.matchAll(/<tr data-row-key="([^"]+)">([\s\S]*?)<\/tr>/g)];
+ assert.equal((html.match(/<th\b[^>]*scope="col"[^>]*data-option-id=/g)||[]).length,valid.length);
+ const rr=[...html.matchAll(/<tr data-row-key="([^"]+)"[^>]*>([\s\S]*?)<\/tr>/g)];
  assert.deepEqual(rr.map(m=>m[1]),rows.map(r=>C.escape(r.key)));
  rows.forEach((r,n)=>{
   const cells=[...rr[n][2].matchAll(/<td data-row-key="([^"]+)" data-option-id="([^"]+)">([\s\S]*?)<\/td>/g)];

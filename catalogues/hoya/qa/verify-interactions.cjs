@@ -72,7 +72,7 @@ module.exports=async function({D,C,root,check,selections}){
  });
  check('Printquotationrowsmatchcomplimentaryandexclusionstate',()=>{
   const{ctx}=harness(D,C,root);ctx.applyBuild({product:'iq',style:'chameleon',coating:'fullcontrol'});ctx.state.frame=299;ctx.state.frameComplimentary=true;ctx.state.followups={one:false,two:true};ctx.state.complimentary=true;
-  assert.deepEqual(JSON.parse(JSON.stringify(ctx.quotationRows())),[{label:'Lens',amount:1900,struck:false},{label:'Frame',amount:299,struck:true},{label:'Follow-up 2',amount:120,struck:true}]);assert.equal(ctx.grandTotal(),1900);
+  assert.deepEqual(JSON.parse(JSON.stringify(ctx.quotationRows())),[{label:'Lens pair',amount:1900,struck:false},{label:'Frame',amount:299,struck:true},{label:'Follow-up 2',amount:120,struck:true}]);assert.equal(ctx.grandTotal(),1900);
  });
  const printer=harness(D,C,root).ctx;
  for(const s of selections)for(const kind of['quotation','warranty','booklet','extension'])check('Labelidentityandcache '+s.slice(0,3)+' '+kind,()=>{

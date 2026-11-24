@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "selectedRoutes": 15,
+  "comparisonIdentities": 45,
+  "chooserIdentities": 15,
+  "contrastPairs": 20,
+  "liveBrowser": false,
+  "computedLayout": false,
+  "physicalPrinter": false
+}

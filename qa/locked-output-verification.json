@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "baseline": "Unmodified original PRINT_LOCKED archives",
+  "originalBaselineUnchanged": true,
+  "financialHandoffs": 600,
+  "unchangedLabelByteMatches": 559,
+  "authorizedZeissLogoOnlyChanges": 86,
+  "options": 15,
+  "physicalPrinter": false,
+  "liveBrowser": false
+}

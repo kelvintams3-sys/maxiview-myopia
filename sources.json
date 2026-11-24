@@ -1,20 +1,20 @@
 [
   {
     "brand": "stellest",
-    "filename": "STELLEST_CATALOGUE_R1_33.zip",
-    "version": "R1.33",
-    "sha256": "1fdbcf3f79e0773788ed3a999da37e0322b913eb6e8813817123c1d83da6fd60"
+    "filename": "STELLEST_R1_32_PRINT_LOCKED.zip",
+    "version": "STELLEST_R1_32_PRINT_LOCKED",
+    "sha256": "0fa15e2bf6cdb9107c94c1b12a76f128bee51b586a1f66f0c51ab0a3f6f1b4b3"
   },
   {
     "brand": "hoya",
-    "filename": "HOYA_MIYOSMART_IQ_CATALOGUE_R1_6.zip",
-    "version": "R1.6",
-    "sha256": "cb29bbaefb4b9195ea51544720f8d8ee75104e88212981279e791a3756bd09e3"
+    "filename": "HOYA_R1_5_PRINT_LOCKED.zip",
+    "version": "HOYA_R1_5_PRINT_LOCKED",
+    "sha256": "8a18d0538db6bb5d4ac2db4b42de9946f0cdd67a8cd5096b47d94c2bd01d0e3c"
   },
   {
     "brand": "zeiss",
-    "filename": "MYOACTIVE_CATALOGUE_R1_6.zip",
-    "version": "R1.6",
-    "sha256": "4d19974b652cd50794eee67f70a5ab16b60e4bef87e2969ffc85bfbe24585154"
+    "filename": "MYOACTIVE_R1_4_PRINT_LOCKED.zip",
+    "version": "MYOACTIVE_R1_4_PRINT_LOCKED",
+    "sha256": "653e6daa12e7edb72c23ab491effd89fbdbd234c3e2d4650865c573b7eeae611"
   }
 ]

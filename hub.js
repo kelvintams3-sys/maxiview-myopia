@@ -22,7 +22,10 @@
     if (frames[brand]) return frames[brand];
     var frame = document.createElement('iframe');
     frame.className = 'catalogue-frame'; frame.title = brandInfo(brand).name + ' consultation catalogue';
-    frame.style.visibility = 'hidden'; frame.setAttribute('allow','bluetooth'); frame.setAttribute('src','catalogues/'+brand+'/index.html');
+    // Local file frames can have distinct origins: the implicit 'src' allowlist
+    // does not reliably match them. Delegate only Bluetooth for these fixed pages.
+    var bluetoothPermission = global.location && global.location.protocol === 'file:' ? 'bluetooth *' : 'bluetooth';
+    frame.style.visibility = 'hidden'; frame.setAttribute('allow',bluetoothPermission); frame.setAttribute('src','catalogues/'+brand+'/index.html');
     var entry = frames[brand] = {frame:frame,ready:false,pending:null,revision:0,screen:null};
     node('panel-'+brand).appendChild(frame);
     return entry;
@@ -58,6 +61,11 @@
     syncComparison();
   }
   function modelName(option) { return option.name.replace(/^(?:Essilor|HOYA|ZEISS)\s+/i,''); }
+  function modelTheme(option) { return option.brand === 'zeiss' ? 'myoactive' : option.productKey; }
+  function lensStyleName(option) {
+    var hoya = global.HoyaCatalogueData;
+    return option.brand === 'hoya' && hoya && hoya.styles[option.styleId] ? hoya.styleLabel(hoya.styles[option.styleId]) : option.fields.lensStyle;
+  }
   var brandLogos = {stellest:'catalogues/stellest/assets/essilor-logo.png',hoya:'catalogues/hoya/assets/hoya-logo.png',zeiss:'catalogues/zeiss/assets/zeiss-logo.png'};
   function updateHeader() {
     var isCompare = state.active === 'compare', brand = state.lastBrand;
@@ -174,8 +182,8 @@
   }
   function tableHeaderHtml(options) {
     return '<thead><tr><th scope="col" class="row-heading">Lens</th>'+options.map(function (option,index) {
-      var brand = brandInfo(option.brand), style = option.fields.lensStyle, name = modelName(option);
-      return '<th scope="col" data-brand="'+brand.id+'"'+(option?' data-option-id="'+esc(option.id)+'"':'')+'><span class="comparison-brand">'+esc(brand.name)+'</span><span class="comparison-product-name">'+(option?esc(name):'Choose a lens')+'</span>'+(option && name.toLowerCase().indexOf(style.toLowerCase())<0?'<span class="comparison-style">'+esc(style)+'</span>':'')+'</th>';
+      var brand = brandInfo(option.brand), f = option.fields;
+      return '<th scope="col" class="model-identity-band" data-model-theme="'+esc(modelTheme(option))+'" data-brand="'+brand.id+'" data-option-id="'+esc(option.id)+'"><span class="comparison-brand">'+esc(brand.name)+'</span><span class="comparison-technology">'+esc(f.technology)+'</span><span class="comparison-product-name">'+esc(f.lensDesign.replace(/^(?:Essilor|HOYA|ZEISS)\s+/i,''))+'</span><span class="comparison-style">'+esc(lensStyleName(option))+' · '+esc(f.coating)+'</span><span class="comparison-index">'+esc(f.index)+'</span></th>';
     }).join('')+'</tr></thead>';
   }
   function replacementHtml(option) {
@@ -317,7 +325,7 @@
     node('lensChooserTitle').textContent = brand.name+' · '+(current?'Change lens':'Choose a lens');
     node('lensChooserHelp').textContent = C.chooserHelp;
     node('lensChoices').innerHTML = '<section class="lens-group">'+D.options.filter(function (option) { return option.brand===brand.id; }).map(function (option) {
-      return '<button class="lens-option" type="button" data-pick-id="'+esc(option.id)+'" aria-pressed="'+String(option.id===current)+'"><span class="lens-option-copy"><strong>'+esc(modelName(option))+'</strong></span><span class="lens-option-price">'+D.money(option.price)+'<small>Lens</small></span></button>';
+      return '<button class="lens-option" type="button" data-model-theme="'+esc(modelTheme(option))+'" data-pick-id="'+esc(option.id)+'" aria-pressed="'+String(option.id===current)+'"><span class="lens-option-copy"><strong>'+esc(modelName(option))+'</strong></span><span class="lens-option-price">'+D.money(option.price)+'<small>Lens</small></span></button>';
     }).join('')+'</section>';
     if (focusedPick) {
       var focusedButton = node('lensChoices').querySelector('[data-pick-id="'+focusedPick+'"]');

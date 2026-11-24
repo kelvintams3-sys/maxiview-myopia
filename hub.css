@@ -106,14 +106,24 @@ a{color:var(--hub-accent);text-underline-offset:3px}
 .comparison-table .comparison-product-name{display:block;margin:4px 0;font-size:1rem;font-weight:800;color:var(--hub-ink)}
 .comparison-table .comparison-brand{display:block;font-size:.75rem;letter-spacing:.04em;font-weight:850;text-transform:none;color:var(--brand-color)}
 .comparison-table .comparison-style{display:block;margin-top:5px;color:var(--hub-muted);font-size:.8125rem;line-height:1.4;font-weight:650}
+/* Model identity stays the same in the main, repeated and pinned headings. */
+.comparison-table thead th.model-identity-band{background:linear-gradient(125deg,var(--model-start,var(--brand-color)),var(--model-end,var(--brand-color)));color:var(--model-ink,#fff)}
+.comparison-table th.model-identity-band .comparison-brand,.comparison-table th.model-identity-band .comparison-technology{display:block;color:var(--model-muted,var(--model-ink,#fff));font-size:.75rem;line-height:1.45;font-weight:750;letter-spacing:.035em}
+.comparison-table th.model-identity-band .comparison-technology{margin-top:4px}
+.comparison-table th.model-identity-band .comparison-product-name{margin:7px 0;color:var(--model-ink,#fff);font-size:1.5rem;line-height:1.2;font-weight:850;letter-spacing:-.025em}
+.comparison-table th.model-identity-band .comparison-style,.comparison-table th.model-identity-band .comparison-index{display:block;color:var(--model-muted,var(--model-ink,#fff));font-size:.8125rem;line-height:1.45;font-weight:650;letter-spacing:0}
+.comparison-table th.model-identity-band .comparison-style{margin-top:7px}
+.comparison-table th.model-identity-band .comparison-index{margin-top:4px;font-size:.75rem}
 .comparison-table .lens-price-row th,.comparison-table .lens-price-row td{vertical-align:middle}
 .comparison-table .lens-price-row td strong{display:block;font-size:1.25rem;line-height:1.3;letter-spacing:-.02em}
 .comparison-table .total-row th,.comparison-table .total-row td{background:#edf6f8;color:var(--hub-ink)}
 .comparison-table .total-row td strong{font-size:1.125rem}
-dl.replacement-terms{margin:0;color:var(--hub-ink)}
-.replacement-terms dt{margin:10px 0 2px;font-size:.8125rem;line-height:1.4;font-weight:700;color:var(--hub-muted)}
+dl.replacement-terms{margin:0;padding:13px 14px;border:1px solid #cbd7e1;border-radius:12px;background:#eef3f7;color:#173a56}
+.replacement-terms dt{margin:10px 0 2px;font-size:.8125rem;line-height:1.4;font-weight:700;color:#173a56}
 .replacement-terms dt:first-child{margin-top:0}
-.replacement-terms dd{margin:0;font-size:.9375rem;line-height:1.5;overflow-wrap:anywhere}
+.replacement-terms dd{margin:0;color:#173a56;font-size:.9375rem;line-height:1.5;overflow-wrap:anywhere}
+.replacement-terms dd:first-of-type,.replacement-terms dd:last-of-type{font-weight:750}
+.comparison-table dl.replacement-terms small{color:#173a56;font-weight:500}
 .replacement-terms>div+div{margin-top:10px}
 .evidence-details{border:1px solid var(--hub-line);border-radius:16px;background:var(--hub-card);margin-top:0;margin-bottom:0;overflow:hidden}
 #comparisonBody>.evidence-details+.evidence-details{margin-top:12px}
@@ -148,6 +158,13 @@ dialog.overlay:not([open]){display:none}
 .lens-option-copy small{display:block;margin-top:4px;color:var(--hub-muted);font-size:.8125rem;line-height:1.5;font-weight:600}
 .lens-option-price{display:flex;flex-direction:column;align-items:flex-end;gap:3px;color:var(--hub-ink);font-size:1.0625rem;line-height:1.4;font-weight:800;white-space:nowrap}
 .lens-option-price small{display:block;color:var(--hub-muted);font-size:.75rem;line-height:1.4;font-weight:600}
+/* The rail identifies the model; a separate neutral check identifies selection. */
+.lens-option[data-model-theme]{position:relative;padding-left:43px;background:#fff}
+.lens-option[data-model-theme]::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:5px;border-radius:0 4px 4px 0;background:linear-gradient(180deg,var(--model-start,var(--brand-color)),var(--model-end,var(--brand-color)));pointer-events:none}
+.lens-option[data-model-theme]::after{content:'';position:absolute;left:14px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:18px;height:18px;border:1.5px solid #9fb2c1;border-radius:50%;background:#fff;color:#fff;font-size:.75rem;line-height:1;font-weight:850;pointer-events:none}
+.lens-option[data-model-theme]:hover:not(:disabled){background:#f7fafc;border-color:#a9becd}
+.lens-option[data-model-theme][aria-pressed="true"]{background:#f7fafc;border-color:#173a56;box-shadow:inset 0 0 0 1px #173a56}
+.lens-option[data-model-theme][aria-pressed="true"]::after{content:'✓';background:#173a56;border-color:#173a56}
 .catalogue-current{display:block;margin-top:6px;color:#667d90;font-size:.8125rem;line-height:1.4;font-weight:600}
 .frame-field{display:grid;gap:9px;margin:0 0 18px;min-width:0}
 .frame-field label,.frame-field>span{font-size:1rem;line-height:1.4;font-weight:750;color:var(--hub-ink)}
@@ -193,6 +210,8 @@ dialog.overlay:not([open]){display:none}
   .comparison-table[data-count="1"] td{font-size:.875rem}
   .comparison-table[data-count="1"] thead th{font-size:.9375rem}
   .comparison-table[data-count="1"] .comparison-product-name{font-size:.9375rem}
+  .comparison-table th.model-identity-band .comparison-product-name{font-size:1.25rem}
+  .comparison-table[data-count="1"] th.model-identity-band .comparison-product-name{font-size:1.2rem}
   .comparison-price strong{font-size:1.25rem}
   .replacement-terms dd{font-size:.875rem}
   .lens-option{gap:10px;padding:12px}

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "labelCases": 60,
+  "zeissLogoOnlyCases": 8,
+  "unchangedEssilorHoyaCases": 52,
+  "printerTransportBytes": "unchanged",
+  "physicalPrinter": false,
+  "liveBrowser": false
+}

@@ -8,3 +8,6 @@ This catalogue belongs to the three-catalogue Maxiview project.
 - Preserve pricing, replacement terms, complimentary controls and printing behavior during content updates.
 
 - Print brand logos as positive black lettering on a white background. Preserve the screen brand assets and the established whole-label printer polarity.
+
+## Mandatory printer lock
+Follow PRINTER_LOCK.md. Run `node qa/verify-printer-lock.cjs` before and after updates. Preserve protected files and native printer interfaces. Never regenerate the supplied checksum manifest to conceal changes.

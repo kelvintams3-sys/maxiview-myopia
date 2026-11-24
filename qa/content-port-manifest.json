@@ -1,0 +1,247 @@
+{
+  "assets": [
+    {
+      "path": "catalogues/hoya/assets/hoya-chameleon.jpg",
+      "sha256": "944f09677a193e6238e8adc8918a6d013dc9027f04318cb268dd30a3ab6a6ae0",
+      "bytes": 137531
+    },
+    {
+      "path": "catalogues/hoya/assets/hoya-clear.jpg",
+      "sha256": "129536234f0f24b28c5d0f6de766a2cd1328e059263bea9ee170b375364a242c",
+      "bytes": 118175
+    },
+    {
+      "path": "catalogues/hoya/assets/hoya-clinical-evidence.pdf",
+      "sha256": "f8d423fdf81636dda642467539ee46d025985ca1244059d7e5a6da8c1fe8250d",
+      "bytes": 74549
+    },
+    {
+      "path": "catalogues/hoya/assets/hoya-coating-layers.png",
+      "sha256": "cb2852039f80ee8430f41d27c8f38504af5d7a8625c2fada3aec2b0de2e01f55",
+      "bytes": 193304
+    },
+    {
+      "path": "catalogues/hoya/assets/hoya-eye-diagram.png",
+      "sha256": "9b33f107e4a66d46bce8ccee48fe137419011951111d4060d5f9fce92c8c14ff",
+      "bytes": 30723
+    },
+    {
+      "path": "catalogues/hoya/assets/hoya-hero.jpg",
+      "sha256": "717229b4f6401a7e9ced34fd5fa7c2c8129362b0d1b98ab948cd5911eb27f6e1",
+      "bytes": 298464
+    },
+    {
+      "path": "catalogues/hoya/assets/hoya-lens-macro.jpg",
+      "sha256": "ba02b63c67028e893bfe8c48f98b92bc303e117b90709e5e65b7d889d6eb64c4",
+      "bytes": 84832
+    },
+    {
+      "path": "catalogues/hoya/assets/hoya-logo.png",
+      "sha256": "9db7aae1ccab4bc8dfe5ea38690527f62f437939268f8337813cf02c84ce81eb",
+      "bytes": 5261
+    },
+    {
+      "path": "catalogues/hoya/assets/hoya-original-brochure.pdf",
+      "sha256": "73f84e43c34c5f760346e790c5d33a4195cbd9a4abf32a8722d24217e2695d3e",
+      "bytes": 6770980
+    },
+    {
+      "path": "catalogues/hoya/assets/hoya-trial-charts.png",
+      "sha256": "9c4674b227dcd02e07ed771a9de104c88468cc27776fa6196b52188aa605115c",
+      "bytes": 99031
+    },
+    {
+      "path": "catalogues/stellest/assets/booklet-stellest.png",
+      "sha256": "60e7bd6a650402c47ec124ea7c9c17b202bf83e10f38d818ee234d7fbfa7d15f",
+      "bytes": 9550
+    },
+    {
+      "path": "catalogues/stellest/assets/booklet-stellest2.png",
+      "sha256": "74afe76be9c71130692502fcec8181aecedc2cebb85c3d07fcbe0ed8182de676",
+      "bytes": 9713
+    },
+    {
+      "path": "catalogues/stellest/assets/essilor-logo.png",
+      "sha256": "e8bc35d1fb7e71b627c3d88d25722d46e494ee3fc53d1a7ffe83672f7d8fe21d",
+      "bytes": 95503
+    },
+    {
+      "path": "catalogues/stellest/assets/extension-stellest.png",
+      "sha256": "d4d6c1e244f0b4e94bb0705a8d95bee060332926253e703f1e15860172af5400",
+      "bytes": 3098
+    },
+    {
+      "path": "catalogues/stellest/assets/extension-stellest2.png",
+      "sha256": "65111569bb340f302391cc477642c03b5fd127af5227732c86eac486e6b65614",
+      "bytes": 3193
+    },
+    {
+      "path": "catalogues/stellest/assets/guarantee-stellest.png",
+      "sha256": "e775766220a9100fca0abacc4570db532d917765f3d4b3852e376b7d94987383",
+      "bytes": 9317
+    },
+    {
+      "path": "catalogues/stellest/assets/guarantee-stellest2.png",
+      "sha256": "81de68f101efdb26a31ff66fcd0247dcdd2526b01a399cfdde8c57231be942d8",
+      "bytes": 9518
+    },
+    {
+      "path": "catalogues/stellest/assets/stellest-brochure.pdf",
+      "sha256": "ddfcdaf3459f614d18d4a72c2ac090b5d52b819224e8a1c6af6caf3fc44d632f",
+      "bytes": 21608067
+    },
+    {
+      "path": "catalogues/stellest/assets/stellest-fig-central-focus.jpg",
+      "sha256": "8e3df956949b84ee692f458ac6a688ae5ed3112a60a5a433370a39490e3195a1",
+      "bytes": 28991
+    },
+    {
+      "path": "catalogues/stellest/assets/stellest-fig-defocus-volume.jpg",
+      "sha256": "18097a0fc8d5dc08097401140d558c0d9f84d8950533ab72b88decbc13b9ee4e",
+      "bytes": 27555
+    },
+    {
+      "path": "catalogues/stellest/assets/stellest-fig-layout.jpg",
+      "sha256": "d503d3dbe5fe0a5562b8004d07c896f632fa57acad2d8a2180ba3c2e847cccf9",
+      "bytes": 23952
+    },
+    {
+      "path": "catalogues/stellest/assets/stellest-fig-lenslet.jpg",
+      "sha256": "eb48bdf4f1434707f14ddd71a8db4f91354d4df86cc7b3f1b9bbaf528c2317a8",
+      "bytes": 26406
+    },
+    {
+      "path": "catalogues/stellest/assets/stellest-hero.png",
+      "sha256": "770c6a0dce0138a794ff958c7b2ae791e7ad57f1ad11eb10c087cd723f239ed4",
+      "bytes": 679570
+    },
+    {
+      "path": "catalogues/stellest/assets/stellest-practitioner-ifu.pdf",
+      "sha256": "b85f3096ff9651c6566b3bf74cca554d80aa24f211536caacff00db153e7ec52",
+      "bytes": 1094577
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-brochure.pdf",
+      "sha256": "a73590da48f01afb8d6dd41cb45f585f7c9df5bb2b74af776785f8727e079ebd",
+      "bytes": 1080227
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-child.jpg",
+      "sha256": "c7d1a5714e15c4cf71f9770e8ff83fdd64f23d2e8834a030bbb6c63621471673",
+      "bytes": 18258
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-detail.jpg",
+      "sha256": "6dccaf496b36eb044fb5da4ca0c03b5d7e913b64a05977fc01ef30e7abc79734",
+      "bytes": 39843
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-lens-annotated.jpg",
+      "sha256": "39d48d020ab82c501986e4786d7d091f55ee207104f0650c424d8aa7db7c49f8",
+      "bytes": 155758
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-lens.jpg",
+      "sha256": "63af2f1c1748168e90dc32a7daabc403914f8f08c0cf0b4a10be84b911550e78",
+      "bytes": 34467
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-life-explore.jpg",
+      "sha256": "44e75f7cf9e1b78bca73a630e566df65ddbd8273ed2379726d0024f06dd6932a",
+      "bytes": 9314
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-life-outdoor.jpg",
+      "sha256": "e48e2777ec7e8a234baad1692cd5371e7a274dc887c06545890f0b9c651d4c1d",
+      "bytes": 8216
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-life-sport.jpg",
+      "sha256": "185230253128c4a109885d7fa9d83bf2b69c0aa10777430a74cfff43d8c15e5f",
+      "bytes": 5846
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-life-study.jpg",
+      "sha256": "3a69aba460606eb59afe6dd0a2a45e6c1840a35f94a7857454c7985785cd1b7d",
+      "bytes": 4991
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-macro-elements.jpg",
+      "sha256": "01a23043a38b59c847ca90bed6e3515c89feace4dd9d57ecc9f0afbba0023124",
+      "bytes": 6067
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-macro-layout.jpg",
+      "sha256": "481eb4743b3255a7f801e372baa7187297b0e3bac6670f5e188b32e92235fa86",
+      "bytes": 8316
+    },
+    {
+      "path": "catalogues/zeiss/assets/myoactive-macro-rays.jpg",
+      "sha256": "de709f68fa22e1c76a8f7dac552ce74f35c00e33b7aad3961bf306d88fa48864",
+      "bytes": 3926
+    },
+    {
+      "path": "catalogues/zeiss/assets/zeiss-logo.png",
+      "sha256": "b363d0d1a508e1c94de62957a4cda2fcaaeb4854fe195d387aa00b979f1f000d",
+      "bytes": 4435
+    }
+  ],
+  "contentSource": {
+    "filename": "MAXIVIEW_MYOPIA_CATALOGUE_R1_13.zip",
+    "sha256": "8b19b5d61131f2959fc2b5cf4c04c44983a8ce0bca6f4e9755d641a51047e1bd"
+  },
+  "printerInterfaces": {
+    "stellest": {
+      "printOverlay": "<div id=\"printOverlay\" class=\"overlay\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Print labels\" onclick=\"overlayClick(event,'printOverlay')\">\n    <div class=\"sheet\">\n      <div class=\"sheet-head print-sheet-head\">\n        <button class=\"close-button\" type=\"button\" aria-label=\"Close\" onclick=\"closeOverlay('printOverlay')\">\u00d7</button>\n      </div>\n      <div class=\"label-preview-wrap\"><div id=\"labelPreview\" class=\"label-preview-grid\"></div></div>\n      <div id=\"printStatus\" class=\"print-status\" data-state=\"idle\" role=\"status\" aria-live=\"polite\">\n        <span class=\"print-status-dot\" aria-hidden=\"true\"></span><span class=\"print-status-text\">Ready to connect to D520BT-Z</span>\n      </div>\n      <div class=\"sheet-actions\">\n        <button id=\"printQuotationButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('quotation')\">Print Label</button>\n        <button id=\"printWarrantyButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('warranty')\">Print Guarantee</button>\n      </div>\n      <div class=\"booklet-print-block\">\n        <div id=\"bookletPreview\"></div>\n        <button id=\"printBookletButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('booklet')\">Print Booklet Label</button>\n      </div>\n      <div class=\"booklet-print-block\">\n        <div id=\"biometryExtensionPreview\"></div>\n        <button id=\"printBiometryExtensionButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('extension')\">Print Biometry Follow-up Extension</button>\n      </div>\n    </div>\n  </div>\n\n  ",
+      "scriptAttributes": [
+        {},
+        {
+          "src": "printer.js"
+        },
+        {}
+      ]
+    },
+    "hoya": {
+      "printOverlay": "<div id=\"printOverlay\" class=\"overlay\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"printTitle\" onclick=\"overlayClick(event,'printOverlay')\">\n    <div class=\"sheet print-sheet\">\n      <div class=\"sheet-head\"><div><h2 id=\"printTitle\">Print labels</h2><p>Preview your selected HOYA package.</p></div><button class=\"close-button\" type=\"button\" aria-label=\"Close print preview\" onclick=\"closeOverlay('printOverlay')\">\u00d7</button></div>\n      <div id=\"printStatus\" class=\"print-status\" data-state=\"idle\" role=\"status\" aria-live=\"polite\"><span class=\"print-status-dot\" aria-hidden=\"true\"></span><span class=\"print-status-text\">Ready to connect to D520BT-Z</span></div>\n      <section class=\"print-label-card\"><h3>Quotation</h3><div id=\"labelPreview\"></div><button id=\"printQuotationButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('quotation')\">Print Quotation</button></section>\n      <section class=\"print-label-card\"><h3>Replacement guarantee</h3><div id=\"warrantyPreview\"></div><button id=\"printWarrantyButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('warranty')\">Print Guarantee</button></section>\n      <section class=\"print-label-card\"><h3>Follow-up booklet label</h3><div id=\"bookletPreview\"></div><button id=\"printBookletButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('booklet')\">Print Booklet Label</button></section>\n      <section class=\"print-label-card\"><h3>Biometry follow-up extension</h3><div id=\"biometryExtensionPreview\"></div><button id=\"printBiometryExtensionButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('extension')\">Print Biometry Follow-up Extension</button></section>\n    </div>\n  </div>\n\n  ",
+      "scriptAttributes": [
+        {
+          "defer": "defer",
+          "src": "catalogue-data.js"
+        },
+        {
+          "defer": "defer",
+          "src": "comparison.js"
+        },
+        {
+          "defer": "defer",
+          "src": "printer.js"
+        },
+        {
+          "defer": "defer",
+          "src": "app.js"
+        }
+      ]
+    },
+    "zeiss": {
+      "printOverlay": "<div id=\"printOverlay\" class=\"overlay\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"printTitle\" onclick=\"overlayClick(event,'printOverlay')\">\n    <div class=\"sheet print-sheet\">\n      <div class=\"sheet-head\"><div><h2 id=\"printTitle\">Print labels</h2><p>Preview your selected MyoActive package.</p></div><button class=\"close-button\" type=\"button\" aria-label=\"Close print preview\" onclick=\"closeOverlay('printOverlay')\">\u00d7</button></div>\n      <div id=\"printStatus\" class=\"print-status\" data-state=\"idle\" role=\"status\" aria-live=\"polite\"><span class=\"print-status-dot\" aria-hidden=\"true\"></span><span class=\"print-status-text\">Ready to connect to D520BT-Z</span></div>\n      <section class=\"print-label-card\"><h3>Quotation</h3><div id=\"labelPreview\"></div><button id=\"printQuotationButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('quotation')\">Print Quotation</button></section>\n      <section class=\"print-label-card\"><h3>Replacement guarantee</h3><div id=\"warrantyPreview\"></div><button id=\"printWarrantyButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('warranty')\">Print Guarantee</button></section>\n      <section class=\"print-label-card\"><h3>Follow-up booklet label</h3><div id=\"bookletPreview\"></div><button id=\"printBookletButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('booklet')\">Print Booklet Label</button></section>\n      <section class=\"print-label-card\"><h3>Biometry follow-up extension</h3><div id=\"biometryExtensionPreview\"></div><button id=\"printBiometryExtensionButton\" class=\"primary-button print-action-button\" type=\"button\" onclick=\"printToD520('extension')\">Print Biometry Follow-up Extension</button></section>\n    </div>\n  </div>\n\n  ",
+      "scriptAttributes": [
+        {
+          "defer": "defer",
+          "src": "catalogue-data.js"
+        },
+        {
+          "defer": "defer",
+          "src": "comparison.js"
+        },
+        {
+          "defer": "defer",
+          "src": "printer.js"
+        },
+        {
+          "defer": "defer",
+          "src": "app.js"
+        }
+      ]
+    }
+  }
+}

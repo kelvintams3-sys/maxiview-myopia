@@ -99,8 +99,8 @@ function makeWindow(markup){
   win.window=win;win.parent=win;return vm.createContext(win);
 }
 function execute(context,file){vm.runInContext(fs.readFileSync(file,'utf8'),context,{filename:file})}
-function loadNative(brand,parent,frame,queue,bridge=true){
-  const directory=path.join(root,'catalogues',brand),markup=fs.readFileSync(path.join(directory,'index.html'),'utf8');
+function loadNative(brand,parent,frame,queue,bridge=true,directoryOverride=null){
+  const directory=directoryOverride||path.join(root,'catalogues',brand),markup=fs.readFileSync(path.join(directory,'index.html'),'utf8');
   const context=makeWindow(markup);
   if(parent){
     const proxy={postMessage(data){const clone=JSON.parse(JSON.stringify(data));queue.push(()=>parent.dispatch('message',{source:context,data:clone}))}};

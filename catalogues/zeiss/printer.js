@@ -30,14 +30,10 @@ function labelParagraph(ctx, text, x, y, width, size, lineHeight, weight) {
   return y;
 }
 function drawZeissLogo(ctx, x, y) {
-  var previousFillStyle = ctx.fillStyle;
-  ctx.fillStyle = '#fff'; ctx.fillRect(x, y, 48, 48);
-  ctx.fillStyle = '#000';
   for (var ly = 0; ly < 48; ly++) for (var lx = 0; lx < 48; lx++) {
     var i = (ly * 6 + Math.floor(lx / 8)) * 2;
     if (parseInt(ZEISS_LOGO_HEX.slice(i, i + 2), 16) & (128 >> (lx % 8))) ctx.fillRect(x + lx, y + ly, 1, 1);
   }
-  ctx.fillStyle = previousFillStyle;
 }
 function drawLabelHeader(ctx, landscape) {
   drawZeissLogo(ctx, 18, 16);
@@ -46,7 +42,7 @@ function drawLabelHeader(ctx, landscape) {
   ctx.fillRect(18, 91, landscape ? 444 : 284, 2);
 }
 function quotationRows() {
-  var rows = [{ label: 'Lens', amount: coatingPrice(), struck: false }];
+  var rows = [{ label: 'Lens pair', amount: coatingPrice(), struck: false }];
   if (frameIncluded()) rows.push({ label: 'Frame', amount: state.frame, struck: state.frameComplimentary });
   if (state.followups.one) rows.push({ label: 'Follow-up 1', amount: 120, struck: state.complimentary });
   if (state.followups.two) rows.push({ label: 'Follow-up 2', amount: 120, struck: state.complimentary });

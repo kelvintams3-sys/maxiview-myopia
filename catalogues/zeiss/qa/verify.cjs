@@ -96,9 +96,9 @@ function assertRenderedRows(options, rows) {
   }
   assert.equal((html.match(/<table\b/g) || []).length, 1, 'Use one shared semantic table');
   assert.equal((html.match(/<tbody>/g) || []).length, 1);
-  const rowMatches = [...html.matchAll(/<tr data-row-key="([^"]+)">([\s\S]*?)<\/tr>/g)];
+  const rowMatches = [...html.matchAll(/<tr data-row-key="([^"]+)"[^>]*>([\s\S]*?)<\/tr>/g)];
   assert.deepEqual(rowMatches.map(m => m[1]), rows.map(r => C.escape(r.key)));
-  assert.equal((html.match(/<th scope="col" data-option-id=/g) || []).length, unique.length);
+  assert.equal((html.match(/<th\b[^>]*scope="col"[^>]*data-option-id=/g) || []).length, unique.length);
   for (let i = 0; i < rows.length; i++) {
     const rowHtml = rowMatches[i][2];
     const cells = [...rowHtml.matchAll(/<td data-row-key="([^"]+)" data-option-id="([^"]+)">([\s\S]*?)<\/td>/g)];
@@ -229,14 +229,14 @@ check('Comparison toggle and repeat navigation do not alter consultation prices'
   const { ctx, nodes } = appContext();
   ctx.selectCoating('blueprotect'); ctx.toggleCoatingComparison();
   assert.equal(ctx.state.compareOpen, true);
-  assert.match(nodes.get('app').innerHTML, /<table class="comparison-table">/);
+  assert.match(nodes.get('app').innerHTML, /<table class="comparison-table"[^>]*>/);
   ctx.openSummary(); ctx.goHome();
   assert.equal(ctx.state.compareOpen, true);
   assert.equal(ctx.state.coating, 'blueprotect');
   assert.equal(ctx.grandTotal(), 2140);
   ctx.toggleCoatingComparison();
   assert.equal(ctx.state.compareOpen, false);
-  assert.doesNotMatch(nodes.get('app').innerHTML, /<table class="comparison-table">/);
+  assert.doesNotMatch(nodes.get('app').innerHTML, /<table class="comparison-table"[^>]*>/);
   assert.equal(ctx.grandTotal(), 2140);
 });
 
@@ -292,7 +292,7 @@ check('Quotation rows omit excluded items and retain original complimentary pric
   ctx.state.frame = 299; ctx.state.frameComplimentary = true;
   ctx.state.followups = { one: false, two: true }; ctx.state.complimentary = true;
   const rows = JSON.parse(JSON.stringify(ctx.quotationRows()));
-  assert.deepEqual(rows, [{ label: 'Lens', amount: 1900, struck: false }, { label: 'Frame', amount: 299, struck: true }, { label: 'Follow-up 2', amount: 120, struck: true }]);
+  assert.deepEqual(rows, [{ label: 'Lens pair', amount: 1900, struck: false }, { label: 'Frame', amount: 299, struck: true }, { label: 'Follow-up 2', amount: 120, struck: true }]);
   assert.equal(ctx.grandTotal(), 1900);
 });
 check('Printer logo dimensions and guarantee strings match the standalone MyoActive module', () => {

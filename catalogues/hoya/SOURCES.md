@@ -78,3 +78,6 @@ HOYA Chameleon lens option now shows "(Photochromic)" in the lens option list, s
 Remove-frame button replaced by a compact ✕ beside the Frame row (Kelvin, 23 Nov 2026).
 
 "Lens pair" shortened to "Lens" (summary row, sticky total, printed quotation label row); "Print Quotation" button renamed "Print Label" (Kelvin, 23 Nov 2026). QA expectations updated to match.
+
+## 24 November 2026 — R1.14 protected content port
+Applied the documented R1.13 narrative and official source images from the supplied combined package. Preserved this brand’s PRINT_LOCKED printer.js, manifest, artwork, print overlay, script order, pricing and terms. Brochures remain under (i). Open source/price questions are retained for optometrist review rather than changing values.

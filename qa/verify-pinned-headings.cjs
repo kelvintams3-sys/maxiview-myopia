@@ -60,12 +60,12 @@ for(const ids of [[D.defaults[0],D.defaults[1]],[D.options[1].id],[D.defaults[0]
   assert.equal(sticky.querySelectorAll('th').length,ids.length+1);
   assert.equal(sticky.querySelector('table').getAttribute('data-count'),String(ids.length));
   assert.equal(sticky.querySelectorAll('button, a, input, select').length,0,'Pinned copy contains identity only, not duplicate controls');
-  assert.deepEqual(Array.from(sticky.querySelectorAll('.comparison-product-name'),el=>el.textContent),ids.map(id=>D.getOption(id).name.replace(/^(?:Essilor|HOYA|ZEISS)\s+/i,'')));
+  assert.deepEqual(Array.from(sticky.querySelectorAll('.comparison-product-name'),el=>el.textContent),ids.map(id=>D.getOption(id).fields.lensDesign.replace(/^(?:Essilor|HOYA|ZEISS)\s+/i,'')));
 }
 passed('One, two and three choices retain exact identities and no cloned actions');
 app.choose(0,D.options.find(o=>o.brand==='stellest'&&o.id!==D.defaults[0]).id);sections=layout();
 Object.assign(sections.practical.config,{visible:true,headTop:-100});update();
-assert.equal(sticky.querySelectorAll('.comparison-product-name')[0].textContent,D.getOption(app.state.comparison[0]).name.replace(/^(?:Essilor|HOYA|ZEISS)\s+/i,''));
+assert.equal(sticky.querySelectorAll('.comparison-product-name')[0].textContent,D.getOption(app.state.comparison[0]).fields.lensDesign.replace(/^(?:Essilor|HOYA|ZEISS)\s+/i,''));
 passed('Changing the recommendation refreshes the pinned identity');
 app.showTab('hoya');assert.equal(sticky.hidden,true);passed('Pinned headings disappear when leaving Compare');
 app.state.comparison=[];app.renderComparison();sections=layout();update();assert.equal(sticky.hidden,true);assert.equal(sticky.innerHTML,'');

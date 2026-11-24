@@ -34,11 +34,11 @@ function catalogueHtml() {
     '<p>ZEISS MyoActive corrects your child’s vision while helping slow the progression of short-sightedness.</p></div>' +
     '<img class="catalogue-hero-photo" src="assets/myoactive-child.jpg" alt="Child wearing ZEISS MyoActive spectacles" fetchpriority="high"></div>' +
     whyHtml() + mechanismHtml() + clinicalHtml() +
-    '<section class="coating-section" aria-labelledby="coating-title"><div class="section-heading"><div><div class="section-kicker">Your lens options</div>' +
+    '<section class="coating-section" data-model-theme="myoactive" aria-labelledby="coating-title"><div class="section-heading"><div><div class="section-kicker">Your lens options</div>' +
     '<h2 id="coating-title">Choose your lens coating</h2><p>Both options use the same MyoActive lens design. Your choice changes the coating and price.</p></div></div>' +
-    '<div class="option-grid" role="group" aria-label="Choose lens coating">' + coatingOption('platinum') + coatingOption('blueprotect') + '</div>' +
+    '<div class="model-heading model-identity-band" data-model-theme="myoactive"><div class="eyebrow">ZEISS M.O.V.E.</div><h3>MyoActive</h3></div><div class="option-grid" data-model-theme="myoactive" role="group" aria-label="Choose lens coating">' + coatingOption('platinum') + coatingOption('blueprotect') + '</div>' +
     '<section class="guarantee-panel" aria-label="Prescription replacement guarantee"><strong>' + DATA.product.warranty.period + ' · Complimentary replacement</strong>' +
-    '<span>' + DATA.product.warranty.condition + '</span></section>' +
+    '<span>' + emphasizeTerms(DATA.product.warranty.condition) + '</span></section>' +
     '<button id="coatingCompareButton" type="button" class="coating-compare-button" aria-expanded="' + state.compareOpen + '" aria-controls="coatingComparison" onclick="toggleCoatingComparison()">' +
     (state.compareOpen ? 'Hide coating comparison' : 'Compare coating options') + '</button>' +
     '<div id="coatingComparison"' + (state.compareOpen ? '' : ' hidden') + '>' +
@@ -50,7 +50,7 @@ function catalogueHtml() {
     '<dl><dt>Combined prescription</dt><dd>Up to −9.00 D</dd></dl>' +
     '<dl><dt>Treatment element powers</dt><dd>+1.50 D to +5.50 D</dd></dl><dl><dt>Clear central zone</dt><dd>7 mm</dd></dl></div>' +
     '<p class="quiet-note">Element powers describe the lens microstructures, not your child’s prescription. Maximum diameter is subject to the combined prescription; availability is checked when ordering.</p></details>' +
-    '<div class="sticky-total" role="region" aria-label="Selected lens coating"><div><div class="total-label">Lens · ' + DATA.coatings[state.coating].shortName + '</div>' +
+    '<div class="sticky-total" data-model-theme="myoactive" role="region" aria-label="Selected lens coating"><div><div class="total-label">MyoActive · ' + DATA.coatings[state.coating].shortName + '</div>' +
     '<div class="total-value">' + money(coatingPrice()) + '</div></div><button class="primary-button" type="button" onclick="openSummary()">Review summary</button></div></section>';
 }
 function whyHtml() {
@@ -63,7 +63,7 @@ function whyHtml() {
     '<div><strong>Visual signals influence eye growth</strong><p>Research suggests some signals may stimulate the eye to grow longer, while others, such as myopic defocus, may help slow it. MyoActive is designed around this idea.</p></div></div></section>';
 }
 function mechanismHtml() {
-  return '<section class="panel mechanism-panel" aria-labelledby="mechanism-title"><div class="mechanism-copy">' +
+  return '<section class="panel mechanism-panel" data-model-theme="myoactive" aria-labelledby="mechanism-title"><div class="mechanism-copy">' +
     '<div class="section-kicker">ZEISS M.O.V.E. technology</div><h2 id="mechanism-title">Clear vision. Changing signals.</h2>' +
     '<div class="mechanism-points"><div><strong>Clear vision at the centre</strong><p>A 7 mm clear central zone corrects distance vision for everyday activities.</p></div>' +
     '<div><strong>Different powers. A deliberately non-repeating pattern.</strong><p>Tiny treatment elements use different positive powers in a non-repeating arrangement. As your child looks around, this creates changing myopia-control signals. The design aims to reduce repetition of the signal reaching the eye.</p></div>' +
@@ -83,7 +83,7 @@ function barPair(title, unit, a, b, max, dec) {
   return '<div class="bar-pair"><div class="bar-title">' + title + '</div>' + row('Single vision', b, 'sv') + row('MyoActive', a, 'myo') + '</div>';
 }
 function clinicalHtml() {
-  return '<section class="panel clinical-panel" aria-labelledby="clinical-title"><div class="clinical-heading"><h2 id="clinical-title">Clinically studied myopia control</h2>' +
+  return '<section class="panel clinical-panel" data-model-theme="myoactive" aria-labelledby="clinical-title"><div class="clinical-heading"><h2 id="clinical-title">Clinically studied myopia control</h2>' +
     '<button class="info-button" type="button" onclick="openInfo()" aria-label="Clinical evidence and product details">i</button></div>' +
     '<div class="clinical-results"><div class="clinical-stat"><strong>0.60 D</strong><span>less prescription progression</span></div>' +
     '<div class="clinical-stat"><strong>0.22 mm</strong><span>less eye-length growth</span></div></div>' +
@@ -102,12 +102,13 @@ function coatingOption(key) {
     '<span class="check" aria-hidden="true"></span><span class="option-family">' + c.family + '</span><h3 class="option-name">' + c.title + '</h3>' +
     '<span class="option-copy">' + c.copy + '</span><span class="option-price">' + money(c.price) + '<small>per pair · 1.59</small></span></button>';
 }
+function emphasizeTerms(value) { return String(value).replace(/(\d+\.\d{2} D)/g,'<strong class="terms-threshold">$1</strong>'); }
 function summaryHtml() {
-  return '<section class="screen"><div class="summary-card"><div class="summary-hero"><div class="eyebrow">ZEISS M.O.V.E. technology</div>' +
-    '<h1>MyoActive</h1><div>ZEISS MyoActive · 1.59 polycarbonate</div></div><div class="summary-body">' +
+  return '<section class="screen"><div class="summary-card"><div class="summary-hero model-identity-band" data-model-theme="myoactive"><div class="eyebrow">ZEISS M.O.V.E.</div>' +
+    '<h1>MyoActive</h1><div class="model-choice-detail">Clear · ' + coatingName() + '</div><div class="model-index-detail">1.59 · Polycarbonate</div></div><div class="summary-body">' +
     summaryRow('Lens', coatingName(), money(coatingPrice())) + '</div></div>' + summaryControlsHtml() +
     '<div class="summary-grand summary-total" aria-live="polite"><span>Grand Total</span><strong>' + money(grandTotal()) + '</strong></div>' +
-    '<p class="summary-guarantee"><strong>' + DATA.product.warranty.title + '</strong><br>' + DATA.product.warranty.wording + '</p>' +
+    '<p class="summary-guarantee"><strong>' + DATA.product.warranty.title + '</strong><br>' + emphasizeTerms(DATA.product.warranty.wording) + '</p>' +
     '<div class="summary-actions"><button class="secondary-button" type="button" onclick="goHome()">Edit recommendation</button>' +
     '<button class="primary-button" type="button" onclick="openPrintPreview()">Preview and print labels</button></div></section>';
 }

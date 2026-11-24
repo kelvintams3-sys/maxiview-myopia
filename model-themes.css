@@ -1,0 +1,17 @@
+/* One model palette shared by product cards, comparisons and summaries.
+   Deliberately scoped: no print overlays, printer artwork or shared utilities. */
+[data-model-theme="stellest"]{--model-start:#087d8b;--model-end:#07828c;--model-ink:#fff;--model-muted:#fff;--model-accent:#087d8b;--model-soft:#edf7f8}
+[data-model-theme="stellest2"]{--model-start:#08265e;--model-end:#0d5991;--model-ink:#fff;--model-muted:#e5effb;--model-accent:#0d5991;--model-soft:#eff4fb}
+[data-model-theme="miyosmart"]{--model-start:#1e60aa;--model-end:#1e60aa;--model-ink:#fff;--model-muted:#e9f1fc;--model-accent:#1e60aa;--model-soft:#eef4fb}
+[data-model-theme="iq"]{--model-start:#ffb62d;--model-end:#ffb62d;--model-ink:#123b6a;--model-muted:#183e69;--model-accent:#925c00;--model-soft:#fff5df}
+[data-model-theme="myoactive"]{--model-start:#061f49;--model-end:#1654a4;--model-ink:#fff;--model-muted:#dce9ff;--model-accent:#1654a4;--model-soft:#eef3fc}
+.model-identity-band{background:linear-gradient(125deg,var(--model-start),var(--model-end));color:var(--model-ink)}
+.model-identity-band .eyebrow,.model-identity-band .comparison-brand,.model-identity-band .comparison-technology{color:var(--model-muted);font-weight:750;line-height:1.45;letter-spacing:.045em}
+.model-identity-band h1,.model-identity-band h3,.model-identity-band .comparison-product-name{color:var(--model-ink);font-size:clamp(1.7rem,2.8vw,2.25rem);font-weight:850;letter-spacing:-.035em;line-height:1.15;overflow-wrap:anywhere}
+.model-identity-band p,.model-identity-band .model-choice-detail,.model-identity-band .comparison-style,.model-identity-band .comparison-index{color:var(--model-muted);font-size:.9375rem;font-weight:600;line-height:1.5;letter-spacing:0}
+.model-choice-detail{margin:8px 0 6px}
+.model-heading{padding:23px 25px;border-radius:20px 20px 0 0;margin:18px 0 0}
+.model-heading .eyebrow{margin:0 0 8px}
+.model-heading h3{margin:0}
+
+.model-identity-band .model-index-detail{color:var(--model-muted);font-size:.875rem;font-weight:600;line-height:1.5}

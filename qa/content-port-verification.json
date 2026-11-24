@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "brands": [
+    "stellest",
+    "hoya",
+    "zeiss"
+  ],
+  "runtimeErrors": 0,
+  "liveBrowser": false,
+  "physicalPrinter": false
+}

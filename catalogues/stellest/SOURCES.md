@@ -52,3 +52,6 @@ Removed the self-drawn "What is different in Stellest 2.0" schematic. Only offic
 Struck-through price (frame and follow-up when complimentary) is now black, 2 px, bold so the discount is easy to see. Visible "Hold for complimentary" hint removed (long-press behaviour unchanged). 
 
 Remove-frame button replaced by a compact ✕ beside the Frame row (Kelvin, 23 Nov 2026).
+
+## 24 November 2026 — R1.14 protected content port
+Applied the documented R1.13 narrative and official source images from the supplied combined package. Preserved this brand’s PRINT_LOCKED printer.js, manifest, artwork, print overlay, script order, pricing and terms. Brochures remain under (i). Open source/price questions are retained for optometrist review rather than changing values.
