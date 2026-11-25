@@ -1,8 +1,8 @@
 {
-  "release": "R1.23",
+  "release": "R1.26",
   "date": "2026-11-25",
-  "authorization": "Kelvin requests larger Chameleon wording and a very slight increase in label item and price size, following the R1.22 black-on-white logo request.",
-  "scope": "Artwork only: preserve the R1.21 working Bluetooth bridge, print-feedback scripts, native printer transport, label coordinates, totals and original manifests. Item/price 20 to 21 px; Chameleon 22 px on HOYA labels; retain R1.22 ZEISS logo inversion.",
+  "authorization": "Kelvin requests larger Chameleon wording and a very slight increase in label item and price size, following the R1.22 black-on-white logo request. Kelvin additionally reports S.P.A.R.K. is printed twice and authorizes removing only the duplicate subtitle.",
+  "scope": "Artwork only: preserve the R1.21 working Bluetooth bridge, print-feedback scripts, native printer transport, label coordinates, totals and original manifests. Item/price 20 to 21 px; Chameleon 22 px on HOYA labels; retain R1.22 ZEISS logo inversion. R1.26 suppresses only the duplicate S.P.A.R.K. Coating line on HOYA quotations; Coating STX and all other artwork/transport remain unchanged.",
   "printers": {
     "stellest": {
       "file": "printer.js",
@@ -22,7 +22,7 @@
     "hoya": {
       "file": "printer.js",
       "frozenSha256": "173651f511c58f3cdea373585bd8f2c657736cc8e02d2dc64776a541c41b588e",
-      "approvedSha256": "a333a68bbe8f19ac54526c6ceb5bd82b268453a183ca14e7844a4011496991c4",
+      "approvedSha256": "2f09f15f9d956ba737ce72bf1e777566e3b4cd17b36b1b24496fe70c0711c826",
       "edits": [
         {
           "before": "labelText(ctx,DATA.styles[state.style].name+' \u00b7 1.59',18,60,444,18,17,'bold');",
@@ -39,6 +39,10 @@
         {
           "before": "ctx.font='bold 20px Arial, sans-serif';ctx.fillText(amount,302,y);",
           "after": "ctx.font='bold 21px Arial, sans-serif';ctx.fillText(amount,302,y);"
+        },
+        {
+          "before": " labelText(ctx,state.coating==='spark'?'S.P.A.R.K. Coating':'Coating STX',18,170,284,16,16,'normal');",
+          "after": " if(state.coating!=='spark')labelText(ctx,'Coating STX',18,170,284,16,16,'normal');"
         }
       ]
     },

@@ -1,4 +1,12 @@
-# R1.25 — Bluefy buffer ownership regression
+# R1.26 — remove duplicated S.P.A.R.K. line
+
+25 November 2026. The sole label-source change makes the second HOYA coating line conditional: Spark retains only its large S.P.A.R.K. heading; other coatings retain Coating STX. The main heading, Clear/Chameleon line, every row/price/total and all other label types retain their original coordinates and fonts.
+
+The strict artwork authorization records the single before/after drawing line and current HOYA source hash, while still reconstructing the unchanged original full-file manifest hash. The R1.25 bridge, buffer copying, native connection/transmission code, button feedback, all assets and the other two printer sources remain byte-identical.
+
+Artwork checks pass for 120 label cases and 96 preview pixel comparisons, including four Clear/Chameleon Spark quotations with one heading and fourteen STX subtitle checks. The removed subtitle has its own narrow allowed pixel region; no other new artwork differences are permitted. Original financial/output, cross-window buffer regression, transmission-sequence and package checks are rerun. The updated Clear Spark quotation was visually inspected. No browser or physical printer is used here. Rollback: complete R1.25.
+
+## R1.25 — Bluefy buffer ownership regression (history)
 
 25 November 2026. Kelvin's iPad screenshot reports BluetoothRemoteGATTCharacteristic.writeValue(any) needs an ArrayBuffer or View, while PC printing succeeds. The R1.24 path uses a main-page Bluetooth characteristic with iframe-created Uint8Array chunks. R1.25 copies each cross-window packet into a Uint8Array created by the Bluetooth owner's window, then passes that view's exact-sized ArrayBuffer to the original native write method. This preserves contents, method receiver, chunk sizes and timing; the same-window path returns the original characteristic unchanged.
 

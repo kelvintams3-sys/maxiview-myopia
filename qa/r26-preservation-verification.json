@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "baseline": "R1.25",
+  "changedProductionFiles": [
+    "PRINT_ARTWORK_AUTHORIZATION.json",
+    "catalogues/hoya/printer.js",
+    "index.html"
+  ],
+  "onlyOneHoyaDrawingLineChanged": true,
+  "bridgeAndInButtonFeedbackByteIdentical": true,
+  "otherPrinterFilesAndAllAssetFilesUnchanged": true,
+  "pricesFontsPositionsAndOriginalManifestsUnchanged": true,
+  "physicalPrinterThisRelease": false
+}

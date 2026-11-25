@@ -19,11 +19,12 @@ function recorder(child){
 }
 function preview(child,kind){return child.labelArtwork?child.labelArtwork(kind).preview:kind==='quotation'?child.quotationArtwork().preview:null}
 async function pixels(url){const img=await loadImage(Buffer.from(url.split(',')[1],'base64')),canvas=createCanvas(img.width,img.height),ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);return {width:img.width,height:img.height,data:ctx.getImageData(0,0,img.width,img.height).data}}
-function regions(brand,style,kind){
+function regions(brand,style,kind,coating){
  const allowed=[];
  if(brand==='zeiss')allowed.push({x:18,y:16,w:48,h:48,logo:true});
  if(kind==='quotation')allowed.push(brand==='stellest'?{x:18,y:205,w:286,h:155}:brand==='hoya'?{x:16,y:207,w:288,h:145}:{x:16,y:187,w:288,h:155});
  if(brand==='hoya'&&style==='chameleon')allowed.push(kind==='quotation'?{x:16,y:87,w:288,h:33}:{x:16,y:56,w:448,h:32});
+ if(brand==='hoya'&&kind==='quotation'&&coating==='spark')allowed.push({x:18,y:166,w:284,h:26});
  return allowed;
 }
 function compare(before,after,allowed){
@@ -44,7 +45,7 @@ async function main(){
   const source=fs.readFileSync(path.join(root,'catalogues',brand,'printer.js'),'utf8'),sha=require('../catalogues/'+brand+'/PRINTER_SHA256.json')['printer.js'];
   assert.throws(()=>restoreFrozenPrinter(source.replace('sleep(35)','sleep(36)'),sha,brand),'Transport changes must fail the artwork exception');
  }
- const report={status:'passed',labelCases:0,previewPixelCases:0,unchangedLandscapeCommands:0,rowFitCases:0,chameleonFontCases:0,allChangesInsideAuthorizedArtworkRegions:true,originalManifestsRetained:true,liveBrowser:false,physicalPrinter:false};
+ const report={status:'passed',labelCases:0,previewPixelCases:0,unchangedLandscapeCommands:0,rowFitCases:0,chameleonFontCases:0,sparkSingleHeadingCases:0,unchangedStxSubtitleCases:0,allChangesInsideAuthorizedArtworkRegions:true,originalManifestsRetained:true,liveBrowser:false,physicalPrinter:false};
  const dirIndex=process.argv.indexOf('--preview-dir'),directory=dirIndex<0?null:process.argv[dirIndex+1];if(directory)fs.mkdirSync(directory,{recursive:true});
  for(const option of D.options)for(const frame of [200,99999]){
   const c=current[option.brand],old=original[option.brand],selection=D.selectionForOption(option.id),shared={frame,frameComplimentary:frame===99999,followups:{one:true,two:true},complimentary:frame===99999};
@@ -52,12 +53,17 @@ async function main(){
   for(const kind of ['quotation','warranty','booklet','extension']){
    const trace=traces[option.brand];trace.length=0;
    const commands=c.buildLabelTSPL(kind),before=old.buildLabelTSPL(kind);decodeRaster(commands);
-   const now=preview(c,kind),was=preview(old,kind),allowed=regions(option.brand,selection.style,kind);
+   const now=preview(c,kind),was=preview(old,kind),allowed=regions(option.brand,selection.style,kind,selection.coating);
    if(now&&was){
     const changed=compare(await pixels(was),await pixels(now),allowed);if(kind==='quotation')assert.ok(changed>0,'Larger quotation rows must alter the image');report.previewPixelCases++;
     if(directory&&frame===200)fs.writeFileSync(path.join(directory,option.id+'-'+kind+'.png'),Buffer.from(now.split(',')[1],'base64'));
    }else{assert.equal(commands,before,'Static Essilor landscape labels remain unchanged');report.unchangedLandscapeCommands++}
    if(kind==='quotation'){
+    if(option.brand==='hoya'){
+     if(selection.coating==='spark'){
+      assert.equal(trace.filter(call=>call.text==='S.P.A.R.K.').length,1);assert.equal(trace.filter(call=>call.text==='S.P.A.R.K. Coating').length,0);report.sparkSingleHeadingCases++;
+     }else{assert.equal(trace.filter(call=>call.text==='Coating STX').length,1);report.unchangedStxSubtitleCases++}
+    }
     const names=[option.brand==='stellest'?c.coatingName():'Lens pair','Frame','Follow-up 1','Follow-up 2'];
     for(const name of names){
      const label=trace.find(call=>call.text===name);assert.ok(label,'Quotation row must be present');

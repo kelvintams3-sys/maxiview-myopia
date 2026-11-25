@@ -5,6 +5,8 @@
   "unchangedLandscapeCommands": 24,
   "rowFitCases": 120,
   "chameleonFontCases": 14,
+  "sparkSingleHeadingCases": 4,
+  "unchangedStxSubtitleCases": 14,
   "allChangesInsideAuthorizedArtworkRegions": true,
   "originalManifestsRetained": true,
   "liveBrowser": false,

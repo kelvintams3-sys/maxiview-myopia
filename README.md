@@ -1,4 +1,12 @@
-# Maxiview Myopia Catalogue R1.25 — Bluefy buffer ownership
+# Maxiview Myopia Catalogue R1.26 — one S.P.A.R.K. heading
+
+25 November 2026. Removed the repeated S.P.A.R.K. Coating subtitle from HOYA quotation labels, retaining the larger S.P.A.R.K. heading. Applies to both Clear and Chameleon S.P.A.R.K. builds. Coating STX remains unchanged. All prices, font sizes, label coordinates, other label types and the R1.25 Bluefy buffer correction are preserved.
+
+Only one drawing line in catalogues/hoya/printer.js changes. PRINT_ARTWORK_AUTHORIZATION.json records that exact exception and its approved source hash; original printer manifests and captured label baselines remain unchanged. bridge.js and print-feedback.js/CSS are byte-identical to R1.25.
+
+Verification checks four ordinary/large-price Spark cases for exactly one heading, fourteen unchanged STX subtitle cases, full preview artwork regions, original financial totals, strict buffer ownership/transmission and package integrity. Physical output is not tested here. Extract and replace the complete deployed files, then reload Bluefy. Rollback: the complete R1.25 package.
+
+## R1.25 release notes — retained history
 
 25 November 2026. PC printing succeeds, but Kelvin's iPad now reports that writeValue needs an ArrayBuffer or View. R1.25 keeps R1.24's main-page Bluetooth provider and copies outgoing chunks into buffers created by that same page. This addresses the cross-window buffer mismatch reproduced in the regression test. The original label bytes, larger text, logos and in-button feedback are unchanged. Physical iPad success still needs confirmation.
 

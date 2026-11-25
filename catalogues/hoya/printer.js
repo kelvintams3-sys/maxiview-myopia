@@ -58,7 +58,7 @@ function drawQuotation(){
  var art=labelCanvas(320,480),ctx=art.ctx;
  drawLabelHeader(ctx,false);
  labelText(ctx,DATA.coatings[state.coating].shortName,18,141,284,23,20,'bold');
- labelText(ctx,state.coating==='spark'?'S.P.A.R.K. Coating':'Coating STX',18,170,284,16,16,'normal');
+ if(state.coating!=='spark')labelText(ctx,'Coating STX',18,170,284,16,16,'normal');
  quotationRows().forEach(function(row,n){
   var y=211+n*36;labelText(ctx,row.label,18,y,165,21,18,'bold');
   var amount=money(row.amount);ctx.textAlign='right';ctx.font='bold 21px Arial, sans-serif';ctx.fillText(amount,302,y);
