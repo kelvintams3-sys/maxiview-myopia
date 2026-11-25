@@ -5,7 +5,8 @@ function harness(D,C,root){
  const doc={body:{style:{}},activeElement:null,addEventListener(){},querySelector(){return null;},querySelectorAll(){return[];}};
  function element(id){
   if(nodes.has(id))return nodes.get(id);const classes=new Set();
-  const n={id,innerHTML:'',textContent:'',dataset:{},isConnected:true,listeners:{},
+  const n={id,innerHTML:'',textContent:'',dataset:{},isConnected:true,listeners:{},attributes:{},
+   setAttribute(name,value){n.attributes[name]=String(value);},getAttribute(name){return n.attributes[name]??null;},
    classList:{add(k){classes.add(k);},remove(k){classes.delete(k);},contains(k){return classes.has(k);},toggle(k,on){if(on===undefined)on=!classes.has(k);if(on)classes.add(k);else classes.delete(k);}},
    focus(){doc.activeElement=n;},addEventListener(type,fn){(n.listeners[type]||=[]).push(fn);},querySelector(selector){return selector==='.print-status-text'?element(id+'-text'):null;}};
   nodes.set(id,n);return n;

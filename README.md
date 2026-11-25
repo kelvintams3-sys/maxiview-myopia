@@ -1,4 +1,17 @@
-# Maxiview Myopia Catalogue R1.28 — neutral dropdown, manual coating choice
+# Maxiview Myopia Catalogue R1.29 — stable HOYA option changes
+
+25 November 2026. HOYA option changes now update only the affected controls, comparison content, selected details and price regions. The catalogue screen, hero, images, model headers and surrounding explanations remain in place. Unchanged model controls are retained, dropdown handlers attach only once, and open details, focus, reading position and comparison pan are preserved. Actual product/summary navigation still changes the screen normally.
+
+The whole-screen fade is disabled for all three catalogues. The shared header no longer reassigns an unchanged brand-logo image source on each selection update. Clear remains the default style; dropdown rows stay neutral and coatings remain unchosen until tapped. Commercial values, model palettes and label artwork are unchanged.
+
+All three printer.js files, bridge.js, print-feedback.js/CSS, assets, manifests, authorization records, native print overlays and script attributes are byte-identical to R1.28. No Bluetooth, buffer, connection, timing, notification or print-entry changes are included.
+
+Verification exercises all nine HOYA builds without replacing the screen, hero or any image; confirms no duplicate dropdown handlers, preserves open details, focus/scroll and comparison pan, and matches the updated view against canonical content. All nine catalogue text cases match R1.28. Existing selection, financial, comparison, label-byte, simulated Bluefy transport and printer-lock checks pass. Browser layout and physical iPad/printer behavior have not been tested here.
+
+Extract the complete ZIP into a fresh folder. For GitHub Pages, replace the deployed files together and reload Bluefy. This ZIP does not update the live site automatically. Rollback: the complete R1.28 package.
+
+## R1.28 release notes — retained history
+
 
 25 November 2026. Clear remains the default displayed lens style. Opening a HOYA dropdown shows its current style and the alternatives together inside one blue enclosure: two styles for iQ, three for original MiYOSMART. No row has a selected fill, tick or individual blue border. Light separators distinguish the neutral white rows, and the current style is not repeated in the alternatives.
 

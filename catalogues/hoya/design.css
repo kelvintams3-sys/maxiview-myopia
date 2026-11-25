@@ -346,3 +346,5 @@ button{touch-action:manipulation}
 .screen .comparison-table .terms-row>td{font-weight:750}
 .screen .replacement-terms .terms-threshold,.screen .family-guarantee .terms-threshold,
 .screen .guarantee-panel .terms-threshold,.screen .summary-guarantee .terms-threshold{display:inline;font-size:inherit;line-height:inherit;margin:0;color:inherit;font-weight:850}
+
+.catalogue-view-slot{display:contents}

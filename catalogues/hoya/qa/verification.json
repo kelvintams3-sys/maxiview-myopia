@@ -6,6 +6,6 @@
   "comparisonPairs": 81,
   "appTransitions": 81,
   "labelCases": 36,
-  "testedAt": "2026-11-25T06:51:50.293Z",
+  "testedAt": "2026-11-25T07:31:26.771Z",
   "notes": "App interactions, gesture handlers, label text/cache, TSPL and simulated BLE validated. Browser geometry and physical Bluetooth printing require separate validation."
 }

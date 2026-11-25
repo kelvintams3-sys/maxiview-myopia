@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "hoyaOptions": 9,
+  "fullScreenWritesDuringSelection": 0,
+  "heroAndAllImagesRetained": true,
+  "modelHeadersRetained": true,
+  "focusScrollAndExpandedDetailsRetained": true,
+  "comparisonPanRetained": true,
+  "noDuplicateDropdownHandlers": true,
+  "noRepeatedBrandLogoSrcWrites": true,
+  "canonicalContentMatched": true,
+  "screenFadeRemovedForAllBrands": true,
+  "standaloneRetainsScreen": true,
+  "liveBrowser": false,
+  "physicalPrinter": false
+}

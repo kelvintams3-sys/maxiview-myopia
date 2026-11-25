@@ -93,7 +93,7 @@
     });
     document.querySelector('.hub-header').classList.toggle('is-comparing',isCompare);
     document.querySelector('.hub-tabs').hidden = isCompare;
-    node('activeBrandLogo').setAttribute('src',brandLogos[brand]);
+    if (node('activeBrandLogo').getAttribute('src')!==brandLogos[brand]) node('activeBrandLogo').setAttribute('src',brandLogos[brand]);
     node('activeBrandLogo').setAttribute('alt',brandInfo(brand).name);
     tabs.forEach(function (tab) {
       var button = node('tab-'+tab);
