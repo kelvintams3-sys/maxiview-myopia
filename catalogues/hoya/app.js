@@ -21,7 +21,7 @@ function render(){
  var activeId=document.activeElement&&document.activeElement.id;
  document.getElementById('app').innerHTML=state.screen==='summary'?summaryHtml():catalogueHtml();
  document.getElementById('homeButton').classList.toggle('invisible',state.screen!=='summary');
- bindBiometryHold();bindFrameHold();
+ bindBiometryHold();bindFrameHold();bindLensStyleDropdowns();
  if(activeId&&document.getElementById(activeId))document.getElementById(activeId).focus({preventScroll:true});
 }
 function catalogueHtml(){
@@ -44,10 +44,61 @@ function catalogueHtml(){
 function emphasizeTerms(value){ return String(value).replace(/(\d+\.\d{2} D)/g,'<strong class="terms-threshold">$1</strong>'); }
 function familyCard(key){
  var p=DATA.products[key],b=familyBuilds[key],selected=state.product===key;
- var styles=Object.keys(p.prices).map(function(style){return '<option value="'+style+'"'+(style===b.style?' selected':'')+'>'+DATA.styleLabel(DATA.styles[style])+'</option>';}).join('');
  var controls=DATA.availableCoatings(key,b.style).map(function(coating){return coatingOption(key,coating);}).join('');
- return '<article class="family-build-card'+(selected?' selected':'')+'" data-family="'+key+'" data-model-theme="'+key+'"><div class="family-card-head model-identity-band"><div class="eyebrow">'+p.technology+'</div><h3>'+p.name+'</h3><p>'+p.design+'</p></div><label class="style-label" for="style-'+key+'">Lens option</label><select id="style-'+key+'" class="lens-style-select" onchange="selectLensStyle(\''+key+'\',this.value)">'+styles+'</select><p class="style-description">'+DATA.styles[b.style].copy+'</p><div class="bundle-options">'+controls+'</div>'+(b.style==='sunbird'?'<p class="availability-note">Full Control is not available for Sunbird.</p>':'<p class="availability-note">The coating does not change the myopia-control design.</p>')+'<div class="family-guarantee"><strong>'+p.warranty.period+' · Complimentary replacement</strong><span>'+emphasizeTerms(p.warranty.condition)+'</span></div></article>';
+ return '<article class="family-build-card'+(selected?' selected':'')+'" data-family="'+key+'" data-model-theme="'+key+'"><div class="family-card-head model-identity-band"><div class="eyebrow">'+p.technology+'</div><h3>'+p.name+'</h3><p>'+p.design+'</p></div>'+lensStyleDropdown(key)+'<p id="style-description-'+key+'" class="style-description">'+DATA.styles[b.style].copy+'</p><div class="bundle-options">'+controls+'</div>'+(b.style==='sunbird'?'<p class="availability-note">Full Control is not available for Sunbird.</p>':'<p class="availability-note">The coating does not change the myopia-control design.</p>')+'<div class="family-guarantee"><strong>'+p.warranty.period+' · Complimentary replacement</strong><span>'+emphasizeTerms(p.warranty.condition)+'</span></div></article>';
 }
+function lensStyleText(style){
+ var s=DATA.styles[style];
+ return '<span class="lens-style-name">'+s.name+'</span>'+(s.badge?'<span class="lens-style-detail">'+s.badge+'</span>':'');
+}
+function lensStyleDropdown(product){
+ var current=familyBuilds[product].style;
+ // The field identifies the current choice; the expanded panel contains only alternatives.
+ var alternatives=Object.keys(DATA.products[product].prices).filter(function(style){return style!==current;}).map(function(style){
+  return '<button type="button" class="lens-style-option" data-style-choice="'+style+'">'+lensStyleText(style)+'</button>';
+ }).join('');
+ return '<div class="lens-style-dropdown" data-style-product="'+product+'"><label id="style-label-'+product+'" class="style-label" for="style-'+product+'">Lens option</label><button id="style-'+product+'" class="lens-style-trigger" type="button" aria-expanded="false" aria-controls="style-menu-'+product+'" aria-labelledby="style-label-'+product+' style-current-'+product+'" aria-describedby="style-description-'+product+'"><span id="style-current-'+product+'" class="lens-style-current">'+lensStyleText(current)+'</span><span class="lens-style-chevron" aria-hidden="true"></span></button><div id="style-menu-'+product+'" class="lens-style-menu" role="group" aria-label="Other lens options for '+DATA.products[product].name+'" hidden>'+alternatives+'</div></div>';
+}
+function closeLensStyleDropdowns(except){
+ document.querySelectorAll('.lens-style-dropdown').forEach(function(dropdown){
+  if(dropdown===except)return;
+  dropdown.querySelector('.lens-style-trigger').setAttribute('aria-expanded','false');
+  dropdown.querySelector('.lens-style-menu').hidden=true;
+ });
+}
+function bindLensStyleDropdowns(){
+ document.querySelectorAll('.lens-style-dropdown').forEach(function(dropdown){
+  var product=dropdown.getAttribute('data-style-product'),trigger=dropdown.querySelector('.lens-style-trigger'),menu=dropdown.querySelector('.lens-style-menu');
+  var options=Array.prototype.slice.call(menu.querySelectorAll('.lens-style-option'));
+  function open(){closeLensStyleDropdowns(dropdown);trigger.setAttribute('aria-expanded','true');menu.hidden=false;}
+  function close(restoreFocus){trigger.setAttribute('aria-expanded','false');menu.hidden=true;if(restoreFocus)trigger.focus({preventScroll:true});}
+  trigger.addEventListener('click',function(){if(menu.hidden)open();else close(false);});
+  options.forEach(function(option){option.addEventListener('click',function(){
+   var style=option.getAttribute('data-style-choice');
+   close(true);
+   if(style!==familyBuilds[product].style)selectLensStyle(product,style);
+  });});
+  dropdown.addEventListener('keydown',function(event){
+   if(event.key==='Escape'&&!menu.hidden){event.preventDefault();close(true);return;}
+   if(['ArrowDown','ArrowUp','Home','End'].indexOf(event.key)<0)return;
+   event.preventDefault();
+   var index=options.indexOf(document.activeElement),wasClosed=menu.hidden;
+   open();
+   if(!options.length)return;
+   if(event.key==='Home')index=0;
+   else if(event.key==='End')index=options.length-1;
+   else if(wasClosed||index<0)index=event.key==='ArrowUp'?options.length-1:0;
+   else index=(index+(event.key==='ArrowDown'?1:-1)+options.length)%options.length;
+   options[index].focus({preventScroll:true});
+  });
+ });
+}
+function dismissLensStyleDropdowns(event){
+ var dropdown=event.target&&event.target.closest?event.target.closest('.lens-style-dropdown'):null;
+ closeLensStyleDropdowns(dropdown);
+}
+document.addEventListener('click',dismissLensStyleDropdowns);
+document.addEventListener('focusin',dismissLensStyleDropdowns);
 function coatingOption(product,key){
  var b=familyBuilds[product],c=DATA.coatings[key],selected=state.product===product&&state.coating===key;
  return '<button id="coating-'+product+'-'+key+'" type="button" class="bundle-option '+(selected?'selected':'')+'" aria-pressed="'+selected+'" onclick="selectCoatingFor(\''+product+'\',\''+key+'\')"><span class="bundle-radio" aria-hidden="true"></span><span><span class="bundle-name">'+c.shortName+'</span><span class="bundle-copy">'+c.copy+'</span></span><span class="bundle-price">'+money(DATA.products[product].prices[b.style][key])+'</span></button>';

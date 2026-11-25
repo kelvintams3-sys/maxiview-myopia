@@ -70,3 +70,10 @@ No added write delays/timeouts, retries, resends, changed chunk size, notificati
 ## R1.26 — remove only the repeated S.P.A.R.K. subtitle
 
 Kelvin reports S.P.A.R.K. appears twice on the HOYA quotation label. Keep the large S.P.A.R.K. heading and suppress only the second S.P.A.R.K. Coating line when state.coating is spark. Keep Coating STX for all other HOYA coatings and preserve every coordinate, font, price, logo, row, non-quotation label, bridge buffer fix and in-button feedback byte from R1.25. This narrowly authorizes one HOYA drawing-line conditional; update only the explicit artwork exception and never regenerate original manifests. Verify Clear and Chameleon Spark show one heading, STX output is preserved, and byte transport remains unchanged.
+
+
+## R1.27 — approved HOYA dropdown, alternatives only
+
+Kelvin approves the dropdown sample and specifies that the current choice must be hidden in the expanded menu. Implement the white rounded field/panel, navy text and chevron, Photochromic subtitle and all dynamically available alternatives, including Sunbird on original MiYOSMART. Retain the current choice in the field, model header palettes, existing selectLensStyle/price/availability functions and no default deliberate lens selection. Opening/closing the dropdown must not select a lens; actual changes follow the existing bridge-wrapped selection function. Preserve keyboard/touch use, focus and reading position.
+
+This is a screen-only change to HOYA app.js and design.css. All three printer.js files, bridge.js, print-feedback.js/CSS, artwork/label data, original manifests, authorization records, print overlays, script attributes and commercial data stay byte-identical to R1.26. Run the focused dropdown test, selection/pricing/integration/model checks and original printer checks. No physical or browser-layout testing is implied by simulated QA.

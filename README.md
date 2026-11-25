@@ -1,4 +1,15 @@
-# Maxiview Myopia Catalogue R1.26 — one S.P.A.R.K. heading
+# Maxiview Myopia Catalogue R1.27 — themed lens dropdown
+
+25 November 2026. The HOYA lens-option dropdown now uses the approved white rounded field, navy text/chevron, matching white option panel and smaller Photochromic subtitle. The current lens style stays in the field and is omitted from the expanded panel: Clear shows Chameleon (and Sunbird for original MiYOSMART); choosing another style makes Clear available again. Model header palettes remain consistent with the product, comparison and summary pages.
+
+Opening or closing the menu does not select a lens. Actual changes use the existing selection, availability and pricing handlers. Includes keyboard navigation, Escape/outside-click dismissal, focus restoration and touch targets. No additional confirmation is needed. All printed artwork, label wording, prices, printer source files, Bluetooth transport and in-button feedback are byte-identical to R1.26.
+
+Extract the complete ZIP into a fresh folder. For GitHub Pages, replace the deployed files together and reload Bluefy. This ZIP does not update the live site automatically. Rollback: the complete R1.26 package.
+
+Verification: all eight HOYA style transitions, neutral initial selection, hidden current choice, keyboard/touch interactions, comparison/summary identity, existing pricing/selection checks and original printer output/transport checks. These checks execute the real code in an in-memory DOM; browser layout and physical iPad/printer operation have not been tested here.
+
+## R1.26 release notes — retained history
+
 
 25 November 2026. Removed the repeated S.P.A.R.K. Coating subtitle from HOYA quotation labels, retaining the larger S.P.A.R.K. heading. Applies to both Clear and Chameleon S.P.A.R.K. builds. Coating STX remains unchanged. All prices, font sizes, label coordinates, other label types and the R1.25 Bluefy buffer correction are preserved.
 

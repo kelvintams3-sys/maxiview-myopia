@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "transitions": 8,
+  "currentChoiceHidden": true,
+  "defaultsRemainUnselected": true,
+  "keyboardAndDismissal": true,
+  "touchWithoutOptionFocus": true,
+  "pricingAndSunbirdAvailability": true,
+  "comparisonAndSummaryIdentity": true,
+  "liveBrowser": false,
+  "physicalPrinter": false
+}
