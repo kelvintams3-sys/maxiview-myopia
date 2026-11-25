@@ -13,7 +13,9 @@ for(const brand of ['stellest','hoya','zeiss']){
  if(brand==='zeiss')for(const expected of ['0.60 D','0.22 mm','98%','56 children','single-vision','12-month','3–4 letters'])assert.ok(all.includes(expected),expected);
  if(brand==='hoya'){
   assert.match(source,/hoya-lens-macro.jpg/);assert.match(source,/hoya-trial-charts.png/);assert.doesNotMatch(source,/hoya-classroom/);
-  c.selectLensStyle('iq','chameleon');assert.ok(c.catalogueHtml().includes('Chameleon (Photochromic)'));
+  c.selectLensStyle('iq','chameleon');
+  assert.equal(c.hasCompleteSelection(),false,'A lens style alone must not choose a coating');
+  c.selectCoatingFor('iq','spark');assert.ok(c.catalogueHtml().includes('Chameleon (Photochromic)'));
  }
  if(brand==='stellest'){
   for(const expected of ['55%','67%','50%','60%','0.80 D','0.99 D','0.35 mm','0.41 mm','0.228 mm','0.121 mm','1,021','1,190'])assert.ok(all.includes(expected),expected);

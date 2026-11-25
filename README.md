@@ -1,4 +1,17 @@
-# Maxiview Myopia Catalogue R1.27 — themed lens dropdown
+# Maxiview Myopia Catalogue R1.28 — neutral dropdown, manual coating choice
+
+25 November 2026. Clear remains the default displayed lens style. Opening a HOYA dropdown shows its current style and the alternatives together inside one blue enclosure: two styles for iQ, three for original MiYOSMART. No row has a selected fill, tick or individual blue border. Light separators distinguish the neutral white rows, and the current style is not repeated in the alternatives.
+
+Coatings start unchosen, including Sunbird's single STX coating. A coating price must be tapped before the build becomes a recommendation, enters comparison or shows its total/summary. Changing lens style resets its coating choice. The default Clear can be retained by tapping a coating directly. Complete choices from Change lens in Compare count as a deliberate style and coating selection. Each model retains its actual choices through navigation, summary and shared updates.
+
+The amber/blue model palettes and commercial values are unchanged. All three printer.js files, logos, label artwork, manifests, authorization records, print overlays, script attributes and print-feedback.js/CSS are byte-identical to R1.27. The bridge changes only HOYA selection-state synchronization; Bluetooth provider, buffer ownership, connection, notifications, writes, chunking, timing and print entry points are unchanged.
+
+Extract the complete ZIP into a fresh folder. For GitHub Pages, replace the deployed files together and reload Bluefy. This ZIP does not update the live site automatically. Rollback: the complete R1.27 package.
+
+Verification covers default Clear with no coating selected, the group border, all eight style transitions, fourteen coating cases, all nine HOYA Compare handoffs, single-coating confirmation, keyboard/touch interactions and per-model memory. Existing selection, financial, original label-output and simulated Bluefy transport checks are retained. These checks use an in-memory DOM and real label renderers; live browser layout and physical printer/iPad operation are not tested here.
+
+## R1.27 release notes — retained history
+
 
 25 November 2026. The HOYA lens-option dropdown now uses the approved white rounded field, navy text/chevron, matching white option panel and smaller Photochromic subtitle. The current lens style stays in the field and is omitted from the expanded panel: Clear shows Chameleon (and Sunbird for original MiYOSMART); choosing another style makes Clear available again. Model header palettes remain consistent with the product, comparison and summary pages.
 

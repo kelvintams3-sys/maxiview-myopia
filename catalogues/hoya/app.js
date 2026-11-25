@@ -2,6 +2,8 @@
 var DATA=HoyaCatalogueData;
 var state=Object.assign(DATA.normalizeState(),{screen:'catalogue',frameDraft:'',compareOpen:true});
 var familyBuilds={miyosmart:{product:'miyosmart',style:'clear',coating:'stx'},iq:{product:'iq',style:'clear',coating:'spark'}};
+// Clear is the default style; a coating is never chosen until explicitly tapped.
+var familyChoices={miyosmart:{coating:false},iq:{coating:false}};
 var toastTimer=null,frameHoldCompleted=false,overlayOpener=null;
 function money(value){return DATA.money(value);}
 function currentProduct(){return DATA.products[state.product];}
@@ -11,9 +13,15 @@ function frameIncluded(){return state.frame!==null;}
 function grandTotal(){return DATA.totals(state).grand;}
 function setScreen(name){state.screen=name==='summary'?'summary':'catalogue';render();window.scrollTo({top:0,behavior:'smooth'});}
 function goHome(){setScreen('catalogue');}
-function openSummary(){setScreen('summary');}
-function applyBuild(build){var s=DATA.normalizeState(Object.assign({},state,build));state.product=s.product;state.style=s.style;state.coating=s.coating;familyBuilds[s.product]={product:s.product,style:s.style,coating:s.coating};render();}
-function selectLensStyle(product,style){if(!DATA.products[product]||!DATA.products[product].prices[style])return;applyBuild(Object.assign({},familyBuilds[product],{product:product,style:style}));}
+function openSummary(){if(hasCompleteSelection())setScreen('summary');}
+function hasCompleteSelection(){
+ var choice=familyChoices[state.product],build=familyBuilds[state.product];
+ return !!(choice&&choice.coating&&build.style===state.style&&build.coating===state.coating);
+}
+function updateBuild(build,choice){var s=DATA.normalizeState(Object.assign({},state,build));state.product=s.product;state.style=s.style;state.coating=s.coating;familyBuilds[s.product]={product:s.product,style:s.style,coating:s.coating};familyChoices[s.product]=choice;render();}
+// A complete choice arriving from Compare explicitly includes style and coating.
+function applyBuild(build){updateBuild(build,{coating:true});}
+function selectLensStyle(product,style){if(!DATA.products[product]||!DATA.products[product].prices[style])return;updateBuild(Object.assign({},familyBuilds[product],{product:product,style:style}),{coating:false});}
 function selectCoatingFor(product,coating){if(!DATA.products[product])return;var build=familyBuilds[product];if(DATA.availableCoatings(product,build.style).indexOf(coating)<0)return;applyBuild(Object.assign({},build,{product:product,coating:coating}));}
 function selectCoating(coating){selectCoatingFor(state.product,coating);}
 function toggleCoatingComparison(){state.compareOpen=!state.compareOpen;render();}
@@ -26,7 +34,7 @@ function render(){
 }
 function catalogueHtml(){
  var p=currentProduct(),w=p.warranty,rx=DATA.prescription(state.product,state.style);
- var options=['miyosmart','iq'].map(function(key){return DATA.optionForState(familyBuilds[key]);});
+ var options=['miyosmart','iq'].filter(function(key){return familyChoices[key].coating;}).map(function(key){return DATA.optionForState(familyBuilds[key]);});
  return '<section class="screen">'+
  '<div class="catalogue-hero"><div class="catalogue-hero-copy"><div class="eyebrow">HOYA MiYOSMART iQ</div><h1>Clear vision today.<br>Help slow myopia<br>as they grow.</h1><p>Choose a HOYA lens designed to correct your child’s vision while helping slow short-sightedness.</p></div><img class="catalogue-hero-photo" src="assets/hoya-hero.jpg" alt="Child wearing HOYA spectacles outdoors" fetchpriority="high"></div>'+
  '<section class="panel mechanism-panel ted-panel" aria-labelledby="mechanism-title"><div class="mechanism-copy"><div class="section-kicker">D.I.M.S. with Triple Enhanced Design</div><h2 id="mechanism-title">Three design updates in MiYOSMART iQ.</h2><div class="mechanism-points ted-points"><div><strong>Closer to the centre</strong><p>Treatment segments start closer to the lens centre, aiming the treatment signal at the nearby peripheral retina.</p></div><div><strong>Higher defocus power</strong><p>+4.5 D, compared with +3.5 D in MiYOSMART, creates a stronger myopic-defocus treatment signal.</p></div><div><strong>Wider treatment coverage</strong><p>A 41 mm zone, compared with 33 mm in MiYOSMART, extends treatment coverage and supports larger frames.</p></div></div><div class="everyday-benefits"><div><strong>Everyday vision and appearance</strong><p>MiYOSMART iQ also uses an optimized FreeForm back surface, designed to reduce optical distortions and give a flatter lens profile.</p></div><div><strong>A coating made for daily handling</strong><p>S.P.A.R.K. provides improved scratch resistance and lasting easy-clean performance compared with the previous MiYOSMART generation.</p></div></div></div><figure class="ted-figure"><img src="assets/hoya-lens-macro.jpg" alt="MiYOSMART iQ lens with its pattern of treatment segments" width="1600" height="900" loading="lazy" decoding="async"><figcaption class="figure-caption">HOYA image: the dots are the treatment segments. Treatment power is part of the lens design, not your child’s prescription.</figcaption></figure></section>'+
@@ -34,18 +42,18 @@ function catalogueHtml(){
  '<figure class="trial-figure"><img src="assets/hoya-trial-charts.png" alt="HOYA trial charts: average prescription change and axial elongation over 12 months for single vision, MiYOSMART and MiYOSMART iQ" loading="lazy"><figcaption class="figure-caption">Official HOYA trial figures, 12 months, ages 4–12. Group averages; individual results vary. Dioptres and millimetres are separate measures; +0.046 D is an average, not reversal of myopia. Same-brand comparison within one HOYA trial, not a comparison with any other brand’s lenses. MiYOSMART also slowed progression versus single vision. Evidence: ARVO 2026 presentation and HOYA data on file; no peer-reviewed paper yet.</figcaption></figure></section>'+
  '<section class="coating-section" aria-labelledby="coating-title"><div class="section-heading"><div><div class="section-kicker">Your HOYA lens options</div><h2 id="coating-title">Choose your lens and coating</h2><p>Select a lens option, then tap a coating price to include it in your quotation. All lens prices are per pair.</p></div></div><div class="family-build-grid">'+familyCard('miyosmart')+familyCard('iq')+'</div>'+
  '<button id="coatingCompareButton" type="button" class="coating-compare-button" aria-expanded="'+state.compareOpen+'" aria-controls="coatingComparison" onclick="toggleCoatingComparison()">'+(state.compareOpen?'Hide lens comparison':'Compare these lens choices')+'</button><div id="coatingComparison"'+(state.compareOpen?'':' hidden')+'>'+(state.compareOpen?CatalogueComparison.render(options,DATA.comparisonRows)+'<p class="quiet-note">Clinical outcomes are spherical-equivalent averages from the supplied 12-month trial chart. Replacement guarantees use sphere change. *Plus prescriptions for iQ are subject to maximum spherical equivalent +2.00 D.</p>':'')+'</div></section>'+
- '<section class="guarantee-panel" aria-label="Selected prescription replacement guarantee"><strong>'+p.name+' · '+w.title+'</strong><span>'+emphasizeTerms(w.wording)+'</span></section>'+
+ (hasCompleteSelection()?'<section class="guarantee-panel" aria-label="Selected prescription replacement guarantee"><strong>'+p.name+' · '+w.title+'</strong><span>'+emphasizeTerms(w.wording)+'</span></section>':'')+
  '<details class="panel product-details more-design"><summary>How the design and coating work</summary>'+
  '<h3>Design idea</h3><figure class="fig-small"><img src="assets/hoya-eye-diagram.png" alt="HOYA schematic: light through the treatment segments reaches the near-peripheral retina" loading="lazy"><figcaption class="figure-caption">HOYA schematic of the design idea. Research suggests the near-peripheral retina responds to myopic defocus.</figcaption></figure>'+
  '<h3>Coating layers</h3><figure class="fig-small"><img src="assets/hoya-coating-layers.png" alt="HOYA coating architecture overview showing the layers of the lens coating" loading="lazy"><figcaption class="figure-caption">HOYA coating layers. Coating performance figures come from laboratory tests; the coating does not change the myopia-control design.</figcaption></figure></details>'+
- '<details class="panel product-details"><summary>Selected lens: prescription range and details</summary><div class="spec-grid"><dl><dt>Selected lens</dt><dd>'+p.name+' '+DATA.styles[state.style].name+'</dd></dl><dl><dt>Material</dt><dd>1.59 polycarbonate</dd></dl><dl><dt>Sphere</dt><dd>'+rx.sphereText+'</dd></dl><dl><dt>Cylinder</dt><dd>Up to −4.00 D</dd></dl><dl><dt>Combined prescription</dt><dd>'+rx.combinedText+'</dd></dl><dl><dt>Prism</dt><dd>Up to 3.00Δ per lens</dd></dl></div><p class="quiet-note">Diameter 60–75 mm, subject to prescription and frame availability. Defocus power is a treatment-design feature, not the patient’s prescription.</p></details>'+
- '<div class="sticky-total" data-model-theme="'+state.product+'" role="region" aria-label="Selected lens"><div><div class="total-label">'+p.name+' · '+DATA.styleLabel(DATA.styles[state.style])+'</div><div class="total-value">'+money(coatingPrice())+'</div></div><button class="primary-button" type="button" onclick="openSummary()">Review summary</button></div></section>';
+ '<details class="panel product-details"><summary>Current lens: prescription range and details</summary><div class="spec-grid"><dl><dt>Lens option</dt><dd>'+p.name+' '+DATA.styles[state.style].name+'</dd></dl><dl><dt>Material</dt><dd>1.59 polycarbonate</dd></dl><dl><dt>Sphere</dt><dd>'+rx.sphereText+'</dd></dl><dl><dt>Cylinder</dt><dd>Up to −4.00 D</dd></dl><dl><dt>Combined prescription</dt><dd>'+rx.combinedText+'</dd></dl><dl><dt>Prism</dt><dd>Up to 3.00Δ per lens</dd></dl></div><p class="quiet-note">Diameter 60–75 mm, subject to prescription and frame availability. Defocus power is a treatment-design feature, not the patient’s prescription.</p></details>'+
+ (hasCompleteSelection()?'<div class="sticky-total" data-model-theme="'+state.product+'" role="region" aria-label="Selected lens"><div><div class="total-label">'+p.name+' · '+DATA.styleLabel(DATA.styles[state.style])+'</div><div class="total-value">'+money(coatingPrice())+'</div></div><button class="primary-button" type="button" onclick="openSummary()">Review summary</button></div>':'')+'</section>';
 }
 function emphasizeTerms(value){ return String(value).replace(/(\d+\.\d{2} D)/g,'<strong class="terms-threshold">$1</strong>'); }
 function familyCard(key){
- var p=DATA.products[key],b=familyBuilds[key],selected=state.product===key;
+ var p=DATA.products[key],b=familyBuilds[key],choice=familyChoices[key],selected=state.product===key&&choice.coating;
  var controls=DATA.availableCoatings(key,b.style).map(function(coating){return coatingOption(key,coating);}).join('');
- return '<article class="family-build-card'+(selected?' selected':'')+'" data-family="'+key+'" data-model-theme="'+key+'"><div class="family-card-head model-identity-band"><div class="eyebrow">'+p.technology+'</div><h3>'+p.name+'</h3><p>'+p.design+'</p></div>'+lensStyleDropdown(key)+'<p id="style-description-'+key+'" class="style-description">'+DATA.styles[b.style].copy+'</p><div class="bundle-options">'+controls+'</div>'+(b.style==='sunbird'?'<p class="availability-note">Full Control is not available for Sunbird.</p>':'<p class="availability-note">The coating does not change the myopia-control design.</p>')+'<div class="family-guarantee"><strong>'+p.warranty.period+' · Complimentary replacement</strong><span>'+emphasizeTerms(p.warranty.condition)+'</span></div></article>';
+ return '<article class="family-build-card'+(selected?' selected':'')+'" data-family="'+key+'" data-model-theme="'+key+'"><div class="family-card-head model-identity-band"><div class="eyebrow">'+p.technology+'</div><h3>'+p.name+'</h3><p>'+p.design+'</p></div>'+lensStyleDropdown(key)+'<p id="style-description-'+key+'" class="style-description">'+DATA.styles[b.style].copy+'</p><div class="coating-choice-label">Choose coating</div><div class="bundle-options" role="group" aria-label="Coatings for '+p.name+'">'+controls+'</div><p class="coating-choice-hint"'+(choice.coating?' hidden':'')+'>Tap a coating to complete your choice.</p>'+(b.style==='sunbird'?'<p class="availability-note">Full Control is not available for Sunbird.</p>':'<p class="availability-note">The coating does not change the myopia-control design.</p>')+'<div class="family-guarantee"><strong>'+p.warranty.period+' · Complimentary replacement</strong><span>'+emphasizeTerms(p.warranty.condition)+'</span></div></article>';
 }
 function lensStyleText(style){
  var s=DATA.styles[style];
@@ -53,25 +61,26 @@ function lensStyleText(style){
 }
 function lensStyleDropdown(product){
  var current=familyBuilds[product].style;
- // The field identifies the current choice; the expanded panel contains only alternatives.
+ // The current/default style is the field; alternatives share its neutral enclosure.
  var alternatives=Object.keys(DATA.products[product].prices).filter(function(style){return style!==current;}).map(function(style){
   return '<button type="button" class="lens-style-option" data-style-choice="'+style+'">'+lensStyleText(style)+'</button>';
  }).join('');
- return '<div class="lens-style-dropdown" data-style-product="'+product+'"><label id="style-label-'+product+'" class="style-label" for="style-'+product+'">Lens option</label><button id="style-'+product+'" class="lens-style-trigger" type="button" aria-expanded="false" aria-controls="style-menu-'+product+'" aria-labelledby="style-label-'+product+' style-current-'+product+'" aria-describedby="style-description-'+product+'"><span id="style-current-'+product+'" class="lens-style-current">'+lensStyleText(current)+'</span><span class="lens-style-chevron" aria-hidden="true"></span></button><div id="style-menu-'+product+'" class="lens-style-menu" role="group" aria-label="Other lens options for '+DATA.products[product].name+'" hidden>'+alternatives+'</div></div>';
+ return '<div class="lens-style-dropdown" data-style-product="'+product+'"><label id="style-label-'+product+'" class="style-label" for="style-'+product+'">Lens option</label><div class="lens-style-control" data-open="false"><button id="style-'+product+'" class="lens-style-trigger" type="button" aria-expanded="false" aria-controls="style-menu-'+product+'" aria-labelledby="style-label-'+product+' style-current-'+product+'" aria-describedby="style-description-'+product+'"><span id="style-current-'+product+'" class="lens-style-current">'+lensStyleText(current)+'</span><span class="lens-style-chevron" aria-hidden="true"></span></button><div id="style-menu-'+product+'" class="lens-style-menu" role="group" aria-label="Other lens options for '+DATA.products[product].name+'" hidden>'+alternatives+'</div></div></div>';
 }
 function closeLensStyleDropdowns(except){
  document.querySelectorAll('.lens-style-dropdown').forEach(function(dropdown){
   if(dropdown===except)return;
   dropdown.querySelector('.lens-style-trigger').setAttribute('aria-expanded','false');
+  dropdown.querySelector('.lens-style-control').setAttribute('data-open','false');
   dropdown.querySelector('.lens-style-menu').hidden=true;
  });
 }
 function bindLensStyleDropdowns(){
  document.querySelectorAll('.lens-style-dropdown').forEach(function(dropdown){
-  var product=dropdown.getAttribute('data-style-product'),trigger=dropdown.querySelector('.lens-style-trigger'),menu=dropdown.querySelector('.lens-style-menu');
+  var product=dropdown.getAttribute('data-style-product'),control=dropdown.querySelector('.lens-style-control'),trigger=dropdown.querySelector('.lens-style-trigger'),menu=dropdown.querySelector('.lens-style-menu');
   var options=Array.prototype.slice.call(menu.querySelectorAll('.lens-style-option'));
-  function open(){closeLensStyleDropdowns(dropdown);trigger.setAttribute('aria-expanded','true');menu.hidden=false;}
-  function close(restoreFocus){trigger.setAttribute('aria-expanded','false');menu.hidden=true;if(restoreFocus)trigger.focus({preventScroll:true});}
+  function open(){closeLensStyleDropdowns(dropdown);trigger.setAttribute('aria-expanded','true');control.setAttribute('data-open','true');menu.hidden=false;}
+  function close(restoreFocus){trigger.setAttribute('aria-expanded','false');control.setAttribute('data-open','false');menu.hidden=true;if(restoreFocus)trigger.focus({preventScroll:true});}
   trigger.addEventListener('click',function(){if(menu.hidden)open();else close(false);});
   options.forEach(function(option){option.addEventListener('click',function(){
    var style=option.getAttribute('data-style-choice');
@@ -100,7 +109,7 @@ function dismissLensStyleDropdowns(event){
 document.addEventListener('click',dismissLensStyleDropdowns);
 document.addEventListener('focusin',dismissLensStyleDropdowns);
 function coatingOption(product,key){
- var b=familyBuilds[product],c=DATA.coatings[key],selected=state.product===product&&state.coating===key;
+ var b=familyBuilds[product],c=DATA.coatings[key],selected=familyChoices[product].coating&&b.coating===key;
  return '<button id="coating-'+product+'-'+key+'" type="button" class="bundle-option '+(selected?'selected':'')+'" aria-pressed="'+selected+'" onclick="selectCoatingFor(\''+product+'\',\''+key+'\')"><span class="bundle-radio" aria-hidden="true"></span><span><span class="bundle-name">'+c.shortName+'</span><span class="bundle-copy">'+c.copy+'</span></span><span class="bundle-price">'+money(DATA.products[product].prices[b.style][key])+'</span></button>';
 }
 function summaryHtml(){

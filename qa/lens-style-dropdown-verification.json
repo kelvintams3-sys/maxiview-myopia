@@ -1,12 +1,18 @@
 {
   "status": "passed",
   "transitions": 8,
-  "currentChoiceHidden": true,
-  "defaultsRemainUnselected": true,
+  "coatingCases": 14,
+  "compareCases": 9,
+  "clearDefaultAllowed": true,
+  "dropdownRowsNeverPrehighlighted": true,
+  "initialCoatingsUnchosen": true,
+  "singleCoatingRequiresTap": true,
+  "currentChoiceNotDuplicated": true,
+  "oneGroupEnclosure": true,
   "keyboardAndDismissal": true,
-  "touchWithoutOptionFocus": true,
+  "independentModelMemory": true,
+  "standaloneRequiresCoatingTap": true,
   "pricingAndSunbirdAvailability": true,
-  "comparisonAndSummaryIdentity": true,
   "liveBrowser": false,
   "physicalPrinter": false
 }

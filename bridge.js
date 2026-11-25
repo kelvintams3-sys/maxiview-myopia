@@ -139,7 +139,11 @@
   var selected = false, selectionRevision = 0;
   var own = function (object,key) { return Object.prototype.hasOwnProperty.call(object,key); };
   function state() { return global.state; }
+  function syncSelection() {
+    if (brand==='hoya' && typeof global.hasCompleteSelection==='function') selected = global.hasCompleteSelection();
+  }
   function snapshot() {
+    syncSelection();
     var s = state();
     return {selected:selected,product:s.product,style:s.style,coating:s.coating,frame:s.frame,
       frameComplimentary:s.frameComplimentary===true,followups:{one:s.followups.one===true,two:s.followups.two===true},
@@ -159,11 +163,12 @@
   }
   function rememberScroll() { if (visible && document.documentElement.clientHeight>0) lastScroll = readScroll(); }
   function presentation() {
+    syncSelection();
     document.documentElement.setAttribute('data-hub-selected',String(selected));
     var header = document.querySelector('.topbar');
     if (header) { header.hidden = true; header.style.display = 'none'; }
     if (brand==='stellest') document.body.style.setProperty('grid-template-rows','minmax(0,1fr) auto');
-    if (!selected) {
+    if (!selected && !(brand==='hoya' && typeof global.hasCompleteSelection==='function')) {
       document.querySelectorAll('.family-build-card,.bundle-option,.option-card,.compare-card').forEach(function (el) {
         el.classList.remove('selected');
         if (el.hasAttribute('aria-pressed')) el.setAttribute('aria-pressed','false');
@@ -183,7 +188,7 @@
   var selectionFunctions = brand==='stellest'?['selectBundle','selectCoating','openConfig','switchProduct']:brand==='hoya'?['selectCoatingFor','selectLensStyle']:['selectCoating'];
   selectionFunctions.forEach(function (name) {
     var original = global[name]; if (typeof original!=='function') return;
-    global[name] = function () { selected = true; return original.apply(this,arguments); };
+    global[name] = function () { selected = true; var result = original.apply(this,arguments); syncSelection(); return result; };
   });
   var originalSummary = global.openSummary;
   global.openSummary = function () { if (selected) return originalSummary.apply(this,arguments); };

@@ -1,14 +1,16 @@
 {
   "status": "passed",
-  "baseline": "R1.26",
+  "baseline": "R1.27",
+  "clearDefaultAllowed": true,
+  "coatingRequiresExplicitTap": true,
   "runtimeChanged": [
     "catalogues/hoya/app.js",
     "catalogues/hoya/design.css",
+    "bridge.js (HOYA selection state only)",
     "index.html (release metadata only)"
   ],
-  "unchangedNonQaFiles": 99,
+  "unchangedNonQaFiles": 98,
   "unchangedCriticalFiles": {
-    "bridge.js": "3d9cdc7c622c81552cef386055ab5bae173e5124a02071f012e8a64fb666586f",
     "print-feedback.js": "78aa31e2868b7509a26a19f211b834dfa7d75e811c7c65dc4784cfa35a05ac07",
     "print-feedback.css": "d099d60e05c4e2b7fe49950d61879550b0e411e1ff5fffc2600887ba069b59f9",
     "PRINT_ARTWORK_AUTHORIZATION.json": "b2a014c79ff7fe31d8a8b8869d032a1ceefcb58b8e112120e30548831e6218cf",
@@ -16,6 +18,8 @@
     "catalogues/hoya/printer.js": "2f09f15f9d956ba737ce72bf1e777566e3b4cd17b36b1b24496fe70c0711c826",
     "catalogues/zeiss/printer.js": "c2c0242356f27faac3a08e55c31a9701866eabf36cf8c24277659183378760ce"
   },
+  "bluetoothConnectionBufferPrefixUnchanged": true,
+  "printEntryPointUnchanged": true,
   "liveBrowser": false,
   "physicalPrinter": false
 }
