@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "genuinelySeparateBufferRealms": true,
+  "r24ErrorReproduced": 3,
+  "successfulCrossWindowLabels": 24,
+  "legacyWriteLabels": 12,
+  "withoutResponseLabels": 12,
+  "offsetAndViewCases": 12,
+  "unchangedDesktopCases": 3,
+  "unchangedStandaloneCases": 3,
+  "liveBrowser": false,
+  "physicalPrinter": false
+}

@@ -90,16 +90,21 @@ function makeWindow(markup){
   document.getElementById=id=>document.querySelectorAll('[id]').find(el=>el.id===id)||null;
   document.addEventListener=(type,fn)=>(document.listeners[type]||(document.listeners[type]=[])).push(fn);
   const timers=new Map(),listeners={};let serial=0;
-  const win={document,console,Uint8Array,Uint8ClampedArray,TextEncoder,innerHeight:768,scrollY:0,navigator:{},CSS:{supports(){return true}},
+  const win={document,console,TextEncoder,innerHeight:768,scrollY:0,navigator:{},CSS:{supports(){return true}},
     addEventListener(type,fn){(listeners[type]||(listeners[type]=[])).push(fn)},
     dispatch(type,event){for(const fn of listeners[type]||[])fn(event)},
     setTimeout(fn,delay){const id=++serial;timers.set(id,{fn,delay});return id},clearTimeout(id){timers.delete(id)},
     requestAnimationFrame(fn){fn();return 1},scrollTo(input){this.scrollY=input.top;document.documentElement.scrollTop=input.top},
     timers,flushTimers(delay){for(const [id,t] of [...timers])if(t.delay===delay){timers.delete(id);t.fn()}}};
-  win.window=win;win.parent=win;win.top=win;return vm.createContext(win);
+  win.window=win;win.parent=win;win.top=win;
+  const context=vm.createContext(win);
+  // A real iframe has different buffer constructors from its parent. Sharing
+  // host constructors here previously hid the Bluefy cross-window type error.
+  Object.assign(context,vm.runInContext('({Uint8Array,Uint8ClampedArray,ArrayBuffer,DataView})',context));
+  return context;
 }
 function execute(context,file){vm.runInContext(fs.readFileSync(file,'utf8'),context,{filename:file})}
-function loadNative(brand,parent,frame,queue,bridge=true,directoryOverride=null){
+function loadNative(brand,parent,frame,queue,bridge=true,directoryOverride=null,bridgeFile=null){
   const directory=directoryOverride||path.join(root,'catalogues',brand),markup=fs.readFileSync(path.join(directory,'index.html'),'utf8');
   const context=makeWindow(markup);
   if(parent){
@@ -117,17 +122,17 @@ function loadNative(brand,parent,frame,queue,bridge=true,directoryOverride=null)
   }
   if(bridge){
     context.document.currentScript={getAttribute(name){return name==='data-brand'?brand:null}};
-    execute(context,path.join(root,'bridge.js'));
+    execute(context,bridgeFile||path.join(root,'bridge.js'));
     if(markup.includes('src="../../print-feedback.js"'))execute(context,path.join(root,'print-feedback.js'));
   }
   return context;
 }
-function createHub(){
+function createHub(options={}){
   const queue=[],children={};
   const host=makeWindow(fs.readFileSync(path.join(root,'index.html'),'utf8'));
   host.document.onFrame=frame=>{
     const brand=/catalogues\/([^/]+)\//.exec(frame.getAttribute('src'))[1];
-    children[brand]=loadNative(brand,host,frame,queue,true);
+    children[brand]=loadNative(brand,host,frame,queue,true,null,options.bridgeFile);
   };
   for(const file of ['catalogues/hoya/catalogue-data.js','catalogues/zeiss/catalogue-data.js','catalogue-data.js','consultation-copy.js','hub.js'])execute(host,path.join(root,file));
   function flush(){let count=0;while(queue.length){if(++count>1000)throw new Error('Message loop did not settle');queue.shift()();}return count;}

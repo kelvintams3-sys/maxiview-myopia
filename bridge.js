@@ -3,7 +3,8 @@
   var script = document.currentScript, brand = script && script.getAttribute('data-brand');
   if (['stellest','hoya','zeiss'].indexOf(brand)<0) return;
   // R1.20: retain R1.15's complete Bluetooth setup, including notifications,
-  // and return its native write characteristic. Bound setup waits only.
+  // and use its native write methods. Bound setup waits only; cross-window
+  // Bluefy writes copy each packet into the Bluetooth owner's buffer realm.
   var connection = installConnectionGuard();
   if (global.parent === global) {
     var standalonePrint = global.printToD520, standaloneBusy = false;
@@ -27,10 +28,28 @@
       if (ipadBrowser && global.parent !== global) {
         try {
           var owner = global.top;
-          if (owner && owner.navigator && owner.navigator.bluetooth) return owner.navigator.bluetooth;
+          if (owner && owner.navigator && owner.navigator.bluetooth) return {bluetooth:owner.navigator.bluetooth,owner:owner};
         } catch (ignore) {} // A local-file/foreign frame may not share its top window.
       }
-      return navigator.bluetooth;
+      return {bluetooth:navigator.bluetooth,owner:global};
+    }
+    function ownerBufferWrites(characteristic,owner) {
+      if (owner === global) return characteristic;
+      var channel = {properties:characteristic.properties};
+      ['writeValueWithoutResponse','writeValue'].forEach(function (method) {
+        if (typeof characteristic[method] !== 'function') return;
+        channel[method] = function (bytes) {
+          // Bluefy may validate ArrayBuffer/View using its own window's
+          // constructors. Preserve just this view's bytes (including offsets),
+          // then pass an exact-sized ArrayBuffer created in that same window.
+          var view = global.ArrayBuffer.isView(bytes) ?
+            new global.Uint8Array(bytes.buffer,bytes.byteOffset,bytes.byteLength) : new global.Uint8Array(bytes);
+          var packet = new owner.Uint8Array(view.byteLength);
+          packet.set(view);
+          return characteristic[method](packet.buffer);
+        };
+      });
+      return channel;
     }
     function begin() { active = {device:null,cancelled:false}; }
     function finish() { active = null; }
@@ -74,7 +93,7 @@
       if (!active) begin();
       var attempt = active;
       try {
-        var bluetooth = bluetoothProvider();
+        var provider = bluetoothProvider(), bluetooth = provider.bluetooth;
         if (!bluetooth) throw new Error('Open this catalogue in Bluefy/WebBLE on iPad to connect the printer.');
         if (!global.labelPrinterDevice) {
           status('Choose your D520BT-Z printer…');
@@ -111,7 +130,7 @@
           if (error && error.maxiviewBluetoothTimeout) throw error;
         }
         status('Printer ready. Sending label…');
-        return characteristic;
+        return ownerBufferWrites(characteristic,provider.owner);
       } catch (error) { fail(attempt); throw error; }
     };
     return {begin:begin,finish:finish};

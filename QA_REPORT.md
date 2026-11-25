@@ -1,4 +1,14 @@
-# R1.24 — Bluefy provider handoff and connection text in the bar
+# R1.25 — Bluefy buffer ownership regression
+
+25 November 2026. Kelvin's iPad screenshot reports BluetoothRemoteGATTCharacteristic.writeValue(any) needs an ArrayBuffer or View, while PC printing succeeds. The R1.24 path uses a main-page Bluetooth characteristic with iframe-created Uint8Array chunks. R1.25 copies each cross-window packet into a Uint8Array created by the Bluetooth owner's window, then passes that view's exact-sized ArrayBuffer to the original native write method. This preserves contents, method receiver, chunk sizes and timing; the same-window path returns the original characteristic unchanged.
+
+The earlier harness supplied the same host Uint8Array constructor to every simulated frame and therefore missed this class of error. The harness now creates genuine per-VM ArrayBuffer/typed-array/DataView constructors. A strict owner-constructor native-write gate reproduces the screenshot's exact error for all three brands using the unchanged archived R1.24 bridge. This is a simulated reproduction consistent with the observed error, not inspection or execution of Bluefy's private implementation.
+
+The same gate now passes 24 cross-window full-label transmissions: all four types across three brands on both legacy writeValue and writeValueWithoutResponse. Tests compare all transmitted bytes, original 20-byte chunk boundaries, 35 ms pacing, final delay, cached-device reuse, native receiver and promise identity. Twelve subview/DataView/raw-buffer/empty-view cases verify exact offsets and byte lengths. Three desktop and three standalone paths retain raw native characteristics and original typed-array arguments. Existing handoff/setup, button progress, native-versus-bridged sequence, financial/output, artwork, integration and package checks are rerun.
+
+All three printer.js files, label/asset/font data, artwork authorization/manifests, native overlays/script attributes and in-button feedback files remain byte-identical to R1.24. Runtime changes are confined to bridge buffer ownership and root release metadata. No live browser or physical printer was used. A fresh Bluefy device label is still required to confirm the correction. Rollback is complete R1.24.
+
+## R1.24 — Bluefy provider handoff and connection text in the bar (history)
 
 25 November 2026. Kelvin confirms iMac output but reports an iPad Bluefy stall after printer selection through GitHub/QR, and requests all setup feedback inside the bar. A fresh read of the live index, bridge, print-feedback, hub and ZEISS printer/index files matches R1.23 byte-for-byte. This rules out an unuploaded ZIP for those fetched resources; it does not establish the content held in a particular device's cache.
 

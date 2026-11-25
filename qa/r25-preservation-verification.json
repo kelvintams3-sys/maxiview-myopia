@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "baseline": "R1.24",
+  "runtimeFilesChanged": [
+    "bridge.js",
+    "index.html"
+  ],
+  "allNativePrinterAndLabelFilesByteIdentical": true,
+  "inButtonFeedbackByteIdentical": true,
+  "allArtworkFontsLogosAndCommercialDataUnchanged": true,
+  "originalManifestsAndArtworkAuthorizationRetained": true,
+  "r24RegressionFixtureByteIdentical": true,
+  "physicalPrinterThisRelease": false
+}
