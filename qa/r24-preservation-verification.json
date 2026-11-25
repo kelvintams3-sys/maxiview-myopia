@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "baseline": "R1.23",
+  "runtimeFilesChanged": [
+    "bridge.js",
+    "index.html",
+    "print-feedback.js"
+  ],
+  "nativeCatalogueFilesByteIdentical": 81,
+  "allThreeNativePrinterFilesByteIdentical": true,
+  "allLabelArtworkAndFontSizesUnchanged": true,
+  "originalManifestsAndArtworkAuthorizationRetained": true,
+  "physicalPrinterThisRelease": false
+}

@@ -96,7 +96,7 @@ function makeWindow(markup){
     setTimeout(fn,delay){const id=++serial;timers.set(id,{fn,delay});return id},clearTimeout(id){timers.delete(id)},
     requestAnimationFrame(fn){fn();return 1},scrollTo(input){this.scrollY=input.top;document.documentElement.scrollTop=input.top},
     timers,flushTimers(delay){for(const [id,t] of [...timers])if(t.delay===delay){timers.delete(id);t.fn()}}};
-  win.window=win;win.parent=win;return vm.createContext(win);
+  win.window=win;win.parent=win;win.top=win;return vm.createContext(win);
 }
 function execute(context,file){vm.runInContext(fs.readFileSync(file,'utf8'),context,{filename:file})}
 function loadNative(brand,parent,frame,queue,bridge=true,directoryOverride=null){
@@ -105,6 +105,7 @@ function loadNative(brand,parent,frame,queue,bridge=true,directoryOverride=null)
   if(parent){
     const proxy={postMessage(data){const clone=JSON.parse(JSON.stringify(data));queue.push(()=>parent.dispatch('message',{source:context,data:clone}))}};
     context.parent=proxy;
+    context.top=parent.top||parent;
     context.postMessage=function(data){const clone=JSON.parse(JSON.stringify(data));queue.push(()=>context.dispatch('message',{source:proxy,data:clone}))};
     if(frame)frame.contentWindow=context;
   }

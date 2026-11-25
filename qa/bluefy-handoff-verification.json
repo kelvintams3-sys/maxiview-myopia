@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "topLevelBluefyLabels": 12,
+  "desktopIpadCases": 3,
+  "desktopLocalCases": 3,
+  "standaloneBluefyCases": 3,
+  "inaccessibleParentCases": 3,
+  "visibleSetupStages": 12,
+  "timeoutRecoveryCases": 9,
+  "liveBrowser": false,
+  "physicalPrinter": false
+}

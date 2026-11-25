@@ -30,6 +30,7 @@ async function main(){
       assert.equal(h.app.state.printing,brand);assert.equal(button.getAttribute('aria-busy'),'true');
       assert.equal(progress.hidden,false);assert.equal(progress.getAttribute('role'),'progressbar');assert.equal(button.getAttribute('aria-describedby'),progress.id);
       const value=Number(progress.getAttribute('aria-valuenow'));assert.ok(value>0&&value<100);assert.equal(fill.style.width,value+'%');
+      assert.equal(button.textContent,'Printing label…');
       assert.equal(status.hidden,true);assert.equal(status.style.display,'none');assert.doesNotMatch(status.textContent,/Sending\s+quotation|\d+\s*%/i);
       for(const [other,otherId]of Object.entries(kinds))if(other!==kind)assert.equal(doc.getElementById(otherId).querySelector('.print-button-fill').style.width,'0%');
       await child.printToD520(kind);assert.equal(f.requested,1);assert.equal(f.writes,f.pauseAt);report.duplicateTapCases++;

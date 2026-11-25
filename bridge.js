@@ -17,6 +17,21 @@
   }
   function installConnectionGuard() {
     var active = null;
+    function bluetoothProvider() {
+      var navigator = global.navigator || {};
+      var ipadBrowser = /Bluefy|iPad|iPhone|iPod/i.test(navigator.userAgent || '') ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      // Bluefy's native callbacks must return to the window that owns its BLE
+      // objects. Embedded iPad catalogues use the main page's provider, while
+      // retaining the original device/service/notification/write sequence.
+      if (ipadBrowser && global.parent !== global) {
+        try {
+          var owner = global.top;
+          if (owner && owner.navigator && owner.navigator.bluetooth) return owner.navigator.bluetooth;
+        } catch (ignore) {} // A local-file/foreign frame may not share its top window.
+      }
+      return navigator.bluetooth;
+    }
     function begin() { active = {device:null,cancelled:false}; }
     function finish() { active = null; }
     function status(message) { global.setPrintStatus(message,'busy'); }
@@ -59,12 +74,13 @@
       if (!active) begin();
       var attempt = active;
       try {
-        if (!global.navigator.bluetooth) throw new Error('Open this catalogue in Bluefy/WebBLE on iPad to connect the printer.');
+        var bluetooth = bluetoothProvider();
+        if (!bluetooth) throw new Error('Open this catalogue in Bluefy/WebBLE on iPad to connect the printer.');
         if (!global.labelPrinterDevice) {
           status('Choose your D520BT-Z printer…');
           // Keep the chooser in the original user-gesture call stack, and allow
           // the user as much time as they need to make their selection.
-          global.labelPrinterDevice = await global.navigator.bluetooth.requestDevice({
+          global.labelPrinterDevice = await bluetooth.requestDevice({
             filters:[{namePrefix:'D520'},{namePrefix:'D520BT'},{namePrefix:'D520BT-Z'},{namePrefix:'D'}],
             optionalServices:[global.D520_SERVICE_UUID]
           });

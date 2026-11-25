@@ -19,11 +19,12 @@
     var fill = document.createElement('span'); fill.className = 'print-button-fill'; fill.setAttribute('aria-hidden','true'); fill.style.width = '0%';
     var text = document.createElement('span'); text.className = 'print-button-label'; text.textContent = label;
     button.appendChild(fill); button.appendChild(text);
-    buttons[kind] = {button:button,fill:fill};
+    buttons[kind] = {button:button,fill:fill,text:text,label:label};
   });
   function clearButtons() {
     Object.keys(buttons).forEach(function (kind) {
       var item = buttons[kind]; item.fill.style.width = '0%';
+      item.text.textContent = item.label;
       item.button.classList.remove('is-printing'); item.button.classList.remove('is-print-complete');
       item.button.setAttribute('aria-busy','false'); item.button.removeAttribute('aria-describedby');
     });
@@ -36,6 +37,11 @@
     state = state || 'idle';
     var match = /\b(\d{1,3})\s*%/.exec(String(message));
     if (active && state === 'busy') {
+      var stage = /choose/i.test(String(message)) ? 'Choose printer…' :
+        /connecting/i.test(String(message)) ? 'Connecting…' :
+        /activating/i.test(String(message)) ? 'Activating printer…' :
+        /preparing/i.test(String(message)) ? 'Preparing printer…' : 'Printing label…';
+      active.text.textContent = stage;
       if (match) {
         percent = Math.max(percent,Math.min(100,Number(match[1])));
         active.fill.style.width = percent + '%';
@@ -60,12 +66,14 @@
     if (busy) return;
     if (!buttons[kind]) return originalPrint.apply(this,arguments);
     clearButtons(); active = buttons[kind]; percent = 0; outcome = ''; busy = true;
+    active.text.textContent = 'Preparing label…';
     active.button.classList.add('is-printing'); active.button.setAttribute('aria-busy','true');
     active.button.setAttribute('aria-describedby',progress.id);
     progress.removeAttribute('aria-valuenow'); progress.setAttribute('aria-valuetext','Preparing label printing'); progress.hidden = false;
     try { return await originalPrint.apply(this,arguments); }
     finally {
       active.button.classList.remove('is-printing'); active.button.setAttribute('aria-busy','false'); active.button.removeAttribute('aria-describedby');
+      active.text.textContent = active.label;
       if (outcome === 'success') active.button.classList.add('is-print-complete');
       else active.fill.style.width = '0%';
       progress.hidden = true; active = null; busy = false;

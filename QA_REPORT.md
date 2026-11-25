@@ -1,4 +1,16 @@
-# R1.23 — Chameleon and quotation row size
+# R1.24 — Bluefy provider handoff and connection text in the bar
+
+25 November 2026. Kelvin confirms iMac output but reports an iPad Bluefy stall after printer selection through GitHub/QR, and requests all setup feedback inside the bar. A fresh read of the live index, bridge, print-feedback, hub and ZEISS printer/index files matches R1.23 byte-for-byte. This rules out an unuploaded ZIP for those fetched resources; it does not establish the content held in a particular device's cache.
+
+Embedded Bluefy/iOS catalogues now request the accessible top page's navigator.bluetooth provider, retaining the complete existing device/service/characteristic/notification/write sequence. Desktop, standalone and inaccessible-parent fallback paths are covered. This is intended to avoid a child-frame native-callback handoff issue; that suspected failure has not been reproduced on hardware here. No native printer file or artwork is modified.
+
+The active button now shows the setup stage, followed by Printing label and the real transfer fill. The separate busy card and numeric percentage remain hidden. The idle Print Label/other label names are restored afterward. Existing setup timeouts still restore controls; the user's device chooser remains unbounded.
+
+New simulated tests pass for 12 top-level Bluefy label transfers, three desktop-UA iPad cases, three unchanged desktop-provider cases, three standalone Bluefy cases, three inaccessible-parent fallbacks, 12 visible setup stages and nine setup timeout recoveries. Chooser invocation remains synchronous in the click stack, native characteristic method binding and notification-before-write order are checked, and transmitted bytes match the native label generators. Existing connection, button-progress, financial/output, native-versus-bridged sequence, integration and package checks pass.
+
+All R1.23 native printer sources, artwork authorization, logos/assets, manifests, overlays/script attributes and prices are byte-identical. Source preservation checks are recorded separately. No live browser was launched and no physical iPad/printer test was performed here. Rollback: complete R1.23 ZIP. The first device check must use freshly deployed R1.24 files; if it stalls, note the in-button stage.
+
+## R1.23 — Chameleon and quotation row size (history)
 
 25 November 2026. Kelvin's latest request adds larger Chameleon wording and very slightly larger items/prices to the logo-only update. HOYA's Chameleon style line is now 22 px in portrait and landscape label headers; Clear retains its original size. Every brand's quotation row labels and amounts increase from 20 to 21 px. Titles, totals, coordinates, commercial data, row selections and strikethrough formulas remain unchanged. R1.22's black-on-white ZEISS bitmap is retained.
 

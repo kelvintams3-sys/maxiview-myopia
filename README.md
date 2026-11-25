@@ -1,10 +1,19 @@
-# Maxiview Myopia Catalogue R1.23 — clearer label text
+# Maxiview Myopia Catalogue R1.24 — Bluefy handoff and in-button connection feedback
 
-25 November 2026. Builds on confirmed R1.21 printing, carrying over the requested black-on-white logos and adding the latest label typography request: Chameleon is 22 px on HOYA labels; item and amount rows are 21 px instead of 20 px in all three quotation labels. Row positions, totals, commercial data, screen design, button progress and the working connection sequence are preserved.
+25 November 2026. R1.23 prints on Kelvin's iMac but stalls after printer selection in iPad Bluefy. This release routes embedded iPad Bluetooth requests through the main page's provider and shows setup stages inside the active print button. All three native printer files, R1.23 label outputs, black-on-white logos and larger text remain byte-identical. The targeted Bluefy change is tested in simulation; actual device success is not established here.
 
 Extract the complete ZIP into a fresh folder and open the root `index.html`. For a hosted copy, replace the complete deployed folder together and retain HTTPS. Each native catalogue can also open from `catalogues/<brand>/index.html`. No build is required. Review product, comparison and summary layouts in Bluefy; physical printing cannot be tested in this environment.
 
-The original checksum manifests and captured label baseline remain unchanged. PRINT_ARTWORK_AUTHORIZATION.json records the exact typography replacements and retained ZEISS bitmap inversion. Reversing only those edits reproduces all three original whole-file printer checksums; the strict validators reject any other edit. Native print overlays, script attributes, artwork files and product data remain unchanged. R1.15's local-file permission fix, the confirmed R1.21 bridge and print-feedback scripts/CSS are retained byte-for-byte.
+The original checksum manifests and captured label baseline remain unchanged. PRINT_ARTWORK_AUTHORIZATION.json records the R1.23 typography replacements and retained ZEISS bitmap inversion; the native printer files and that authorization are unchanged in R1.24. Reversing only the recorded artwork edits reproduces all three original whole-file printer checksums. Native overlays, script attributes, artwork files, commercial data and the local-file permission fix remain unchanged. Only provider selection in bridge.js and setup text in print-feedback.js change in this release, plus release metadata.
+
+## Bluefy change in R1.24
+
+- In the combined page on Bluefy/iPad, requestDevice uses the accessible top-level page's Bluetooth provider. The returned device, service and native characteristic are used directly in the existing sequence. Desktop printing keeps its existing provider; direct standalone pages keep their own provider. Inaccessible or missing parent providers fall back to the existing local provider.
+- The selected button displays Choose printer…, Connecting…, Preparing printer…, Activating printer… and Printing label… inside the same bar. The separate busy status/percentage card remains hidden. Original button wording returns after completion/error.
+- The fill starts only when native writes report actual transfer progress. No fake progress is shown during connection. Errors remain visible and timed-out setup stages release the original controls.
+- UUIDs, request filters, notification activation, native write methods, chunks, pacing, disconnect behavior, artwork and commercial calculations are not changed. There is no automatic retry or resend.
+
+Replace the complete deployed files with this release, close the old Bluefy tab and reopen the same GitHub/QR address. The button should now show a setup stage immediately. Test one label on the iPad; if it stops, report the words shown inside the button or the visible error. The public address/QR do not change. The GitHub site was verified as R1.23 before this update; this ZIP is not automatically deployed.
 
 ## Type size in R1.23
 
@@ -25,7 +34,7 @@ The original checksum manifests and captured label baseline remain unchanged. PR
 - Progress fills the actual active print button, with its text remaining readable. The primary action reads Print Label; guarantee, booklet and extension buttons retain their descriptive names and use the same progress treatment.
 - The separate busy status/percentage card is hidden. Sending quotation is replaced in screen feedback; errors remain visible and completion reads Label sent to printer.
 - Progress resets for a new attempt or preview. Duplicate taps remain blocked during printing. Accessible progress and reduced-motion styling are included.
-- print-feedback.js/CSS add presentation after the original bridge/styles. No Bluetooth calls, write adapters, timing changes, label generators or logo changes are introduced. Original native overlays/handlers remain intact.
+- print-feedback.js/CSS provide presentation after the original bridge/styles. R1.24 adds in-button setup wording; the native handlers, label generators and byte transmission remain intact.
 
 ## Printer correction in R1.20
 
@@ -65,7 +74,7 @@ Default ZEISS navigation, deliberate lens selection, selected-brand comparison c
 
 ## Printer protection
 
-Each brand keeps its own printer.js and unchanged PRINTER_SHA256.json. Only the exact authorized font inputs and ZEISS bitmap differ. Artwork files, native overlays/script attributes, printer handlers, UUIDs, chunks, pacing and all layout coordinates are preserved. bridge.js and print-feedback.js/CSS remain byte-identical to confirmed R1.21.
+Each brand keeps its R1.23 printer.js and unchanged PRINTER_SHA256.json. The earlier authorized font/bitmap inputs are retained exactly. Artwork assets, native interfaces, transmission code and layout coordinates are unchanged. R1.24 intentionally changes provider selection and setup text in the bridge/feedback helpers; it does not claim those helpers remain byte-identical to R1.21.
 
 The static overlay and event handlers remain original. The unchanged screen helper retains Print Label and button progress. Printed wording is unchanged; only the approved type sizes and ZEISS logo polarity differ.
 
@@ -97,6 +106,7 @@ Development checks use Node.js, @napi-rs/canvas and Arial-compatible fonts. The 
 node qa/verify-printer-lock.cjs
 node qa/verify-print-logos.cjs
 node qa/verify-print-artwork.cjs
+node qa/verify-bluefy-handoff.cjs
 node qa/verify-connection-guard.cjs
 node qa/verify-r15-ble-sequence.cjs
 node qa/verify-print-feedback.cjs
@@ -118,6 +128,6 @@ Unchanged: ZEISS Platinum UV remains RM1,800 despite RM1,600 in the supplied bro
 
 ## Rollback
 
-Restore R1.22 to undo the typography changes while keeping black-on-white logos, or the complete user-confirmed R1.21 ZIP to return to the physically confirmed baseline. Do not mix files from different releases.
+Restore the complete R1.23 package to undo the Bluefy provider/feedback update while retaining the latest artwork. R1.23 physical success is confirmed on iMac; Bluefy was reported to stall. Do not mix files from different releases.
 
 Keep STELLEST_R1_32_PRINT_LOCKED.zip, HOYA_R1_5_PRINT_LOCKED.zip and MYOACTIVE_R1_4_PRINT_LOCKED.zip for the original standalone catalogues. Keep MAXIVIEW_MYOPIA_CATALOGUE_R1_4_PICTURES_UPDATED.zip for the previous combined catalogue. Replace the complete deployed tree when rolling back, avoiding mixed versions.
