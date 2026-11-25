@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "baseline": "User-confirmed R1.21",
+  "runtimeFilesChanged": [
+    "catalogues/hoya/printer.js",
+    "catalogues/stellest/printer.js",
+    "catalogues/zeiss/printer.js",
+    "index.html"
+  ],
+  "scope": "Only approved font inputs and ZEISS logo constant, plus root release metadata",
+  "bridgeAndPrintFeedbackByteIdentical": true,
+  "nativeOverlaysAndScriptAttributesByteIdentical": true,
+  "allArtworkAssetFilesByteIdentical": true,
+  "originalPrinterManifestsAndLabelCapturesRetained": true,
+  "physicalPrinterThisRelease": false
+}

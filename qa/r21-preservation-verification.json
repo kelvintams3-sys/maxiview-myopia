@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "baseline": "User-confirmed R1.20",
+  "bridgeByteIdentical": true,
+  "allNativeJavaScriptAndArtworkByteIdentical": true,
+  "nativeHtmlChanges": "Only one stylesheet and one deferred feedback script added; all original bytes preserved",
+  "nativeOverlaySourceUnchanged": true,
+  "physicalPrinterThisRelease": false
+}

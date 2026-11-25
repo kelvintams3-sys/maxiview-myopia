@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "baseline": "supplied R1.15",
+  "protectedFilesUnchanged": 49,
+  "runtimeFilesChangedFromR18": [
+    "bridge.js",
+    "index.html"
+  ],
+  "printLogosAndLabelOutputUnchanged": true,
+  "physicalPrinter": false
+}

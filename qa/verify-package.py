@@ -13,8 +13,13 @@ for brand,interface in manifest['printerInterfaces'].items():
  native=root/'catalogues'/brand
  tree=html.fromstring((native/'index.html').read_bytes())
  assert html.tostring(tree.xpath('//*[@id="printOverlay"]')[0],encoding='unicode')==interface['printOverlay'],brand+' printer overlay'
- scripts=[dict(x.attrib) for x in tree.xpath('//script') if not x.get('src','').endswith('bridge.js')]
+ scripts=[dict(x.attrib) for x in tree.xpath('//script') if not x.get('src','').endswith(('bridge.js','print-feedback.js'))]
  assert scripts==interface['scriptAttributes'],brand+' native script order/attributes'
+ feedback=tree.xpath('//script[@src="../../print-feedback.js"]')
+ assert len(feedback)==1 and dict(feedback[0].attrib)=={'defer':'defer','src':'../../print-feedback.js'},brand+' feedback script'
+ external=tree.xpath('//script[@src]/@src')
+ bridge_index=external.index('../../bridge.js')
+ assert external[bridge_index:bridge_index+2]==['../../bridge.js','../../print-feedback.js'],brand+' deferred feedback follows the unchanged deferred bridge'
  result=subprocess.run(['node','qa/verify-printer-lock.cjs'],cwd=native,capture_output=True,text=True)
  assert result.returncode==0,result.stdout+result.stderr
  # Brochure access remains available from the native information panel.

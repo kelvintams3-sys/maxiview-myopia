@@ -1,0 +1,9 @@
+/* Screen-only print-button feedback; label artwork and printer transport are untouched. */
+#printOverlay .print-feedback-button{position:relative;overflow:hidden;isolation:isolate}
+#printOverlay .print-button-fill{position:absolute;inset:0 auto 0 0;width:0;background:rgba(255,255,255,.24);pointer-events:none;transition:width .15s linear;z-index:0}
+#printOverlay .print-button-label{position:relative;z-index:1}
+#printOverlay .print-feedback-button.is-printing:disabled{opacity:1;cursor:wait}
+#printOverlay .print-status[hidden],#printOverlay .print-feedback-progress[hidden]{display:none}
+#printOverlay .print-feedback-progress{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}
+@media(prefers-reduced-motion:reduce){#printOverlay .print-button-fill{transition:none}}
+@media print{#printOverlay .print-button-fill,#printOverlay .print-feedback-progress{display:none}}

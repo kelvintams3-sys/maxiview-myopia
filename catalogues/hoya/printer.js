@@ -40,10 +40,10 @@ function drawLabelHeader(ctx,landscape){
  drawHoyaLogo(ctx,18,16);
  if(landscape){
   labelText(ctx,p.name,128,17,334,30,24,'bold');
-  labelText(ctx,DATA.styles[state.style].name+' · 1.59',18,60,444,18,17,'bold');
+  labelText(ctx,DATA.styles[state.style].name+' · 1.59',18,60,444,state.style==='chameleon'?22:18,17,'bold');
  }else{
   labelText(ctx,p.name,18,53,284,30,25,'bold');
-  labelText(ctx,DATA.styles[state.style].name+' · 1.59',18,91,284,17,17,'bold');
+  labelText(ctx,DATA.styles[state.style].name+' · 1.59',18,91,284,state.style==='chameleon'?22:17,17,'bold');
  }
  ctx.fillRect(18,landscape?91:121,landscape?444:284,2);
 }
@@ -60,8 +60,8 @@ function drawQuotation(){
  labelText(ctx,DATA.coatings[state.coating].shortName,18,141,284,23,20,'bold');
  labelText(ctx,state.coating==='spark'?'S.P.A.R.K. Coating':'Coating STX',18,170,284,16,16,'normal');
  quotationRows().forEach(function(row,n){
-  var y=211+n*36;labelText(ctx,row.label,18,y,165,20,18,'bold');
-  var amount=money(row.amount);ctx.textAlign='right';ctx.font='bold 20px Arial, sans-serif';ctx.fillText(amount,302,y);
+  var y=211+n*36;labelText(ctx,row.label,18,y,165,21,18,'bold');
+  var amount=money(row.amount);ctx.textAlign='right';ctx.font='bold 21px Arial, sans-serif';ctx.fillText(amount,302,y);
   if(row.struck){var metrics=ctx.measureText(amount);var middle=y+((metrics.actualBoundingBoxDescent||16)-(metrics.actualBoundingBoxAscent||0))/2;ctx.fillRect(Math.floor(302-metrics.width)-1,Math.round(middle),Math.ceil(metrics.width)+2,2);}
  });
  ctx.fillRect(18,367,284,2);labelText(ctx,'TOTAL',18,392,96,22,22,'bold');

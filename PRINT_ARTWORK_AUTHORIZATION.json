@@ -1,0 +1,65 @@
+{
+  "release": "R1.23",
+  "date": "2026-11-25",
+  "authorization": "Kelvin requests larger Chameleon wording and a very slight increase in label item and price size, following the R1.22 black-on-white logo request.",
+  "scope": "Artwork only: preserve the R1.21 working Bluetooth bridge, print-feedback scripts, native printer transport, label coordinates, totals and original manifests. Item/price 20 to 21 px; Chameleon 22 px on HOYA labels; retain R1.22 ZEISS logo inversion.",
+  "printers": {
+    "stellest": {
+      "file": "printer.js",
+      "frozenSha256": "ee3a7824d80bfe81ca3a43e650054ac8a9e0d60d6b9fa880b443c5c70b939960",
+      "approvedSha256": "471ce18eef5ad6266b1369e9b336693a5e5f2fe9b598a6cba08964a176fd81a0",
+      "edits": [
+        {
+          "before": "fitText(row.label,20,rowY,170,20,17,\"bold\");",
+          "after": "fitText(row.label,20,rowY,170,21,17,\"bold\");"
+        },
+        {
+          "before": "ctx.font=\"bold 20px Arial, sans-serif\";",
+          "after": "ctx.font=\"bold 21px Arial, sans-serif\";"
+        }
+      ]
+    },
+    "hoya": {
+      "file": "printer.js",
+      "frozenSha256": "173651f511c58f3cdea373585bd8f2c657736cc8e02d2dc64776a541c41b588e",
+      "approvedSha256": "a333a68bbe8f19ac54526c6ceb5bd82b268453a183ca14e7844a4011496991c4",
+      "edits": [
+        {
+          "before": "labelText(ctx,DATA.styles[state.style].name+' \u00b7 1.59',18,60,444,18,17,'bold');",
+          "after": "labelText(ctx,DATA.styles[state.style].name+' \u00b7 1.59',18,60,444,state.style==='chameleon'?22:18,17,'bold');"
+        },
+        {
+          "before": "labelText(ctx,DATA.styles[state.style].name+' \u00b7 1.59',18,91,284,17,17,'bold');",
+          "after": "labelText(ctx,DATA.styles[state.style].name+' \u00b7 1.59',18,91,284,state.style==='chameleon'?22:17,17,'bold');"
+        },
+        {
+          "before": "var y=211+n*36;labelText(ctx,row.label,18,y,165,20,18,'bold');",
+          "after": "var y=211+n*36;labelText(ctx,row.label,18,y,165,21,18,'bold');"
+        },
+        {
+          "before": "ctx.font='bold 20px Arial, sans-serif';ctx.fillText(amount,302,y);",
+          "after": "ctx.font='bold 21px Arial, sans-serif';ctx.fillText(amount,302,y);"
+        }
+      ]
+    },
+    "zeiss": {
+      "file": "printer.js",
+      "frozenSha256": "d278abddfad8e24d3e45cc99591ce15d65072265b6fc8786e4788469158fc1d9",
+      "approvedSha256": "c2c0242356f27faac3a08e55c31a9701866eabf36cf8c24277659183378760ce",
+      "edits": [
+        {
+          "before": "var ZEISS_LOGO_HEX = 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0300c100c07e610cc308847ee38ee30e877fc38fe386c37f878be387e1ff0f83e3c3e1ff0f8be3e1f0fe1f8ee370b87e398ee330987c0100c100807e0300db80c07ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';",
+          "after": "var ZEISS_LOGO_HEX = '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001fcff3eff3f819ef33cf77b811c711cf178803c701c793c8078741c781e00f07c1c3c1e00f0741c1e0f01e0711c8f4781c6711ccf6783feff3eff7f81fcff247f3f8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';"
+        },
+        {
+          "before": "labelText(ctx, row.label, 18, y, 169, 20, 18, 'bold');",
+          "after": "labelText(ctx, row.label, 18, y, 169, 21, 18, 'bold');"
+        },
+        {
+          "before": "var amount = money(row.amount); ctx.textAlign = 'right'; ctx.font = 'bold 20px Arial, sans-serif';",
+          "after": "var amount = money(row.amount); ctx.textAlign = 'right'; ctx.font = 'bold 21px Arial, sans-serif';"
+        }
+      ]
+    }
+  }
+}

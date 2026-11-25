@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "brands": 3,
+  "labelSequences": 36,
+  "legacyWriteSequences": 12,
+  "rejectedNotificationSequences": 12,
+  "compares": "Native printer transport with explicitly authorized artwork; original manifests and complete source normalization retained",
+  "liveBrowser": false,
+  "physicalPrinter": false
+}

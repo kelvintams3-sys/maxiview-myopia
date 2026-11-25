@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "baseline": "User-confirmed R1.21",
+  "runtimeFilesChanged": [
+    "catalogues/zeiss/printer.js",
+    "index.html"
+  ],
+  "zeissChange": "Only the 288-byte ZEISS_LOGO_HEX bitmap value inverted",
+  "allOtherPrinterSourceBytesIdentical": true,
+  "bridgeAndPrintFeedbackByteIdentical": true,
+  "allScreenAndLabelAssetFilesIdentical": true,
+  "nativeOverlaysAndScriptAttributesIdentical": true,
+  "originalChecksumManifestsRetained": true,
+  "physicalPrinterThisRelease": false
+}

@@ -102,8 +102,8 @@
       if(state.followups.two) rows.push({label:"Follow-up 2",amount:120,struck:state.complimentary});
       for(var n=0;n<rows.length;n++){
         var row = rows[n], rowY=209+n*40, value=money(row.amount);
-        fitText(row.label,20,rowY,170,20,17,"bold");
-        ctx.font="bold 20px Arial, sans-serif";
+        fitText(row.label,20,rowY,170,21,17,"bold");
+        ctx.font="bold 21px Arial, sans-serif";
         ctx.textAlign="right";
         ctx.fillText(value,300,rowY);
         if(row.struck){

@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "brands": 3,
+  "successfulLabels": 18,
+  "stalledSetupStages": 15,
+  "retryCases": 15,
+  "notificationRejectionCases": 3,
+  "nativeCharacteristicCases": 3,
+  "lateConnectCases": 3,
+  "chooserCases": 3,
+  "errorCases": 9,
+  "standaloneCases": 6,
+  "liveBrowser": false,
+  "physicalPrinter": false
+}

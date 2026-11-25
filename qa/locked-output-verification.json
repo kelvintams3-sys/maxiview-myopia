@@ -1,8 +1,12 @@
 {
   "status": "passed",
   "baseline": "Unmodified original PRINT_LOCKED archives",
+  "originalBaselineUnchanged": true,
+  "originalLabelHashesReproduced": 645,
   "financialHandoffs": 600,
-  "labelByteMatches": 645,
+  "unchangedLabelByteMatches": 27,
+  "authorizedArtworkChangedCases": 618,
+  "artworkRegionsCheckedSeparately": "verify-print-artwork.cjs",
   "options": 15,
   "physicalPrinter": false,
   "liveBrowser": false

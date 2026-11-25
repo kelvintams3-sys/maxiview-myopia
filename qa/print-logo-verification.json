@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "labelCases": 60,
+  "zeissLogoOnlyCases": 8,
+  "unchangedEssilorHoyaCases": 52,
+  "allNonLogoPixelsUnchanged": true,
+  "transportSourceUnchangedAfterLogoNormalization": true,
+  "physicalPrinter": false,
+  "liveBrowser": false,
+  "historicalRelease": "R1.22",
+  "currentVerification": "print-artwork-verification.json"
+}

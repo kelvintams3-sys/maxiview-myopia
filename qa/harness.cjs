@@ -111,12 +111,13 @@ function loadNative(brand,parent,frame,queue,bridge=true,directoryOverride=null)
   const scripts=[...markup.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
   for(const match of scripts){
     const src=/src="([^"]+)"/.exec(match[1]);
-    if(src){if(!src[1].includes('bridge.js'))execute(context,path.join(directory,src[1]));}
+    if(src){if(!src[1].includes('bridge.js')&&!src[1].includes('print-feedback.js'))execute(context,path.join(directory,src[1]));}
     else if(match[2].trim())vm.runInContext(match[2],context);
   }
   if(bridge){
     context.document.currentScript={getAttribute(name){return name==='data-brand'?brand:null}};
     execute(context,path.join(root,'bridge.js'));
+    if(markup.includes('src="../../print-feedback.js"'))execute(context,path.join(root,'print-feedback.js'));
   }
   return context;
 }

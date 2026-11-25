@@ -4,7 +4,7 @@ var D520_SERVICE_UUID = '0000ff00-0000-1000-8000-00805f9b34fb';
 var D520_WRITE_UUID = '0000ff02-0000-1000-8000-00805f9b34fb';
 var D520_NOTIFY_UUID = '0000ff03-0000-1000-8000-00805f9b34fb';
 var labelArtworkCache = Object.create(null);
-var ZEISS_LOGO_HEX = 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0300c100c07e610cc308847ee38ee30e877fc38fe386c37f878be387e1ff0f83e3c3e1ff0f8be3e1f0fe1f8ee370b87e398ee330987c0100c100807e0300db80c07ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
+var ZEISS_LOGO_HEX = '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001fcff3eff3f819ef33cf77b811c711cf178803c701c793c8078741c781e00f07c1c3c1e00f0741c1e0f01e0711c8f4781c6711ccf6783feff3eff7f81fcff247f3f8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
 function labelCanvas(width, height) {
   var canvas = document.createElement('canvas'); canvas.width = width; canvas.height = height;
   var ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -55,8 +55,8 @@ function drawQuotation() {
   labelText(ctx, MyoActiveData.coatings[state.coating].shortName, 18, 138, 280, 22, 20, 'bold');
   quotationRows().forEach(function (row, n) {
     var y = 191 + n * 39;
-    labelText(ctx, row.label, 18, y, 169, 20, 18, 'bold');
-    var amount = money(row.amount); ctx.textAlign = 'right'; ctx.font = 'bold 20px Arial, sans-serif';
+    labelText(ctx, row.label, 18, y, 169, 21, 18, 'bold');
+    var amount = money(row.amount); ctx.textAlign = 'right'; ctx.font = 'bold 21px Arial, sans-serif';
     ctx.fillText(amount, 302, y);
     if (row.struck) {
       var metrics = ctx.measureText(amount);

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "baseline": "supplied R1.15",
+  "protectedFilesUnchanged": 49,
+  "runtimeFilesChangedFromR19": [
+    "bridge.js",
+    "index.html"
+  ],
+  "nativePrinterSourcesAndPrintLogosUnchanged": true,
+  "physicalPrinter": false
+}

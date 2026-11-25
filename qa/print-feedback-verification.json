@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "brands": 3,
+  "activeButtonTransfers": 12,
+  "duplicateTapCases": 12,
+  "errorRecoveryCases": 3,
+  "idleResetCases": 3,
+  "liveBrowser": false,
+  "physicalPrinter": false
+}
